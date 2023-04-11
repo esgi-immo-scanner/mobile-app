@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/widgets/custom_button.dart';
 import 'package:immo_scanner/widgets/custom_text_form_field.dart';
-import 'package:immo_scanner/data/models/register/post_register_req.dart';
 import 'package:immo_scanner/data/models/register/post_register_resp.dart';
-import 'package:immo_scanner/core/constants/role.dart';
+//import 'package:immo_scanner/core/constants/role.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUpScreen extends GetWidget<SignUpController> {
+  const SignUpScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,8 +55,8 @@ class SignUpScreen extends GetWidget<SignUpController> {
                           margin: getMargin(top: 40)),
                       CustomTextFormField(
                           focusNode: FocusNode(),
-                          controller: controller.phonenumberController,
-                          hintText: "lbl_phone_number".tr,
+                          controller: controller.emailController,
+                          hintText: "lbl_email".tr,
                           margin: getMargin(top: 16),
                           textInputType: TextInputType.phone),
                       Obx(() => CustomTextFormField(
@@ -145,15 +146,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
   }
 
   Future<void> onTapSignup() async {
-    PostRegisterReq postRegisterReq = PostRegisterReq(
-      username: controller.phonenumberController.text,
-      password: controller.passwordController.text,
-      name: controller.fullnameController.text,
-      role: Role.user,
-    );
+    // name: controller.fullnameController.text,
+    // role: Role.user,
     try {
       await controller.callCreateRegister(
-        postRegisterReq.toJson(),
+        controller.emailController.text,
+        controller.passwordController.text,
       );
       _onOnTapSignUpSuccess();
     } on PostRegisterResp {
@@ -161,7 +159,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
     } on NoInternetException catch (e) {
       Get.rawSnackbar(message: e.toString());
     } catch (e) {
-      //TODO: Handle generic errors
+      Get.rawSnackbar(message: "Critical error : $e");
     }
   }
 
@@ -177,7 +175,16 @@ class SignUpScreen extends GetWidget<SignUpController> {
 
   // TODO replace by firebase
   onTapGoogle() async {
+<<<<<<< HEAD
     print("TODO");
+=======
+    try {
+      controller.callGoogleSignIn();
+      _onOnTapSignUpSuccess();
+    } catch (err) {
+      Get.snackbar('Error', err.toString());
+    }
+>>>>>>> 4041046 (fix ios)
   }
 
   onTapTxtSignup() {

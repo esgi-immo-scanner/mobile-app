@@ -4,7 +4,7 @@ import 'package:immo_scanner/widgets/custom_text_form_field.dart';
 
 // ignore: must_be_immutable
 class AppbarEdittext extends StatelessWidget {
-  AppbarEdittext({this.hintText, this.controller, this.margin});
+  AppbarEdittext({Key? key, this.hintText, this.controller, this.margin}) : super(key: key);
 
   String? hintText;
 

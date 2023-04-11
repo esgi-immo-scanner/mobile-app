@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class AppbarSubtitle extends StatelessWidget {
-  AppbarSubtitle({required this.text, this.margin, this.onTap});
+  AppbarSubtitle({Key? key, required this.text, this.margin, this.onTap}) : super(key: key);
 
   String text;
 

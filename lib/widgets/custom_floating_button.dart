@@ -3,14 +3,14 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   CustomFloatingButton(
-      {this.shape,
+      {Key? key, this.shape,
       this.variant,
       this.alignment,
       this.margin,
       this.onTap,
       this.width,
       this.height,
-      this.child});
+      this.child}) : super(key: key);
 
   FloatingButtonShape? shape;
 

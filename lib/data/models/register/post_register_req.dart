@@ -18,20 +18,20 @@ class PostRegisterReq {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    if (this.username != null) {
-      data['username'] = this.username;
+    if (username != null) {
+      data['username'] = username;
     }
-    if (this.password != null) {
-      data['password'] = this.password;
+    if (password != null) {
+      data['password'] = password;
     }
-    if (this.email != null) {
-      data['email'] = this.email;
+    if (email != null) {
+      data['email'] = email;
     }
-    if (this.name != null) {
-      data['name'] = this.name;
+    if (name != null) {
+      data['name'] = name;
     }
-    if (this.role != null) {
-      data['role'] = this.role;
+    if (role != null) {
+      data['role'] = role;
     }
     return data;
   }

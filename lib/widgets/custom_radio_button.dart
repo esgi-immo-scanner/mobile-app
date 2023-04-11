@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomRadioButton extends StatelessWidget {
   CustomRadioButton(
-      {this.fontStyle,
+      {Key? key, this.fontStyle,
       this.alignment,
       this.onChange,
       this.isRightCheck = false,
@@ -12,7 +12,7 @@ class CustomRadioButton extends StatelessWidget {
       this.groupValue,
       this.text,
       this.width,
-      this.margin});
+      this.margin}) : super(key: key);
 
   RadioFontStyle? fontStyle;
 
@@ -62,7 +62,7 @@ class CustomRadioButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             right: 8,
           ),
           child: getTextWidget(),
@@ -77,7 +77,7 @@ class CustomRadioButton extends StatelessWidget {
       children: [
         getRadioWidget(),
         Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             left: 8,
           ),
           child: getTextWidget(),
@@ -104,7 +104,7 @@ class CustomRadioButton extends StatelessWidget {
         onChanged: (value) {
           onChange!(value!);
         },
-        visualDensity: VisualDensity(
+        visualDensity: const VisualDensity(
           vertical: -4,
           horizontal: -4,
         ),

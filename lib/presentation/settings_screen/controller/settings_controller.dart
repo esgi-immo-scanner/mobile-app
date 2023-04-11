@@ -4,6 +4,4 @@ RxBool isSelectedSwitch = false.obs;
 
 RxBool isSelectedSwitch1 = false.obs;
 
-@override void onReady() { super.onReady(); } 
-@override void onClose() { super.onClose(); } 
  }

@@ -9,6 +9,8 @@ import 'package:immo_scanner/widgets/custom_bottom_bar.dart';
 import 'package:immo_scanner/widgets/custom_button.dart';
 
 class MyHomeEmptyScreen extends GetWidget<MyHomeEmptyController> {
+  const MyHomeEmptyScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -123,7 +125,7 @@ class MyHomeEmptyScreen extends GetWidget<MyHomeEmptyController> {
       case AppRoutes.profilePage:
         return ProfilePage();
       default:
-        return DefaultWidget();
+        return const DefaultWidget();
     }
   }
 }

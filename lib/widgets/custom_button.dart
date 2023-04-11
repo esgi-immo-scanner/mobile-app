@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
       this.height,
       this.text,
       this.prefixWidget,
-      this.suffixWidget});
+      this.suffixWidget}) : super(key: key);
 
   ButtonShape? shape;
 
@@ -66,13 +66,13 @@ class CustomButton extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          prefixWidget ?? SizedBox(),
+          prefixWidget ?? const SizedBox(),
           Text(
             text ?? "",
             textAlign: TextAlign.center,
             style: _setFontStyle(),
           ),
-          suffixWidget ?? SizedBox(),
+          suffixWidget ?? const SizedBox(),
         ],
       );
     } else {

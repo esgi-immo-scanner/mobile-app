@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomCheckbox extends StatelessWidget {
   CustomCheckbox(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -14,7 +14,7 @@ class CustomCheckbox extends StatelessWidget {
       this.onChange,
       this.text,
       this.width,
-      this.margin});
+      this.margin}) : super(key: key);
 
   CheckboxShape? shape;
 
@@ -79,7 +79,7 @@ class CustomCheckbox extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             right: 8,
           ),
           child: getTextWidget(),
@@ -94,7 +94,7 @@ class CustomCheckbox extends StatelessWidget {
       children: [
         getCheckboxWidget(),
         Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             left: 8,
           ),
           child: getTextWidget(),
@@ -121,7 +121,7 @@ class CustomCheckbox extends StatelessWidget {
           onChange!(value!);
         },
         checkColor: ColorConstant.green500,
-        visualDensity: VisualDensity(
+        visualDensity: const VisualDensity(
           vertical: -4,
           horizontal: -4,
         ),

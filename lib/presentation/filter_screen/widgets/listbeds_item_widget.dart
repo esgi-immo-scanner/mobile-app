@@ -5,7 +5,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class ListbedsItemWidget extends StatelessWidget {
-  ListbedsItemWidget(this.listbedsItemModelObj);
+  ListbedsItemWidget(this.listbedsItemModelObj, {Key? key}) : super(key: key);
 
   ListbedsItemModel listbedsItemModelObj;
 
@@ -35,7 +35,7 @@ class ListbedsItemWidget extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           CustomImageView(
             svgPath: ImageConstant.imgClock24x24,
             height: getSize(

@@ -5,7 +5,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class PastToursItemWidget extends StatelessWidget {
-  PastToursItemWidget(this.pastToursItemModelObj);
+  PastToursItemWidget(this.pastToursItemModelObj, {Key? key}) : super(key: key);
 
   PastToursItemModel pastToursItemModelObj;
 
@@ -13,7 +13,7 @@ class PastToursItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.maxFinite,
       child: Container(
         padding: getPadding(

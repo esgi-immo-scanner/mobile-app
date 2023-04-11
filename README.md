@@ -26,14 +26,10 @@ https://docs.dhiwise.com/docs/Designguidelines/intro
 
 Check the UI of all the app screens from a single place by setting up the 'initialRoute'  to AppNavigation in the AppRoutes.dart file.
 
-### Facebook authentication configuration
+### Firebase setup
 
-Steps:
-- Follow the steps on https://pub.dev/packages/flutter_login_facebook for Facebook login and only update app_id and client_token in your project.
-- For Android:
-    - Update facebook_app_id and facebook_client_token in /android/app/src/main/res/values/strings.xml  file.
-- For iOS:
-    - Configure Info.plist (ios/Runner/Info.plist) file and update APP_ID and CLIENT_TOKEN.
+- `  brew install firebase-cli` (mac os)
+- [used doc](https://firebase.google.com/docs/flutter/setup?platform=ios)
 
 ### Google authentication configuration
 
@@ -95,4 +91,3 @@ Resolve the errors and warnings that are shown in the application.
 ### Support
 
 If you have any problems or questions, go to our Discord channel, where we will help you as quickly as possible: https://discord.com/invite/rFMnCG5MZ7
-# mobile-app

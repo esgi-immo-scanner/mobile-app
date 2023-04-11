@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomSearchView extends StatelessWidget {
   CustomSearchView(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -16,7 +16,7 @@ class CustomSearchView extends StatelessWidget {
       this.prefix,
       this.prefixConstraints,
       this.suffix,
-      this.suffixConstraints});
+      this.suffixConstraints}) : super(key: key);
 
   SearchViewShape? shape;
 

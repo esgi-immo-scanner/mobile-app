@@ -1,26 +1,65 @@
-import 'package:immo_scanner/core/app_export.dart';import 'package:immo_scanner/presentation/sign_up_screen/models/sign_up_model.dart';import 'package:flutter/material.dart';import 'package:immo_scanner/data/models/register/post_register_resp.dart';import 'package:immo_scanner/data/apiClient/api_client.dart';class SignUpController extends GetxController {TextEditingController fullnameController = TextEditingController();
+import 'package:immo_scanner/core/app_export.dart';
+import 'package:immo_scanner/domain/googleauth/google_auth_helper.dart';
+import 'package:immo_scanner/presentation/sign_up_screen/models/sign_up_model.dart';
+import 'package:flutter/material.dart';
+import 'package:immo_scanner/data/models/register/post_register_resp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-TextEditingController phonenumberController = TextEditingController();
+class SignUpController extends GetxController {
+  TextEditingController fullnameController = TextEditingController();
 
-TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
-Rx<SignUpModel> signUpModelObj = SignUpModel().obs;
+  TextEditingController passwordController = TextEditingController();
 
-Rx<bool> isShowPassword = false.obs;
+  Rx<SignUpModel> signUpModelObj = SignUpModel().obs;
 
-PostRegisterResp postRegisterResp = PostRegisterResp();
+  Rx<bool> isShowPassword = false.obs;
 
-@override void onReady() { super.onReady(); } 
-@override void onClose() { super.onClose(); fullnameController.dispose(); phonenumberController.dispose(); passwordController.dispose(); } 
-Future<void> callCreateRegister(Map req) async  { try{
-postRegisterResp   =  await Get.find<ApiClient>().createRegister(headers: {'Content-type': 'application/json',}, requestData: req);
-_handleCreateRegisterSuccess();
-} on PostRegisterResp catch(e)
-{
-postRegisterResp = e;
-rethrow;
-} } 
-void _handleCreateRegisterSuccess() { 
+  PostRegisterResp postRegisterResp = PostRegisterResp();
 
-Get.find<PrefUtils>().setId(postRegisterResp.data!.id!.toString()); } 
- }
+  @override
+  void onClose() {
+    super.onClose();
+    fullnameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  ///method can be used for checking internet connection
+  ///returns [bool] based on availability of internet
+  Future isNetworkConnected() async {
+    if (!await Get.find<NetworkInfo>().isConnected()) {
+      throw NoInternetException('No Internet Found!');
+    }
+  }
+
+  Future<void> callCreateRegister(String emailAddress, String password) async {
+    try {
+      await isNetworkConnected();
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
+      );
+      _handleCreateRegisterSuccess();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        postRegisterResp.message = 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        postRegisterResp.message = 'The account already exists for that email.';
+      }
+    } catch (e) {
+      postRegisterResp.message = "Critical error occured";
+      Logger.log(e.toString());
+    }
+  }
+
+  Future<void> callGoogleSignIn() async {
+    await GoogleAuthHelper().googleSignInProcess();
+    _handleCreateRegisterSuccess();
+  }
+
+  void _handleCreateRegisterSuccess() {
+    Get.find<PrefUtils>().setId(FirebaseAuth.instance.currentUser!.uid);
+  }
+}

@@ -7,7 +7,7 @@ import 'package:immo_scanner/widgets/custom_text_form_field.dart';
 
 // ignore: must_be_immutable
 class ListwhatsappItemWidget extends StatelessWidget {
-  ListwhatsappItemWidget(this.listwhatsappItemModelObj);
+  ListwhatsappItemWidget(this.listwhatsappItemModelObj, {Key? key}) : super(key: key);
 
   ListwhatsappItemModel listwhatsappItemModelObj;
 
@@ -15,7 +15,7 @@ class ListwhatsappItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.maxFinite,
       child: Container(
         padding: getPadding(
@@ -84,7 +84,7 @@ class ListwhatsappItemWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 CustomIconButton(
                   height: 24,
                   width: 24,

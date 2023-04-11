@@ -3,7 +3,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:immo_scanner/core/app_export.dart';
 
 class CustomSwitch extends StatelessWidget {
-  CustomSwitch({this.alignment, this.margin, this.value, this.onChanged});
+  CustomSwitch({Key? key, this.alignment, this.margin, this.value, this.onChanged}) : super(key: key);
 
   Alignment? alignment;
 

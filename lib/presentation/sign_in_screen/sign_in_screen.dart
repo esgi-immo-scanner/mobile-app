@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/widgets/custom_button.dart';
 import 'package:immo_scanner/widgets/custom_text_form_field.dart';
-import 'package:immo_scanner/data/models/login/post_login_req.dart';
 import 'package:immo_scanner/data/models/login/post_login_resp.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignInScreen extends GetWidget<SignInController> {
+  const SignInScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,8 +38,8 @@ class SignInScreen extends GetWidget<SignInController> {
                                       letterSpacing: getHorizontalSize(0.3))))),
                       CustomTextFormField(
                           focusNode: FocusNode(),
-                          controller: controller.phonenumberController,
-                          hintText: "lbl_phone_number".tr,
+                          controller: controller.emailController,
+                          hintText: "lbl_email".tr,
                           margin: getMargin(top: 20),
                           textInputType: TextInputType.phone),
                       Obx(() => CustomTextFormField(
@@ -78,7 +79,7 @@ class SignInScreen extends GetWidget<SignInController> {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtManropeSemiBold14)),
-                      Spacer(),
+                      const Spacer(),
                       Text("msg_or_continue_wit".tr,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
@@ -127,21 +128,16 @@ class SignInScreen extends GetWidget<SignInController> {
   }
 
   Future<void> onTapSignin() async {
-    PostLoginReq postLoginReq = PostLoginReq(
-      username: controller.phonenumberController.text,
-      password: controller.passwordController.text,
-    );
     try {
       await controller.callCreateLogin(
-        postLoginReq.toJson(),
-      );
+          controller.emailController.text, controller.passwordController.text);
       _onOnTapSignInSuccess();
     } on PostLoginResp {
       _onOnTapSignInError();
     } on NoInternetException catch (e) {
       Get.rawSnackbar(message: e.toString());
     } catch (e) {
-      //TODO: Handle generic errors
+      Get.rawSnackbar(message: "Critical error : ${e.toString()}");
     }
   }
 
@@ -157,7 +153,16 @@ class SignInScreen extends GetWidget<SignInController> {
 
   // TODO replace by firebase
   onTapGoogle() async {
+<<<<<<< HEAD
 
+=======
+    try {
+      await controller.callGoogleSignIn();
+      _onOnTapSignInSuccess();
+    } catch (err) {
+      Get.snackbar('Error', err.toString());
+    }
+>>>>>>> 4041046 (fix ios)
   }
 
   onTapTxtSignup() {

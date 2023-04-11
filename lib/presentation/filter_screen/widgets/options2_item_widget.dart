@@ -4,7 +4,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class Options2ItemWidget extends StatelessWidget {
-  Options2ItemWidget(this.options2ItemModelObj);
+  Options2ItemWidget(this.options2ItemModelObj, {Key? key}) : super(key: key);
 
   Options2ItemModel options2ItemModelObj;
 

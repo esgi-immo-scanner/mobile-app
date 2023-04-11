@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.fontStyle,
@@ -21,7 +21,7 @@ class CustomTextFormField extends StatelessWidget {
       this.prefixConstraints,
       this.suffix,
       this.suffixConstraints,
-      this.validator});
+      this.validator}) : super(key: key);
 
   TextFormFieldShape? shape;
 

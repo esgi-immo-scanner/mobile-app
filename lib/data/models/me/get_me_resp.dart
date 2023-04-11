@@ -13,11 +13,11 @@ class GetMeResp {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    if (this.status != null) {
-      data['status'] = this.status;
+    if (status != null) {
+      data['status'] = status;
     }
-    if (this.message != null) {
-      data['message'] = this.message;
+    if (message != null) {
+      data['message'] = message;
     }
     if (this.data != null) {
       data['data'] = this.data?.toJson();
@@ -74,44 +74,44 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    if (this.loginRetryLimit != null) {
-      data['loginRetryLimit'] = this.loginRetryLimit;
+    if (loginRetryLimit != null) {
+      data['loginRetryLimit'] = loginRetryLimit;
     }
-    if (this.username != null) {
-      data['username'] = this.username;
+    if (username != null) {
+      data['username'] = username;
     }
-    if (this.email != null) {
-      data['email'] = this.email;
+    if (email != null) {
+      data['email'] = email;
     }
-    if (this.name != null) {
-      data['name'] = this.name;
+    if (name != null) {
+      data['name'] = name;
     }
-    if (this.profile != null) {
-      data['profile'] = this.profile;
+    if (profile != null) {
+      data['profile'] = profile;
     }
-    if (this.role != null) {
-      data['role'] = this.role;
+    if (role != null) {
+      data['role'] = role;
     }
-    if (this.createdAt != null) {
-      data['createdAt'] = this.createdAt;
+    if (createdAt != null) {
+      data['createdAt'] = createdAt;
     }
-    if (this.updatedAt != null) {
-      data['updatedAt'] = this.updatedAt;
+    if (updatedAt != null) {
+      data['updatedAt'] = updatedAt;
     }
-    if (this.isDeleted != null) {
-      data['isDeleted'] = this.isDeleted;
+    if (isDeleted != null) {
+      data['isDeleted'] = isDeleted;
     }
-    if (this.isActive != null) {
-      data['isActive'] = this.isActive;
+    if (isActive != null) {
+      data['isActive'] = isActive;
     }
-    if (this.loginReactiveTime != null) {
-      data['loginReactiveTime'] = this.loginReactiveTime;
+    if (loginReactiveTime != null) {
+      data['loginReactiveTime'] = loginReactiveTime;
     }
-    if (this.userType != null) {
-      data['userType'] = this.userType;
+    if (userType != null) {
+      data['userType'] = userType;
     }
-    if (this.id != null) {
-      data['id'] = this.id;
+    if (id != null) {
+      data['id'] = id;
     }
     return data;
   }

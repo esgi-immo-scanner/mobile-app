@@ -11,11 +11,11 @@ class PostLoginReq {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
-    if (this.username != null) {
-      data['username'] = this.username;
+    if (username != null) {
+      data['username'] = username;
     }
-    if (this.password != null) {
-      data['password'] = this.password;
+    if (password != null) {
+      data['password'] = password;
     }
     return data;
   }

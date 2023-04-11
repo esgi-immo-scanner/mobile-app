@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class SliderarrowleftItemWidget extends StatelessWidget {
-  SliderarrowleftItemWidget(this.sliderarrowleftItemModelObj);
+  SliderarrowleftItemWidget(this.sliderarrowleftItemModelObj, {Key? key}) : super(key: key);
 
   SliderarrowleftItemModel sliderarrowleftItemModelObj;
 
@@ -16,7 +16,7 @@ class SliderarrowleftItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child: Container(
+      child: SizedBox(
         height: getSize(
           343,
         ),

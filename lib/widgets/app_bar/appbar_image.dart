@@ -4,12 +4,12 @@ import 'package:immo_scanner/core/app_export.dart';
 // ignore: must_be_immutable
 class AppbarImage extends StatelessWidget {
   AppbarImage(
-      {required this.height,
+      {Key? key, required this.height,
       required this.width,
       this.imagePath,
       this.svgPath,
       this.margin,
-      this.onTap});
+      this.onTap}) : super(key: key);
 
   double height;
 

@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class ListchartlineItemWidget extends StatelessWidget {
-  ListchartlineItemWidget(this.listchartlineItemModelObj);
+  ListchartlineItemWidget(this.listchartlineItemModelObj, {Key? key}) : super(key: key);
 
   ListchartlineItemModel listchartlineItemModelObj;
 

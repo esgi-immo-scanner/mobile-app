@@ -4,13 +4,13 @@ import 'package:immo_scanner/core/app_export.dart';
 // ignore: must_be_immutable
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   CustomAppBar(
-      {required this.height,
+      {Key? key, required this.height,
       this.styleType,
       this.leadingWidth,
       this.leading,
       this.title,
       this.centerTitle,
-      this.actions});
+      this.actions}) : super(key: key);
 
   double height;
 

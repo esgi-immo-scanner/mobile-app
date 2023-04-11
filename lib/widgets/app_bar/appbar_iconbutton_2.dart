@@ -4,7 +4,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class AppbarIconbutton2 extends StatelessWidget {
-  AppbarIconbutton2({this.imagePath, this.svgPath, this.margin, this.onTap});
+  AppbarIconbutton2({Key? key, this.imagePath, this.svgPath, this.margin, this.onTap}) : super(key: key);
 
   String? imagePath;
 

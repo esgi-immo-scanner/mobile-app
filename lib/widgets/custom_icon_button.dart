@@ -3,7 +3,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 class CustomIconButton extends StatelessWidget {
   CustomIconButton(
-      {this.shape,
+      {Key? key, this.shape,
       this.padding,
       this.variant,
       this.alignment,
@@ -11,7 +11,7 @@ class CustomIconButton extends StatelessWidget {
       this.width,
       this.height,
       this.child,
-      this.onTap});
+      this.onTap}) : super(key: key);
 
   IconButtonShape? shape;
 
@@ -45,12 +45,12 @@ class CustomIconButton extends StatelessWidget {
     return Padding(
       padding: margin ?? EdgeInsets.zero,
       child: IconButton(
-        visualDensity: VisualDensity(
+        visualDensity: const VisualDensity(
           vertical: -4,
           horizontal: -4,
         ),
         iconSize: getSize(height ?? 0),
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         icon: Container(
           alignment: Alignment.center,
           width: getSize(width ?? 0),
@@ -220,7 +220,7 @@ class CustomIconButton extends StatelessWidget {
             blurRadius: getHorizontalSize(
               2.00,
             ),
-            offset: Offset(
+            offset: const Offset(
               0,
               4,
             ),

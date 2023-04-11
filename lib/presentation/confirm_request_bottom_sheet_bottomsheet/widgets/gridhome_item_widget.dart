@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class GridhomeItemWidget extends StatelessWidget {
-  GridhomeItemWidget(this.gridhomeItemModelObj);
+  GridhomeItemWidget(this.gridhomeItemModelObj, {Key? key}) : super(key: key);
 
   GridhomeItemModel gridhomeItemModelObj;
 
