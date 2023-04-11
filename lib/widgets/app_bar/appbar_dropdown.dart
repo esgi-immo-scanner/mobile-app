@@ -40,7 +40,7 @@ class AppbarDropdown extends StatelessWidget {
         fontStyle: DropDownFontStyle.ManropeSemiBold14Gray900,
         items: items,
         onChanged: (value) {
-          onTap(value!);
+          onTap(value);
         },
       ),
     );

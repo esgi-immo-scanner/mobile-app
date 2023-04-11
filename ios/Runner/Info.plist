@@ -49,5 +49,9 @@
     <string>App would like to access your photo gallery</string>
     <key>NSContactsUsageDescription</key>
     <string>Contacts</string>
-  </dict>
+  	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
 </plist>

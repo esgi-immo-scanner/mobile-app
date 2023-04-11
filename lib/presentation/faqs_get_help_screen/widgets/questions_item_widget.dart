@@ -25,7 +25,7 @@ class QuestionsItemWidget extends StatelessWidget {
               children: [
                 Obx(
                   () => Text(
-                    controller.questionsItemModelObj.value.howdoesrelaxworOneTxt
+                    questionsItemModelObj.howdoesrelaxworOneTxt
                         .value,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
@@ -56,7 +56,7 @@ class QuestionsItemWidget extends StatelessWidget {
               ),
               child: Obx(
                 () => Text(
-                  controller.questionsItemModelObj.value.descriptionTxt.value,
+                  questionsItemModelObj.descriptionTxt.value,
                   maxLines: null,
                   textAlign: TextAlign.left,
                   style: AppStyle.txtManrope12Gray9001.copyWith(
