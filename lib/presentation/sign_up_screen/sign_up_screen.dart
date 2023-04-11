@@ -7,7 +7,6 @@ import 'package:immo_scanner/data/models/register/post_register_req.dart';
 import 'package:immo_scanner/data/models/register/post_register_resp.dart';
 import 'package:immo_scanner/core/constants/role.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:immo_scanner/domain/googleauth/google_auth_helper.dart';
 
 class SignUpScreen extends GetWidget<SignUpController> {
   @override
@@ -176,16 +175,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
     );
   }
 
+  // TODO replace by firebase
   onTapGoogle() async {
-    await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
-      if (googleUser != null) {
-        //TODO Actions to be performed after signin
-      } else {
-        Get.snackbar('Error', 'user data is empty');
-      }
-    }).catchError((onError) {
-      Get.snackbar('Error', onError.toString());
-    });
+    print("TODO");
   }
 
   onTapTxtSignup() {
