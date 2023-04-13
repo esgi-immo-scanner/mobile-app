@@ -21,10 +21,10 @@ class MyHomePage extends StatelessWidget {
             appBar: CustomAppBar(
                 height: getVerticalSize(48),
                 leadingWidth: 64,
-                leading: AppbarIconbutton1(
-                    svgPath: ImageConstant.imgArrowleft,
-                    margin: getMargin(left: 24),
-                    onTap: onTapArrowleft4),
+                // leading: AppbarIconbutton1(
+                //     svgPath: ImageConstant.imgArrowleft,
+                //     margin: getMargin(left: 24),
+                //     onTap: onTapArrowleft4),
                 centerTitle: true,
                 title: AppbarSubtitle(text: "lbl_favorites".tr)),
             body: Container(

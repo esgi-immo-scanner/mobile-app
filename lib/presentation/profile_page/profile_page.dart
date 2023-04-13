@@ -19,10 +19,10 @@ class ProfilePage extends StatelessWidget {
             appBar: CustomAppBar(
                 height: getVerticalSize(48),
                 leadingWidth: 64,
-                leading: AppbarIconbutton1(
-                    svgPath: ImageConstant.imgArrowleft,
-                    margin: getMargin(left: 24),
-                    onTap: onTapArrowleft15),
+                // leading: AppbarIconbutton1(
+                //     svgPath: ImageConstant.imgArrowleft,
+                //     margin: getMargin(left: 24),
+                //     onTap: onTapArrowleft15),
                 centerTitle: true,
                 title: AppbarSubtitle(text: "lbl_profile".tr)),
             body: Container(
@@ -154,52 +154,52 @@ class ProfilePage extends StatelessWidget {
                                         width: getSize(20),
                                         margin: getMargin(top: 10, bottom: 10))
                                   ]))),
-                      GestureDetector(
-                          onTap: () {
-                            onTapPasttour();
-                          },
-                          child: Padding(
-                              padding: getPadding(top: 16),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CustomIconButton(
-                                        height: 40,
-                                        width: 40,
-                                        variant:
-                                            IconButtonVariant.FillBluegray50,
-                                        shape: IconButtonShape.RoundedBorder10,
-                                        padding: IconButtonPadding.PaddingAll12,
-                                        child: CustomImageView(
-                                            svgPath: ImageConstant.imgFile)),
-                                    Padding(
-                                        padding: getPadding(
-                                            left: 16, top: 10, bottom: 9),
-                                        child: Text("lbl_past_tour".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900)),
-                                    Spacer(),
-                                    CustomImageView(
-                                        svgPath: ImageConstant
-                                            .imgArrowrightBlueGray500,
-                                        height: getSize(20),
-                                        width: getSize(20),
-                                        margin: getMargin(top: 10, bottom: 10))
-                                  ]))),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                              padding: getPadding(top: 32),
-                              child: Text("lbl_general".tr,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: AppStyle
-                                      .txtManropeExtraBold14Bluegray500
-                                      .copyWith(
-                                          letterSpacing:
-                                              getHorizontalSize(0.2))))),
+                      // GestureDetector(
+                      //     onTap: () {
+                      //       onTapPasttour();
+                      //     },
+                      //     child: Padding(
+                      //         padding: getPadding(top: 16),
+                      //         child: Row(
+                      //             mainAxisAlignment: MainAxisAlignment.center,
+                      //             children: [
+                      //               CustomIconButton(
+                      //                   height: 40,
+                      //                   width: 40,
+                      //                   variant:
+                      //                       IconButtonVariant.FillBluegray50,
+                      //                   shape: IconButtonShape.RoundedBorder10,
+                      //                   padding: IconButtonPadding.PaddingAll12,
+                      //                   child: CustomImageView(
+                      //                       svgPath: ImageConstant.imgFile)),
+                      //               Padding(
+                      //                   padding: getPadding(
+                      //                       left: 16, top: 10, bottom: 9),
+                      //                   child: Text("lbl_past_tour".tr,
+                      //                       overflow: TextOverflow.ellipsis,
+                      //                       textAlign: TextAlign.left,
+                      //                       style: AppStyle
+                      //                           .txtManropeSemiBold14Gray900)),
+                      //               Spacer(),
+                      //               CustomImageView(
+                      //                   svgPath: ImageConstant
+                      //                       .imgArrowrightBlueGray500,
+                      //                   height: getSize(20),
+                      //                   width: getSize(20),
+                      //                   margin: getMargin(top: 10, bottom: 10))
+                      //             ]))),
+                      // Align(
+                      //     alignment: Alignment.centerLeft,
+                      //     child: Padding(
+                      //         padding: getPadding(top: 32),
+                      //         child: Text("lbl_general".tr,
+                      //             overflow: TextOverflow.ellipsis,
+                      //             textAlign: TextAlign.left,
+                      //             style: AppStyle
+                      //                 .txtManropeExtraBold14Bluegray500
+                      //                 .copyWith(
+                      //                     letterSpacing:
+                      //                         getHorizontalSize(0.2))))),
                       // Padding(
                       //     padding: getPadding(top: 16),
                       //     child: Row(

@@ -167,7 +167,7 @@ final Map<String, String> enUs = {
   "msg_lorem_ipsum_is":
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
   "lbl_settings": "Settings",
-  "lbl_vertex": "Vertex",
+  "lbl_immoscanner": "ImmoScanner",
   "msg_most_home_have_some":
       "Most home have some risk of natural disasters, and may be impacted by climate change due to rising temperatures and sea levels",
   "lbl_1_600": "\$1,600 ",
@@ -399,7 +399,7 @@ final Map<String, String> enUs = {
   "lbl_free_wifi": "Free WiFi",
   "lbl_sell_my_home": "Sell my home",
   "lbl_02_08": "02 / 08",
-  "lbl_vertex_account": "Vertex account",
+  "lbl_immoscanner_account": "ImmoScanner account",
   "lbl_pick_date": "Pick Date",
   "lbl_4_9": "4.9",
   "msg_public_prek_8": "Public, Prek-8 - 583 students - 0.4 mi",

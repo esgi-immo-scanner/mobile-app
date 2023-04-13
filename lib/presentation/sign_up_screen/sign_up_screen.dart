@@ -32,7 +32,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     fontFamily: 'Manrope',
                                     fontWeight: FontWeight.w800)),
                             TextSpan(
-                                text: "lbl_vertex_account".tr,
+                                text: "lbl_immoscanner_account".tr,
                                 style: TextStyle(
                                     color: ColorConstant.blue500,
                                     fontSize: getFontSize(24),

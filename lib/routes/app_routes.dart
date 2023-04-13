@@ -14,29 +14,8 @@ import 'package:immo_scanner/presentation/notification_screen/notification_scree
 import 'package:immo_scanner/presentation/notification_screen/binding/notification_binding.dart';
 import 'package:immo_scanner/presentation/notification_empty_states_screen/notification_empty_states_screen.dart';
 import 'package:immo_scanner/presentation/notification_empty_states_screen/binding/notification_empty_states_binding.dart';
-import 'package:immo_scanner/presentation/message_chat_screen/message_chat_screen.dart';
-import 'package:immo_scanner/presentation/message_chat_screen/binding/message_chat_binding.dart';
 import 'package:immo_scanner/presentation/my_home_empty_screen/my_home_empty_screen.dart';
 import 'package:immo_scanner/presentation/my_home_empty_screen/binding/my_home_empty_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_address_screen/add_new_property_address_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_address_screen/binding/add_new_property_address_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_meet_with_a_agent_screen/add_new_property_meet_with_a_agent_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_meet_with_a_agent_screen/binding/add_new_property_meet_with_a_agent_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_time_to_sell_screen/add_new_property_time_to_sell_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_time_to_sell_screen/binding/add_new_property_time_to_sell_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_reason_selling_home_screen/add_new_property_reason_selling_home_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_reason_selling_home_screen/binding/add_new_property_reason_selling_home_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_decsription_screen/add_new_property_decsription_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_decsription_screen/binding/add_new_property_decsription_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_home_facts_screen/add_new_property_home_facts_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_home_facts_screen/binding/add_new_property_home_facts_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_contact_screen/add_new_property_contact_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_contact_screen/binding/add_new_property_contact_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_select_amenities_screen/add_new_property_select_amenities_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_select_amenities_screen/binding/add_new_property_select_amenities_binding.dart';
-import 'package:immo_scanner/presentation/add_new_property_details_screen/add_new_property_details_screen.dart';
-import 'package:immo_scanner/presentation/add_new_property_details_screen/binding/add_new_property_details_binding.dart';
-import 'package:immo_scanner/presentation/home_listing_screen/home_listing_screen.dart';
 import 'package:immo_scanner/presentation/home_listing_screen/binding/home_listing_binding.dart';
 import 'package:immo_scanner/presentation/home_listing_satelite_screen/home_listing_satelite_screen.dart';
 import 'package:immo_scanner/presentation/home_listing_satelite_screen/binding/home_listing_satelite_binding.dart';
@@ -230,76 +209,6 @@ class AppRoutes {
       page: () => MyHomeEmptyScreen(),
       bindings: [
         MyHomeEmptyBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyAddressScreen,
-      page: () => AddNewPropertyAddressScreen(),
-      bindings: [
-        AddNewPropertyAddressBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyMeetWithAAgentScreen,
-      page: () => AddNewPropertyMeetWithAAgentScreen(),
-      bindings: [
-        AddNewPropertyMeetWithAAgentBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyTimeToSellScreen,
-      page: () => AddNewPropertyTimeToSellScreen(),
-      bindings: [
-        AddNewPropertyTimeToSellBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyReasonSellingHomeScreen,
-      page: () => AddNewPropertyReasonSellingHomeScreen(),
-      bindings: [
-        AddNewPropertyReasonSellingHomeBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyDecsriptionScreen,
-      page: () => AddNewPropertyDecsriptionScreen(),
-      bindings: [
-        AddNewPropertyDecsriptionBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyHomeFactsScreen,
-      page: () => AddNewPropertyHomeFactsScreen(),
-      bindings: [
-        AddNewPropertyHomeFactsBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyContactScreen,
-      page: () => AddNewPropertyContactScreen(),
-      bindings: [
-        AddNewPropertyContactBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertySelectAmenitiesScreen,
-      page: () => AddNewPropertySelectAmenitiesScreen(),
-      bindings: [
-        AddNewPropertySelectAmenitiesBinding(),
-      ],
-    ),
-    GetPage(
-      name: addNewPropertyDetailsScreen,
-      page: () => AddNewPropertyDetailsScreen(),
-      bindings: [
-        AddNewPropertyDetailsBinding(),
-      ],
-    ),
-    GetPage(
-      name: homeListingScreen,
-      page: () => HomeListingScreen(),
-      bindings: [
-        HomeListingBinding(),
       ],
     ),
     GetPage(
