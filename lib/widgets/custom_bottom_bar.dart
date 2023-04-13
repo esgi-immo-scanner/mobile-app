@@ -13,19 +13,14 @@ class CustomBottomBar extends StatelessWidget {
       type: BottomBarEnum.Home,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgMail,
-      title: "lbl_message".tr,
-      type: BottomBarEnum.Message,
-    ),
-    BottomMenuModel(
       icon: ImageConstant.imgLocation24x24,
       title: "lbl_discover".tr,
       type: BottomBarEnum.Discover,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgHome1,
-      title: "lbl_my_home".tr,
-      type: BottomBarEnum.Myhome,
+      icon: ImageConstant.imgFavorite,
+      title: "lbl_favorites".tr,
+      type: BottomBarEnum.MyFavourites,
     ),
     BottomMenuModel(
       icon: ImageConstant.imgUser,
@@ -148,9 +143,8 @@ class CustomBottomBar extends StatelessWidget {
 
 enum BottomBarEnum {
   Home,
-  Message,
   Discover,
-  Myhome,
+  MyFavourites,
   Profile,
 }
 

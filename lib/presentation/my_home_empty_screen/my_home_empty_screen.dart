@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/presentation/home_page/home_page.dart';
 import 'package:immo_scanner/presentation/home_search_page/home_search_page.dart';
-import 'package:immo_scanner/presentation/message_page/message_page.dart';
 import 'package:immo_scanner/presentation/my_home_page/my_home_page.dart';
 import 'package:immo_scanner/presentation/profile_page/profile_page.dart';
 import 'package:immo_scanner/widgets/custom_bottom_bar.dart';
@@ -101,11 +100,9 @@ class MyHomeEmptyScreen extends GetWidget<MyHomeEmptyController> {
     switch (type) {
       case BottomBarEnum.Home:
         return AppRoutes.homePage;
-      case BottomBarEnum.Message:
-        return AppRoutes.messagePage;
       case BottomBarEnum.Discover:
         return AppRoutes.homeSearchPage;
-      case BottomBarEnum.Myhome:
+      case BottomBarEnum.MyFavourites:
         return AppRoutes.myHomePage;
       case BottomBarEnum.Profile:
         return AppRoutes.profilePage;
@@ -119,8 +116,6 @@ class MyHomeEmptyScreen extends GetWidget<MyHomeEmptyController> {
     switch (currentRoute) {
       case AppRoutes.homePage:
         return HomePage();
-      case AppRoutes.messagePage:
-        return MessagePage();
       case AppRoutes.homeSearchPage:
         return HomeSearchPage();
       case AppRoutes.myHomePage:

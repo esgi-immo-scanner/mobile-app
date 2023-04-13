@@ -1,6 +1,21 @@
-import 'package:immo_scanner/core/app_export.dart';import 'package:immo_scanner/presentation/splash_screen/models/splash_model.dart';class SplashController extends GetxController {Rx<SplashModel> splashModelObj = SplashModel().obs;
+import 'package:immo_scanner/core/app_export.dart';
+import 'package:immo_scanner/presentation/splash_screen/models/splash_model.dart';
 
-@override void onReady() { super.onReady();Future.delayed(const Duration(milliseconds: 3000), (){
-Get.toNamed(AppRoutes.onboardingScreen);}); } 
-@override void onClose() { super.onClose(); } 
- }
+class SplashController extends GetxController {
+  Rx<SplashModel> splashModelObj = SplashModel().obs;
+
+  @override
+  void onReady() {
+    super.onReady();
+    Future.delayed(const Duration(milliseconds: 3000), () {
+      // Get.toNamed(AppRoutes.onboardingScreen);
+      Get.toNamed(AppRoutes.homeContainerScreen);
+      // Todo: remettre page login
+    });
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+}

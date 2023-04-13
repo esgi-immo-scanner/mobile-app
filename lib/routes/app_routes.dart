@@ -226,13 +226,6 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: messageChatScreen,
-      page: () => MessageChatScreen(),
-      bindings: [
-        MessageChatBinding(),
-      ],
-    ),
-    GetPage(
       name: myHomeEmptyScreen,
       page: () => MyHomeEmptyScreen(),
       bindings: [

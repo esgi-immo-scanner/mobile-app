@@ -2,6 +2,7 @@
 /.idea/
 /build/
 /.vscode/
+!/.vscode/extensions.json
 !/pubspec.lock
 !/.packages
 !/.flutter-plugins-dependencies
