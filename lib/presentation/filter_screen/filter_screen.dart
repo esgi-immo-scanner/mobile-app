@@ -1,3 +1,5 @@
+import 'package:immo_scanner/widgets/custom_range_slider.dart';
+
 import '../filter_screen/widgets/chipviewhome_item_widget.dart';
 import '../filter_screen/widgets/listbeds_item_widget.dart';
 import '../filter_screen/widgets/listimg_item_widget.dart';
@@ -22,59 +24,63 @@ import 'package:immo_scanner/widgets/custom_button.dart';
 import 'package:immo_scanner/widgets/custom_drop_down.dart';
 import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
+
 class FilterScreen extends GetWidget<FilterController> {
   @override
   Widget build(BuildContext context) {
+    final FilterController filterController = Get.put(FilterController());
+    final CustomRangeSliderController rangeController = Get.put(CustomRangeSliderController());
+
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,
-            appBar: CustomAppBar(
-                height: getVerticalSize(60),
-                title: Padding(
-                    padding: getPadding(left: 24),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          AppbarSubtitle2(
-                              text: "lbl_location".tr,
-                              margin: getMargin(right: 99)),
-                          Padding(
-                              padding: getPadding(top: 6),
-                              child: Row(children: [
-                                AppbarImage(
-                                    height: getSize(16),
-                                    width: getSize(16),
-                                    svgPath: ImageConstant.imgLocation,
-                                    margin: getMargin(bottom: 3)),
-                                CustomDropDown(
-                                    width: getHorizontalSize(119),
-                                    focusNode: FocusNode(),
-                                    icon: Container(
-                                        margin: getMargin(left: 6),
-                                        child: CustomImageView(
-                                            svgPath:
-                                                ImageConstant.imgArrowdown)),
-                                    hintText: "lbl_hanoi_vietnam".tr,
-                                    margin: getMargin(left: 8),
-                                    variant: DropDownVariant.None,
-                                    fontStyle: DropDownFontStyle
-                                        .ManropeSemiBold14Gray900,
-                                    items: controller
-                                        .filterModelObj.value.dropdownItemList4,
-                                    onChanged: (value) {
-                                      controller.onSelected4(value);
-                                    })
-                              ]))
-                        ])),
-                actions: [
-                  AppbarIconbutton3(
-                      svgPath: ImageConstant.imgOptions,
-                      margin: getMargin(left: 24, top: 10, right: 10)),
-                  AppbarIconbutton3(
-                      svgPath: ImageConstant.imgNotification,
-                      margin: getMargin(left: 12, top: 10, right: 34))
-                ],
-                styleType: Style.bgFillGray50),
+            // appBar: CustomAppBar(
+            //     height: getVerticalSize(60),
+            //     title: Padding(
+            //         padding: getPadding(left: 24),
+            //         child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.start,
+            //             children: [
+            //               AppbarSubtitle2(
+            //                   text: "lbl_location".tr,
+            //                   margin: getMargin(right: 99)),
+            //               Padding(
+            //                   padding: getPadding(top: 6),
+            //                   child: Row(children: [
+            //                     AppbarImage(
+            //                         height: getSize(16),
+            //                         width: getSize(16),
+            //                         svgPath: ImageConstant.imgLocation,
+            //                         margin: getMargin(bottom: 3)),
+            //                     CustomDropDown(
+            //                         width: getHorizontalSize(119),
+            //                         focusNode: FocusNode(),
+            //                         icon: Container(
+            //                             margin: getMargin(left: 6),
+            //                             child: CustomImageView(
+            //                                 svgPath:
+            //                                     ImageConstant.imgArrowdown)),
+            //                         hintText: "lbl_hanoi_vietnam".tr,
+            //                         margin: getMargin(left: 8),
+            //                         variant: DropDownVariant.None,
+            //                         fontStyle: DropDownFontStyle
+            //                             .ManropeSemiBold14Gray900,
+            //                         items: controller
+            //                             .filterModelObj.value.dropdownItemList4,
+            //                         onChanged: (value) {
+            //                           controller.onSelected4(value);
+            //                         })
+            //                   ]))
+            //             ])),
+            //     actions: [
+            //       AppbarIconbutton3(
+            //           svgPath: ImageConstant.imgOptions,
+            //           margin: getMargin(left: 24, top: 10, right: 10)),
+            //       AppbarIconbutton3(
+            //           svgPath: ImageConstant.imgNotification,
+            //           margin: getMargin(left: 12, top: 10, right: 34))
+            //     ],
+            //     styleType: Style.bgFillGray50),
             body: SizedBox(
                 width: size.width,
                 child: SingleChildScrollView(
@@ -153,14 +159,14 @@ class FilterScreen extends GetWidget<FilterController> {
                                                       height:
                                                           getVerticalSize(24));
                                                 },
-                                                itemCount: controller
+                                                itemCount: filterController
                                                     .filterModelObj
                                                     .value
                                                     .listimgItemList
                                                     .length,
                                                 itemBuilder: (context, index) {
                                                   ListimgItemModel model =
-                                                      controller
+                                                      filterController
                                                               .filterModelObj
                                                               .value
                                                               .listimgItemList[
@@ -341,13 +347,8 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         padding: getPadding(
                                                                             bottom:
                                                                                 1),
-                                                                        child: Text(
-                                                                            "lbl_200_15_000"
-                                                                                .tr,
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            textAlign: TextAlign.left,
-                                                                            style: AppStyle.txtManropeSemiBold14Blue500))
+                                                                        child: rangeController.sliderValueText,
+                                                                        )
                                                                   ]))),
                                                       Align(
                                                           alignment:
@@ -373,34 +374,47 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         child: Padding(
                                                                             padding:
                                                                                 getPadding(bottom: 7),
-                                                                            child: SizedBox(width: getHorizontalSize(327), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.gray300)))),
-                                                                    Align(
-                                                                        alignment:
-                                                                            Alignment
-                                                                                .center,
-                                                                        child: Row(
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.center,
-                                                                            children: [
-                                                                              Container(
-                                                                                  width: getHorizontalSize(26),
-                                                                                  padding: getPadding(left: 3, top: 8, right: 3, bottom: 8),
-                                                                                  decoration: AppDecoration.fillBlue500.copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                                                                                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                                                                    CustomImageView(svgPath: ImageConstant.imgArrowleft10x10, height: getSize(10), width: getSize(10)),
-                                                                                    CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
-                                                                                  ])),
-                                                                              Padding(padding: getPadding(bottom: 7), child: SizedBox(width: getHorizontalSize(103), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.blue500))),
-                                                                              Container(
-                                                                                  width: getHorizontalSize(26),
-                                                                                  padding: getPadding(left: 3, top: 7, right: 3, bottom: 7),
-                                                                                  decoration: AppDecoration.fillBlue500.copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                                                                                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                                                                    CustomImageView(svgPath: ImageConstant.imgArrowleft10x10, height: getSize(10), width: getSize(10)),
-                                                                                    CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
-                                                                                  ]))
-                                                                            ]))
-                                                                  ]))),
+                                                                            // child: SizedBox(width: getHorizontalSize(327), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.gray300)))
+                                                                            child: GetBuilder<CustomRangeSliderController>(
+                                                                              builder: (rangeController) => RangeSlider(
+                                                                                min: 0,
+                                                                                max: 100,
+                                                                                values: rangeController.values,
+                                                                                onChanged: rangeController.onRangeChanged,
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                          ),
+                                                                    // Align(
+                                                                    //     alignment:
+                                                                    //         Alignment
+                                                                    //             .center,
+                                                                    //     child: Row(
+                                                                    //         mainAxisAlignment:
+                                                                    //             MainAxisAlignment.center,
+                                                                    //         children: [
+                                                                    //           Container(
+                                                                    //               width: getHorizontalSize(26),
+                                                                    //               padding: getPadding(left: 3, top: 8, right: 3, bottom: 8),
+                                                                    //               decoration: AppDecoration.fillBlue500.copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+                                                                    //               child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowleft10x10, height: getSize(10), width: getSize(10)),
+                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
+                                                                    //               ])),
+                                                                    //           Padding(padding: getPadding(bottom: 7), child: SizedBox(width: getHorizontalSize(103), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.blue500))),
+                                                                    //           Container(
+                                                                    //               width: getHorizontalSize(26),
+                                                                    //               padding: getPadding(left: 3, top: 7, right: 3, bottom: 7),
+                                                                    //               decoration: AppDecoration.fillBlue500.copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+                                                                    //               child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowleft10x10, height: getSize(10), width: getSize(10)),
+                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
+                                                                    //               ]))
+                                                                    //         ]))
+                                                                  ]
+                                                                  )
+                                                                  )
+                                                                ),
                                                       Padding(
                                                           padding: getPadding(
                                                               left: 24,
@@ -442,7 +456,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                             height:
                                                                                 getVerticalSize(16));
                                                                       },
-                                                                      itemCount: controller
+                                                                      itemCount: filterController
                                                                           .filterModelObj
                                                                           .value
                                                                           .listbedsItemList
@@ -450,7 +464,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       itemBuilder:
                                                                           (context,
                                                                               index) {
-                                                                        ListbedsItemModel model = controller
+                                                                        ListbedsItemModel model = filterController
                                                                             .filterModelObj
                                                                             .value
                                                                             .listbedsItemList[index];
@@ -523,13 +537,13 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         hintText:
                                                                             "lbl_min"
                                                                                 .tr,
-                                                                        items: controller
+                                                                        items: filterController
                                                                             .filterModelObj
                                                                             .value
                                                                             .dropdownItemList,
                                                                         onChanged:
                                                                             (value) {
-                                                                          controller
+                                                                          filterController
                                                                               .onSelected(value);
                                                                         }),
                                                                     CustomImageView(
@@ -567,13 +581,13 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         margin: getMargin(
                                                                             left:
                                                                                 17),
-                                                                        items: controller
+                                                                        items: filterController
                                                                             .filterModelObj
                                                                             .value
                                                                             .dropdownItemList1,
                                                                         onChanged:
                                                                             (value) {
-                                                                          controller
+                                                                          filterController
                                                                               .onSelected1(value);
                                                                         })
                                                                   ]))),
@@ -623,13 +637,13 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         hintText:
                                                                             "lbl_min"
                                                                                 .tr,
-                                                                        items: controller
+                                                                        items: filterController
                                                                             .filterModelObj
                                                                             .value
                                                                             .dropdownItemList2,
                                                                         onChanged:
                                                                             (value) {
-                                                                          controller
+                                                                          filterController
                                                                               .onSelected2(value);
                                                                         }),
                                                                     CustomImageView(
@@ -667,13 +681,13 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         margin: getMargin(
                                                                             left:
                                                                                 17),
-                                                                        items: controller
+                                                                        items: filterController
                                                                             .filterModelObj
                                                                             .value
                                                                             .dropdownItemList3,
                                                                         onChanged:
                                                                             (value) {
-                                                                          controller
+                                                                          filterController
                                                                               .onSelected3(value);
                                                                         })
                                                                   ]))),
@@ -712,7 +726,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                           5),
                                                                   children: List<
                                                                           Widget>.generate(
-                                                                      controller
+                                                                      filterController
                                                                           .filterModelObj
                                                                           .value
                                                                           .chipviewhomeItemList
@@ -720,7 +734,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       (index) {
                                                                     ChipviewhomeItemModel
                                                                         model =
-                                                                        controller
+                                                                        filterController
                                                                             .filterModelObj
                                                                             .value
                                                                             .chipviewhomeItemList[index];
@@ -774,7 +788,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       5),
                                                               children: List<
                                                                       Widget>.generate(
-                                                                  controller
+                                                                  filterController
                                                                       .filterModelObj
                                                                       .value
                                                                       .options2ItemList
@@ -782,7 +796,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                   (index) {
                                                                 Options2ItemModel
                                                                     model =
-                                                                    controller
+                                                                    filterController
                                                                         .filterModelObj
                                                                         .value
                                                                         .options2ItemList[index];
