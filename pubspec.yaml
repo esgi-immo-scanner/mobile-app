@@ -18,8 +18,8 @@ dependencies:
   carousel_slider: ^4.0.0
   smooth_page_indicator: ^1.0.0+2
   pin_code_fields: ^7.3.0
-  sms_autofill: ^2.0.0
-  pin_input_text_field: 4.1.0
+  sms_autofill: ^2.3.0
+  pin_input_text_field: 4.2.0
   intl: ^0.17.0
   fluttertoast: ^8.0.8
   permission_handler: ^10.0.0
