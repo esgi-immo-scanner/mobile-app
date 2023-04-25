@@ -1,16 +1,31 @@
-import 'package:immo_scanner/core/app_export.dart';import 'package:immo_scanner/presentation/add_new_property_time_to_sell_screen/models/add_new_property_time_to_sell_model.dart';import 'package:flutter/material.dart';class AddNewPropertyTimeToSellController extends GetxController {TextEditingController durationController = TextEditingController();
+import 'package:immo_scanner/core/app_export.dart';
+import 'package:immo_scanner/presentation/add_new_property_time_to_sell_screen/models/add_new_property_time_to_sell_model.dart';
+import 'package:flutter/material.dart';
 
-TextEditingController streetaddressController = TextEditingController();
+class AddNewPropertyTimeToSellController extends GetxController {
+  TextEditingController durationController = TextEditingController();
 
-TextEditingController durationOneController = TextEditingController();
+  TextEditingController streetaddressController = TextEditingController();
 
-TextEditingController durationTwoController = TextEditingController();
+  TextEditingController durationOneController = TextEditingController();
 
-TextEditingController durationThreeController = TextEditingController();
+  TextEditingController durationTwoController = TextEditingController();
 
-TextEditingController streetaddressOneController = TextEditingController();
+  TextEditingController durationThreeController = TextEditingController();
 
-Rx<AddNewPropertyTimeToSellModel> addNewPropertyTimeToSellModelObj = AddNewPropertyTimeToSellModel().obs;
+  TextEditingController streetaddressOneController = TextEditingController();
 
-@override void onClose() { super.onClose(); durationController.dispose(); streetaddressController.dispose(); durationOneController.dispose(); durationTwoController.dispose(); durationThreeController.dispose(); streetaddressOneController.dispose(); } 
- }
+  Rx<AddNewPropertyTimeToSellModel> addNewPropertyTimeToSellModelObj =
+      AddNewPropertyTimeToSellModel().obs;
+
+  @override
+  void onClose() {
+    super.onClose();
+    durationController.dispose();
+    streetaddressController.dispose();
+    durationOneController.dispose();
+    durationTwoController.dispose();
+    durationThreeController.dispose();
+    streetaddressOneController.dispose();
+  }
+}

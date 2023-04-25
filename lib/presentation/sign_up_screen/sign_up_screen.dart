@@ -175,16 +175,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
 
   // TODO replace by firebase
   onTapGoogle() async {
-<<<<<<< HEAD
-    print("TODO");
-=======
     try {
       controller.callGoogleSignIn();
       _onOnTapSignUpSuccess();
     } catch (err) {
       Get.snackbar('Error', err.toString());
     }
->>>>>>> 4041046 (fix ios)
   }
 
   onTapTxtSignup() {

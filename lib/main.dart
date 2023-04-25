@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          visualDensity: VisualDensity.standard,
+        visualDensity: VisualDensity.standard,
       ),
       translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings

@@ -157,7 +157,7 @@ class AppRoutes {
     ),
     GetPage(
       name: splashScreen,
-      page: () => const SplashScreen(),
+      page: () => SplashScreen(),
       bindings: [
         SplashBinding(),
       ],
@@ -178,14 +178,14 @@ class AppRoutes {
     ),
     GetPage(
       name: homeContainerScreen,
-      page: () => const HomeContainerScreen(),
+      page: () => HomeContainerScreen(),
       bindings: [
         HomeContainerBinding(),
       ],
     ),
     GetPage(
       name: homeAlarmScreen,
-      page: () => const HomeAlarmScreen(),
+      page: () => HomeAlarmScreen(),
       bindings: [
         HomeAlarmBinding(),
       ],
@@ -213,28 +213,28 @@ class AppRoutes {
     ),
     GetPage(
       name: homeListingSateliteScreen,
-      page: () => const HomeListingSateliteScreen(),
+      page: () => HomeListingSateliteScreen(),
       bindings: [
         HomeListingSateliteBinding(),
       ],
     ),
     GetPage(
       name: homeListingDrawScreen,
-      page: () => const HomeListingDrawScreen(),
+      page: () => HomeListingDrawScreen(),
       bindings: [
         HomeListingDrawBinding(),
       ],
     ),
     GetPage(
       name: filterScreen,
-      page: () => const FilterScreen(),
+      page: () => FilterScreen(),
       bindings: [
         FilterBinding(),
       ],
     ),
     GetPage(
       name: productDetailsScreen,
-      page: () => const ProductDetailsScreen(),
+      page: () => ProductDetailsScreen(),
       bindings: [
         ProductDetailsBinding(),
       ],
@@ -311,21 +311,21 @@ class AppRoutes {
     ),
     GetPage(
       name: favoriteScreen,
-      page: () => const FavoriteScreen(),
+      page: () => FavoriteScreen(),
       bindings: [
         FavoriteBinding(),
       ],
     ),
     GetPage(
       name: appNavigationScreen,
-      page: () => const AppNavigationScreen(),
+      page: () => AppNavigationScreen(),
       bindings: [
         AppNavigationBinding(),
       ],
     ),
     GetPage(
       name: initialRoute,
-      page: () => const SplashScreen(),
+      page: () => SplashScreen(),
       bindings: [
         SplashBinding(),
       ],

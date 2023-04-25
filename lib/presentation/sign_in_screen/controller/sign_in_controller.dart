@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import 'package:immo_scanner/core/app_export.dart';
-import 'package:immo_scanner/presentation/sign_in_screen/models/sign_in_model.dart';
-import 'package:flutter/material.dart';
-import 'package:immo_scanner/data/models/login/post_login_resp.dart';
-import 'package:immo_scanner/data/apiClient/api_client.dart';
-
-class SignInController extends GetxController {
-  TextEditingController phonenumberController = TextEditingController();
-=======
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/data/models/login/post_login_resp.dart';
@@ -17,7 +7,6 @@ import 'package:flutter/material.dart';
 
 class SignInController extends GetxController {
   TextEditingController emailController = TextEditingController();
->>>>>>> 4041046 (fix ios)
 
   TextEditingController passwordController = TextEditingController();
 
@@ -28,33 +17,6 @@ class SignInController extends GetxController {
   PostLoginResp postLoginResp = PostLoginResp();
 
   @override
-<<<<<<< HEAD
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    phonenumberController.dispose();
-    passwordController.dispose();
-  }
-
-  Future<void> callCreateLogin(Map req) async {
-    try {
-      postLoginResp = await Get.find<ApiClient>().createLogin(headers: {
-        'Content-type': 'application/json',
-      }, requestData: req);
-      _handleCreateLoginSuccess();
-    } on PostLoginResp catch (e) {
-      postLoginResp = e;
-      rethrow;
-    }
-  }
-
-  void _handleCreateLoginSuccess() {
-    Get.find<PrefUtils>().setToken(postLoginResp.data!.token!.toString());
-=======
   void onClose() {
     super.onClose();
     emailController.dispose();
@@ -96,6 +58,5 @@ class SignInController extends GetxController {
   void _handleCreateLoginSuccess() async {
     Get.find<PrefUtils>().setToken(
         (await FirebaseAuth.instance.currentUser!.getIdToken()).toString());
->>>>>>> 4041046 (fix ios)
   }
 }
