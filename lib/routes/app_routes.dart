@@ -150,7 +150,7 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
       name: onboardingScreen,
-      page: () => const OnboardingScreen(),
+      page: () => OnboardingScreen(),
       bindings: [
         OnboardingBinding(),
       ],
@@ -192,21 +192,21 @@ class AppRoutes {
     ),
     GetPage(
       name: notificationScreen,
-      page: () => const NotificationScreen(),
+      page: () => NotificationScreen(),
       bindings: [
         NotificationBinding(),
       ],
     ),
     GetPage(
       name: notificationEmptyStatesScreen,
-      page: () => const NotificationEmptyStatesScreen(),
+      page: () => NotificationEmptyStatesScreen(),
       bindings: [
         NotificationEmptyStatesBinding(),
       ],
     ),
     GetPage(
       name: myHomeEmptyScreen,
-      page: () => const MyHomeEmptyScreen(),
+      page: () => MyHomeEmptyScreen(),
       bindings: [
         MyHomeEmptyBinding(),
       ],
@@ -241,70 +241,70 @@ class AppRoutes {
     ),
     GetPage(
       name: pickDateScreen,
-      page: () => const PickDateScreen(),
+      page: () => PickDateScreen(),
       bindings: [
         PickDateBinding(),
       ],
     ),
     GetPage(
       name: verifyPhoneNumberScreen,
-      page: () => const VerifyPhoneNumberScreen(),
+      page: () => VerifyPhoneNumberScreen(),
       bindings: [
         VerifyPhoneNumberBinding(),
       ],
     ),
     GetPage(
       name: selectVirtualAppScreen,
-      page: () => const SelectVirtualAppScreen(),
+      page: () => SelectVirtualAppScreen(),
       bindings: [
         SelectVirtualAppBinding(),
       ],
     ),
     GetPage(
       name: selectAppAlarmScreen,
-      page: () => const SelectAppAlarmScreen(),
+      page: () => SelectAppAlarmScreen(),
       bindings: [
         SelectAppAlarmBinding(),
       ],
     ),
     GetPage(
       name: confirmRequestScreen,
-      page: () => const ConfirmRequestScreen(),
+      page: () => ConfirmRequestScreen(),
       bindings: [
         ConfirmRequestBinding(),
       ],
     ),
     GetPage(
       name: settingsScreen,
-      page: () => const SettingsScreen(),
+      page: () => SettingsScreen(),
       bindings: [
         SettingsBinding(),
       ],
     ),
     GetPage(
       name: faqsGetHelpScreen,
-      page: () => const FaqsGetHelpScreen(),
+      page: () => FaqsGetHelpScreen(),
       bindings: [
         FaqsGetHelpBinding(),
       ],
     ),
     GetPage(
       name: pastToursScreen,
-      page: () => const PastToursScreen(),
+      page: () => PastToursScreen(),
       bindings: [
         PastToursBinding(),
       ],
     ),
     GetPage(
       name: editProfileScreen,
-      page: () => const EditProfileScreen(),
+      page: () => EditProfileScreen(),
       bindings: [
         EditProfileBinding(),
       ],
     ),
     GetPage(
       name: recentlyViewsScreen,
-      page: () => const RecentlyViewsScreen(),
+      page: () => RecentlyViewsScreen(),
       bindings: [
         RecentlyViewsBinding(),
       ],

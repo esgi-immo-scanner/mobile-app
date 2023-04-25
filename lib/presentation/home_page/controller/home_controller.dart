@@ -6,6 +6,7 @@ Rx<HomeModel> homeModelObj;
 
 SelectionPopupModel? selectedDropDownValue;
 
+@override void onReady() { super.onReady(); } 
 @override void onClose() { super.onClose(); group34551Controller.dispose(); } 
-onSelected(dynamic value) { selectedDropDownValue = value as SelectionPopupModel; for (var element in homeModelObj.value.dropdownItemList) {element.isSelected = false; if (element.id == value.id) {element.isSelected = true;}} homeModelObj.value.dropdownItemList.refresh(); } 
+onSelected(dynamic value) { selectedDropDownValue = value as SelectionPopupModel; homeModelObj.value.dropdownItemList.forEach((element) {element.isSelected = false; if (element.id == value.id) {element.isSelected = true;}}); homeModelObj.value.dropdownItemList.refresh(); } 
  }

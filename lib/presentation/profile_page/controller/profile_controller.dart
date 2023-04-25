@@ -2,4 +2,6 @@ import 'package:immo_scanner/core/app_export.dart';import 'package:immo_scanner/
 
 Rx<ProfileModel> profileModelObj;
 
+@override void onReady() { super.onReady(); } 
+@override void onClose() { super.onClose(); } 
  }

@@ -5,7 +5,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class Time1ItemWidget extends StatelessWidget {
-  Time1ItemWidget(this.time1ItemModelObj, {Key? key}) : super(key: key);
+  Time1ItemWidget(this.time1ItemModelObj);
 
   Time1ItemModel time1ItemModelObj;
 

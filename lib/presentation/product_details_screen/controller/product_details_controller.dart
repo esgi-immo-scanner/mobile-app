@@ -4,4 +4,6 @@ Rx<int> silderIndex = 0.obs;
 
 RxString radioGroup = "".obs;
 
+@override void onReady() { super.onReady(); } 
+@override void onClose() { super.onClose(); } 
  }

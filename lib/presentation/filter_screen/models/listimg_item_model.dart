@@ -1,3 +1,3 @@
-class ListimgItemModel {String? id = "";
+import 'package:get/get.dart';class ListimgItemModel {String? id = "";
 
  }

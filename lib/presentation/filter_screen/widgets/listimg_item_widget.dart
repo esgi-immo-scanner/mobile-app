@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class ListimgItemWidget extends StatelessWidget {
-  ListimgItemWidget(this.listimgItemModelObj, {Key? key}) : super(key: key);
+  ListimgItemWidget(this.listimgItemModelObj);
 
   ListimgItemModel listimgItemModelObj;
 
@@ -14,7 +14,7 @@ class ListimgItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: getVerticalSize(
         418,
       ),

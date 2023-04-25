@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class HomeItemWidget extends StatelessWidget {
-  HomeItemWidget(this.homeItemModelObj, {Key? key, this.onTapImgImg}) : super(key: key);
+  HomeItemWidget(this.homeItemModelObj, {this.onTapImgImg});
 
   HomeItemModel homeItemModelObj;
 
@@ -16,7 +16,7 @@ class HomeItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: getVerticalSize(
         418,
       ),

@@ -4,4 +4,6 @@ Rx<VerifyPhoneNumberModel> verifyPhoneNumberModelObj = VerifyPhoneNumberModel().
 
 @override void codeUpdated() { otpController.value.text = code!; } 
 @override void onInit() { super.onInit(); listenForCode(); } 
+@override void onReady() { super.onReady(); } 
+@override void onClose() { super.onClose(); } 
  }

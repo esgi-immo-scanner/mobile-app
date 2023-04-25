@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class HomeAlarmItemWidget extends StatelessWidget {
-  HomeAlarmItemWidget(this.homeAlarmItemModelObj, {Key? key, this.onTapHouse}) : super(key: key);
+  HomeAlarmItemWidget(this.homeAlarmItemModelObj, {this.onTapHouse});
 
   HomeAlarmItemModel homeAlarmItemModelObj;
 
@@ -20,7 +20,7 @@ class HomeAlarmItemWidget extends StatelessWidget {
       onTap: () {
         onTapHouse?.call();
       },
-      child: SizedBox(
+      child: Container(
         height: getVerticalSize(
           418,
         ),

@@ -4,5 +4,6 @@ TextEditingController searchController = TextEditingController();
 
 Rx<HomeSearchModel> homeSearchModelObj;
 
+@override void onReady() { super.onReady(); } 
 @override void onClose() { super.onClose(); searchController.dispose(); } 
  }

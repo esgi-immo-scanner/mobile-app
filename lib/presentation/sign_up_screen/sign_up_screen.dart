@@ -33,7 +33,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     fontFamily: 'Manrope',
                                     fontWeight: FontWeight.w800)),
                             TextSpan(
-                                text: "lbl_immoscanner_account".tr,
+                                text: "lbl_vertex_account".tr,
                                 style: TextStyle(
                                     color: ColorConstant.blue500,
                                     fontSize: getFontSize(24),
@@ -173,7 +173,6 @@ class SignUpScreen extends GetWidget<SignUpController> {
     );
   }
 
-  // TODO replace by firebase
   onTapGoogle() async {
     try {
       controller.callGoogleSignIn();

@@ -6,7 +6,7 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class ListhomeItemWidget extends StatelessWidget {
-  ListhomeItemWidget(this.listhomeItemModelObj, {Key? key}) : super(key: key);
+  ListhomeItemWidget(this.listhomeItemModelObj);
 
   ListhomeItemModel listhomeItemModelObj;
 

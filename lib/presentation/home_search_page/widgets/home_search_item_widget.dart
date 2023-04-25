@@ -5,7 +5,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class HomeSearchItemWidget extends StatelessWidget {
-  HomeSearchItemWidget(this.homeSearchItemModelObj, {Key? key, this.onTapSearch}) : super(key: key);
+  HomeSearchItemWidget(this.homeSearchItemModelObj, {this.onTapSearch});
 
   HomeSearchItemModel homeSearchItemModelObj;
 

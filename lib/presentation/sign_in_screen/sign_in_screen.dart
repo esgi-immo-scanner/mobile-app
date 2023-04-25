@@ -151,7 +151,6 @@ class SignInScreen extends GetWidget<SignInController> {
     );
   }
 
-  // TODO replace by firebase
   onTapGoogle() async {
     try {
       await controller.callGoogleSignIn();

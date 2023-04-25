@@ -1,3 +1,3 @@
-class HomeItemModel {String? id = "";
+import 'package:get/get.dart';class HomeItemModel {String? id = "";
 
  }

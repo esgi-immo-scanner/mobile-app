@@ -1,5 +1,6 @@
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/presentation/filter_screen/models/filter_model.dart';
+import 'package:immo_scanner/widgets/custom_bottom_bar.dart';
 
 class FilterController extends GetxController {
   Rx<FilterModel> filterModelObj = FilterModel().obs;

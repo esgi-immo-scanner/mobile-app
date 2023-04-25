@@ -5,7 +5,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class Listrectangle4224ItemWidget extends StatelessWidget {
-  Listrectangle4224ItemWidget(this.listrectangle4224ItemModelObj, {Key? key}) : super(key: key);
+  Listrectangle4224ItemWidget(this.listrectangle4224ItemModelObj);
 
   Listrectangle4224ItemModel listrectangle4224ItemModelObj;
 

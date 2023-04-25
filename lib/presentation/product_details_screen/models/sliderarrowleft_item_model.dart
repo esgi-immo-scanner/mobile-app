@@ -1,3 +1,3 @@
-class SliderarrowleftItemModel {String? id = "";
+import 'package:get/get.dart';class SliderarrowleftItemModel {String? id = "";
 
  }

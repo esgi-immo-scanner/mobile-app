@@ -4,7 +4,7 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class ChipviewhomeItemWidget extends StatelessWidget {
-  ChipviewhomeItemWidget(this.chipviewhomeItemModelObj, {Key? key}) : super(key: key);
+  ChipviewhomeItemWidget(this.chipviewhomeItemModelObj);
 
   ChipviewhomeItemModel chipviewhomeItemModelObj;
 
