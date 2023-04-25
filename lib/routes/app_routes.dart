@@ -16,7 +16,6 @@ import 'package:immo_scanner/presentation/notification_empty_states_screen/notif
 import 'package:immo_scanner/presentation/notification_empty_states_screen/binding/notification_empty_states_binding.dart';
 import 'package:immo_scanner/presentation/my_home_empty_screen/my_home_empty_screen.dart';
 import 'package:immo_scanner/presentation/my_home_empty_screen/binding/my_home_empty_binding.dart';
-import 'package:immo_scanner/presentation/home_listing_screen/binding/home_listing_binding.dart';
 import 'package:immo_scanner/presentation/home_listing_satelite_screen/home_listing_satelite_screen.dart';
 import 'package:immo_scanner/presentation/home_listing_satelite_screen/binding/home_listing_satelite_binding.dart';
 import 'package:immo_scanner/presentation/home_listing_draw_screen/home_listing_draw_screen.dart';
