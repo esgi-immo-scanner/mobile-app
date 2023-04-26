@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'controller/sign_in_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
@@ -156,7 +158,8 @@ class SignInScreen extends GetWidget<SignInController> {
       await controller.callGoogleSignIn();
       _onOnTapSignInSuccess();
     } catch (err) {
-      Get.snackbar('Error', err.toString());
+      Get.snackbar('Error', "Critical error while signing in with Google");
+      Logger.log(err.toString());
     }
   }
 

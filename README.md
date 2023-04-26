@@ -28,8 +28,35 @@ Check the UI of all the app screens from a single place by setting up the 'initi
 
 ### Firebase setup
 
-- `  brew install firebase-cli` (mac os)
+- `brew install firebase-cli` (mac os)
 - [used doc](https://firebase.google.com/docs/flutter/setup?platform=ios)
+
+### Android setup (Mac Os)
+
+> Heavily inspired of [this gist](https://gist.github.com/ullaskunder3/385cb078ff31cedf239ce65e64f605dd)
+
+**You need version in : [.tool-versions](.tool-versions) file**
+
+```bash
+ARCH=$(uname -m) # Add -v8a for mac m1
+
+brew install android-commandlinetools
+flutter config --android-sdk $(brew --prefix)/share/android-commandlinetools
+sdkmanager --licenses # accept it
+flutter doctor --android-licenses
+sdkmanager --no_https --install emulator
+sdkmanager --no_https --install platform-tools
+sdkmanager "platforms;android-33"
+sdkmanager "build-tools;33.0.2"
+sdkmanager --no_https --install "system-images;android-33;google_apis_playstore;$ARCH"
+sdkmanager --no_https --install 'extras;intel;Hardware_Accelerated_Execution_Manager'
+sdkmanager --update
+sdkmanager --list_installed
+```
+
+```bash
+avdmanager create avd -n 'Pixel_6' -k "system-images;android-33;google_apis_playstore;$ARCH" -d 17
+```
 
 ### Google authentication configuration
 
@@ -37,6 +64,16 @@ Steps:
 - Follow the steps on https://pub.dev/packages/google_sign_in for Google sign-in.
 - For iOS:
     - Download the GoogleService-Info.plist  file. Drag and drop the downloaded file into the Runner subfolder and update Info.plist  file.
+
+For Android in case of broken authentication to firebase :
+
+```bash
+cd android/ && ./gradlew signingReport
+```
+
+Copy MD5 and SHA1 keys and paste them in the firebase console when creating a new android app/.
+
+> New app created over package name of `applicationId` in [android/app/build.gradle](android/app/build.gradle)
 
 ### Application structure
 
