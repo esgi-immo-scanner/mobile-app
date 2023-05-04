@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'controller/profile_controller.dart';
 import 'models/profile_model.dart';
 import 'package:flutter/material.dart';
@@ -154,116 +156,18 @@ class ProfilePage extends StatelessWidget {
                                         width: getSize(20),
                                         margin: getMargin(top: 10, bottom: 10))
                                   ]))),
-                      // GestureDetector(
-                      //     onTap: () {
-                      //       onTapPasttour();
-                      //     },
-                      //     child: Padding(
-                      //         padding: getPadding(top: 16),
-                      //         child: Row(
-                      //             mainAxisAlignment: MainAxisAlignment.center,
-                      //             children: [
-                      //               CustomIconButton(
-                      //                   height: 40,
-                      //                   width: 40,
-                      //                   variant:
-                      //                       IconButtonVariant.FillBluegray50,
-                      //                   shape: IconButtonShape.RoundedBorder10,
-                      //                   padding: IconButtonPadding.PaddingAll12,
-                      //                   child: CustomImageView(
-                      //                       svgPath: ImageConstant.imgFile)),
-                      //               Padding(
-                      //                   padding: getPadding(
-                      //                       left: 16, top: 10, bottom: 9),
-                      //                   child: Text("lbl_past_tour".tr,
-                      //                       overflow: TextOverflow.ellipsis,
-                      //                       textAlign: TextAlign.left,
-                      //                       style: AppStyle
-                      //                           .txtManropeSemiBold14Gray900)),
-                      //               Spacer(),
-                      //               CustomImageView(
-                      //                   svgPath: ImageConstant
-                      //                       .imgArrowrightBlueGray500,
-                      //                   height: getSize(20),
-                      //                   width: getSize(20),
-                      //                   margin: getMargin(top: 10, bottom: 10))
-                      //             ]))),
-                      // Align(
-                      //     alignment: Alignment.centerLeft,
-                      //     child: Padding(
-                      //         padding: getPadding(top: 32),
-                      //         child: Text("lbl_general".tr,
-                      //             overflow: TextOverflow.ellipsis,
-                      //             textAlign: TextAlign.left,
-                      //             style: AppStyle
-                      //                 .txtManropeExtraBold14Bluegray500
-                      //                 .copyWith(
-                      //                     letterSpacing:
-                      //                         getHorizontalSize(0.2))))),
-                      // Padding(
-                      //     padding: getPadding(top: 16),
-                      //     child: Row(
-                      //         mainAxisAlignment: MainAxisAlignment.center,
-                      //         children: [
-                      //           CustomIconButton(
-                      //               height: 40,
-                      //               width: 40,
-                      //               variant: IconButtonVariant.FillBluegray50,
-                      //               shape: IconButtonShape.RoundedBorder10,
-                      //               padding: IconButtonPadding.PaddingAll12,
-                      //               child: CustomImageView(
-                      //                   svgPath: ImageConstant.imgMenu1)),
-                      //           Padding(
-                      //               padding: getPadding(
-                      //                   left: 16, top: 12, bottom: 7),
-                      //               child: Text("lbl_sell_my_home".tr,
-                      //                   overflow: TextOverflow.ellipsis,
-                      //                   textAlign: TextAlign.left,
-                      //                   style: AppStyle
-                      //                       .txtManropeSemiBold14Gray900)),
-                      //           Spacer(),
-                      //           CustomImageView(
-                      //               svgPath:
-                      //                   ImageConstant.imgArrowrightBlueGray500,
-                      //               height: getSize(20),
-                      //               width: getSize(20),
-                      //               margin: getMargin(top: 10, bottom: 10))
-                      //         ])),
-                      // GestureDetector(
-                      //     onTap: () {
-                      //       onTapMylistings();
-                      //     },
-                      //     child: Padding(
-                      //         padding: getPadding(top: 16),
-                      //         child: Row(
-                      //             mainAxisAlignment: MainAxisAlignment.center,
-                      //             children: [
-                      //               CustomIconButton(
-                      //                   height: 40,
-                      //                   width: 40,
-                      //                   variant:
-                      //                       IconButtonVariant.FillBluegray50,
-                      //                   shape: IconButtonShape.RoundedBorder10,
-                      //                   padding: IconButtonPadding.PaddingAll12,
-                      //                   child: CustomImageView(
-                      //                       svgPath:
-                      //                           ImageConstant.imgHome44x44)),
-                      //               Padding(
-                      //                   padding: getPadding(
-                      //                       left: 16, top: 12, bottom: 7),
-                      //                   child: Text("lbl_my_listings".tr,
-                      //                       overflow: TextOverflow.ellipsis,
-                      //                       textAlign: TextAlign.left,
-                      //                       style: AppStyle
-                      //                           .txtManropeSemiBold14Gray900)),
-                      //               Spacer(),
-                      //               CustomImageView(
-                      //                   svgPath: ImageConstant
-                      //                       .imgArrowrightBlueGray500,
-                      //                   height: getSize(20),
-                      //                   width: getSize(20),
-                      //                   margin: getMargin(top: 10, bottom: 10))
-                      //             ]))),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                              padding: getPadding(top: 32),
+                              child: Text("lbl_general".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle
+                                      .txtManropeExtraBold14Bluegray500
+                                      .copyWith(
+                                          letterSpacing:
+                                              getHorizontalSize(0.2))))),
                       GestureDetector(
                           onTap: () {
                             onTapSettings();
@@ -298,7 +202,41 @@ class ProfilePage extends StatelessWidget {
                                         height: getSize(20),
                                         width: getSize(20),
                                         margin: getMargin(top: 10, bottom: 10))
-                                  ])))
+                                  ]))),
+                      GestureDetector(
+                        onTap: () {
+                          onTapLogout();
+                        },
+                        child: Padding(
+                            padding: getPadding(top: 16),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CustomIconButton(
+                                      height: 40,
+                                      width: 40,
+                                      variant: IconButtonVariant.FillBluegray50,
+                                      shape: IconButtonShape.RoundedBorder10,
+                                      padding: IconButtonPadding.PaddingAll12,
+                                      child: CustomImageView(
+                                          svgPath: ImageConstant.imgMenu1)),
+                                  Padding(
+                                      padding: getPadding(
+                                          left: 16, top: 12, bottom: 7),
+                                      child: Text("lbl_logout".tr,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.left,
+                                          style: AppStyle
+                                              .txtManropeSemiBold14Gray900)),
+                                  const Spacer(),
+                                  CustomImageView(
+                                      svgPath: ImageConstant
+                                          .imgArrowrightBlueGray500,
+                                      height: getSize(20),
+                                      width: getSize(20),
+                                      margin: getMargin(top: 10, bottom: 10))
+                                ])),
+                      )
                     ]))));
   }
 
@@ -324,6 +262,22 @@ class ProfilePage extends StatelessWidget {
 
   onTapSettings() {
     Get.toNamed(AppRoutes.settingsScreen);
+  }
+
+  Future<void> onTapLogout() async {
+    try {
+      await controller.callLogout();
+      _onOnTapSignInSuccess();
+    } on NoInternetException catch (e) {
+      Get.rawSnackbar(message: e.toString());
+    } catch (e) {
+      Get.rawSnackbar(message: "Error while login out");
+      log(e.toString());
+    }
+  }
+
+  _onOnTapSignInSuccess() {
+    Get.offAllNamed(AppRoutes.signInScreen);
   }
 
   onTapArrowleft15() {

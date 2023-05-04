@@ -59,6 +59,8 @@ class AppRoutes {
 
   static const String signUpScreen = '/sign_up_screen';
 
+  static const String signOutScreen = '/sign_out_screen';
+
   static const String homePage = '/home_page';
 
   static const String homeContainerScreen = '/home_container_screen';

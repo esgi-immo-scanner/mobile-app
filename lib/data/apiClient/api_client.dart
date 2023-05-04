@@ -20,32 +20,4 @@ class ApiClient extends GetConnect {
       throw NoInternetException('No Internet Found!');
     }
   }
-
-  /// is `true` when the response status code is between 200 and 299
-  ///
-  /// user can modify this method with custom logics based on their API response
-  bool _isSuccessCall(Response response) {
-    return response.isOk;
-  }
-
-  Future<GetMeResp> fetchMe({Map<String, String> headers = const {}}) async {
-    ProgressDialogUtils.showProgressDialog();
-    try {
-      await isNetworkConnected();
-      Response response =
-          await httpClient.get('$url/device/api/v1/user/me', headers: headers);
-      ProgressDialogUtils.hideProgressDialog();
-      if (_isSuccessCall(response)) {
-        return GetMeResp.fromJson(response.body);
-      } else {
-        throw response.body != null
-            ? GetMeResp.fromJson(response.body)
-            : 'Something Went Wrong!';
-      }
-    } catch (error, stackTrace) {
-      ProgressDialogUtils.hideProgressDialog();
-      Logger.log(error, stackTrace: stackTrace);
-      rethrow;
-    }
-  }
 }

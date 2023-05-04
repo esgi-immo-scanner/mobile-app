@@ -1,1 +1,1 @@
-class SplashModel { }
+class SignOutModel {}

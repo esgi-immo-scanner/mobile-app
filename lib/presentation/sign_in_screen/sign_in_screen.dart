@@ -43,7 +43,7 @@ class SignInScreen extends GetWidget<SignInController> {
                           controller: controller.emailController,
                           hintText: "lbl_email".tr,
                           margin: getMargin(top: 20),
-                          textInputType: TextInputType.phone),
+                          textInputType: TextInputType.emailAddress),
                       Obx(() => CustomTextFormField(
                           focusNode: FocusNode(),
                           controller: controller.passwordController,

@@ -397,7 +397,7 @@ final Map<String, String> enUs = {
   "msg_ready_to_sell_y": "Ready to sell your home?",
   "msg_select_virtual": "Select virtual app",
   "lbl_free_wifi": "Free WiFi",
-  "lbl_sell_my_home": "Sell my home",
+  "lbl_logout": "Logout",
   "lbl_02_08": "02 / 08",
   "lbl_immoscanner_account": "ImmoScanner account",
   "lbl_pick_date": "Pick Date",

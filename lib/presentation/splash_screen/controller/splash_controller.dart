@@ -2,7 +2,7 @@ import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/presentation/splash_screen/models/splash_model.dart';
 
 class SplashController extends GetxController {
-  Rx<SplashModel> splashModelObj = SplashModel().obs;
+  Rx<SignOutModel> splashModelObj = SignOutModel().obs;
 
   @override
   void onReady() {
