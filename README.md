@@ -125,6 +125,17 @@ Resolve the errors and warnings that are shown in the application.
 - cached_network_image - For storing internet image into cache
   https://pub.dev/packages/cached_network_image
 
+### Api libs
+
+```bash
+pnpm install -g @openapitools/openapi-generator-cli
+
+export GH_TOKEN=$(awk '{print $6}' ~/.netrc)
+
+make asset-manager.api
+make bookmarks.api
+```
+
 ### Support
 
 If you have any problems or questions, go to our Discord channel, where we will help you as quickly as possible: https://discord.com/invite/rFMnCG5MZ7

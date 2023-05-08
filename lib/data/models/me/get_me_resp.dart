@@ -5,4 +5,5 @@ class Profile {
   String? photoUrl;
 
   Profile({this.fullName, this.email, this.address, this.photoUrl});
+  
 }
