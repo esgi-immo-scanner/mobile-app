@@ -34,7 +34,7 @@ class SignInController extends GetxController {
   Future<void> callCreateLogin(String emailAddress, String password) async {
     try {
       await isNetworkConnected();
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );

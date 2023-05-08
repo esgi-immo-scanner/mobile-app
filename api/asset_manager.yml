@@ -71,6 +71,29 @@ components:
           items:
             $ref: '#/components/schemas/GeoZone'
           example: []
+    AssetPagination:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: The maximum number of results per page.
+        page:
+          type: integer
+          description: The current page number.
+        sort:
+          type: string
+          description: The sorting parameter used to order the results.
+        total_rows:
+          type: integer
+          description: The total number of rows in the result set.
+        total_pages:
+          type: integer
+          description: The total number of pages in the result set.
+        data:
+          type: array
+          description: An array of data elements containing the requested information.
+          items:
+            $ref: '#/components/schemas/Asset'
     Asset:
       properties:
         id:
@@ -764,9 +787,8 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Asset'
+                type: object
+                $ref: '#/components/schemas/AssetPagination'
         '400':
           description: Bad request
         '500':

@@ -260,7 +260,7 @@ class DefaultApi {
   ///
   /// * [List<String>] ids:
   ///   The ids of the assets to return (taking priority on other criteria)
-  Future<List<Asset>?> searchAssets({ String? geoZone, double? minPrice, double? maxPrice, int? minRooms, int? maxRooms, int? minSurface, int? maxSurface, int? limit, int? page, String? sort, List<String>? ids, }) async {
+  Future<AssetPagination?> searchAssets({ String? geoZone, double? minPrice, double? maxPrice, int? minRooms, int? maxRooms, int? minSurface, int? maxSurface, int? limit, int? page, String? sort, List<String>? ids, }) async {
     final response = await searchAssetsWithHttpInfo( geoZone: geoZone, minPrice: minPrice, maxPrice: maxPrice, minRooms: minRooms, maxRooms: maxRooms, minSurface: minSurface, maxSurface: maxSurface, limit: limit, page: page, sort: sort, ids: ids, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -269,11 +269,8 @@ class DefaultApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<Asset>') as List)
-        .cast<Asset>()
-        .toList();
-
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AssetPagination',) as AssetPagination;
+    
     }
     return null;
   }

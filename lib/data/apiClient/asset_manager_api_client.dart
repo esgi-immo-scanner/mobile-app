@@ -2,6 +2,7 @@ import 'package:asset_manager/api.dart';
 import 'package:immo_scanner/core/app_export.dart';
 
 class AssetManagerClient extends GetConnect {
+  var client = DefaultApi(ApiClient(authentication: HttpBearerAuth()));
 
   @override
   void onInit() {
@@ -17,9 +18,14 @@ class AssetManagerClient extends GetConnect {
     }
   }
 
-  Future<List<Asset>?> listAsset() {
-    (defaultApiClient.authentication as HttpBearerAuth).accessToken(Get.find<PrefUtils>().getToken());
+  Future<AssetPagination?> listAsset() async {
+    (client.apiClient.authentication as HttpBearerAuth).accessToken =
+        Get.find<PrefUtils>().getToken();
 
-    return DefaultApi(defaultApiClient).searchAssets();
+    try {
+      return await client.searchAssets();
+    } catch (e) {
+      Get.snackbar("Error", "Error while recovering recomamndation");
+    }
   }
 }

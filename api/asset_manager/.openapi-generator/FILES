@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 analysis_options.yaml
@@ -9,6 +8,7 @@ doc/AssetManagerAssetApi.md
 doc/AssetManagerAssetCreateOrUpdateApi.md
 doc/AssetManagerAssetRecoverApi.md
 doc/AssetManagerGeozonesApi.md
+doc/AssetPagination.md
 doc/DefaultApi.md
 doc/Details.md
 doc/GeoZone.md
@@ -31,19 +31,9 @@ lib/auth/http_bearer_auth.dart
 lib/auth/oauth.dart
 lib/model/asset.dart
 lib/model/asset_create_or_update200_response.dart
+lib/model/asset_pagination.dart
 lib/model/details.dart
 lib/model/geo_zone.dart
 lib/model/make_recover_asset_by_geo_zone200_response.dart
 lib/model/make_recover_asset_by_geo_zone_request.dart
 pubspec.yaml
-test/asset_create_or_update200_response_test.dart
-test/asset_manager_asset_api_test.dart
-test/asset_manager_asset_create_or_update_api_test.dart
-test/asset_manager_asset_recover_api_test.dart
-test/asset_manager_geozones_api_test.dart
-test/asset_test.dart
-test/default_api_test.dart
-test/details_test.dart
-test/geo_zone_test.dart
-test/make_recover_asset_by_geo_zone200_response_test.dart
-test/make_recover_asset_by_geo_zone_request_test.dart

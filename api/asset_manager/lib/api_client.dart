@@ -185,6 +185,8 @@ class ApiClient {
           return Asset.fromJson(value);
         case 'AssetCreateOrUpdate200Response':
           return AssetCreateOrUpdate200Response.fromJson(value);
+        case 'AssetPagination':
+          return AssetPagination.fromJson(value);
         case 'Details':
           return Details.fromJson(value);
         case 'GeoZone':

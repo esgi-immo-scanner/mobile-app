@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 analysis_options.yaml
@@ -26,9 +25,3 @@ lib/model/search.dart
 lib/model/search_assets_params.dart
 lib/model/search_perform_search_post_request.dart
 pubspec.yaml
-test/asset_test.dart
-test/default_api_test.dart
-test/geo_zone_test.dart
-test/search_assets_params_test.dart
-test/search_perform_search_post_request_test.dart
-test/search_test.dart

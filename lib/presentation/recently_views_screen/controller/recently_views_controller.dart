@@ -17,6 +17,6 @@ class RecentlyViewsController extends GetxController {
   }
 
   void _listAssets() async {
-    Get.find<AssetManagerClient>().listAsset();
+    print(await Get.find<AssetManagerClient>().listAsset());
   }
 }

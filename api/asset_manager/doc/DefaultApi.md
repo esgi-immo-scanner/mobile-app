@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **searchAssets**
-> List<Asset> searchAssets(geoZone, minPrice, maxPrice, minRooms, maxRooms, minSurface, maxSurface, limit, page, sort, ids)
+> AssetPagination searchAssets(geoZone, minPrice, maxPrice, minRooms, maxRooms, minSurface, maxSurface, limit, page, sort, ids)
 
 Search assets
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<Asset>**](Asset.md)
+[**AssetPagination**](AssetPagination.md)
 
 ### Authorization
 

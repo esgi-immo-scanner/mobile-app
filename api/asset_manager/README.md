@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 
  - [Asset](doc//Asset.md)
  - [AssetCreateOrUpdate200Response](doc//AssetCreateOrUpdate200Response.md)
+ - [AssetPagination](doc//AssetPagination.md)
  - [Details](doc//Details.md)
  - [GeoZone](doc//GeoZone.md)
  - [MakeRecoverAssetByGeoZone200Response](doc//MakeRecoverAssetByGeoZone200Response.md)

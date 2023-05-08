@@ -35,6 +35,7 @@ part 'api/default_api.dart';
 
 part 'model/asset.dart';
 part 'model/asset_create_or_update200_response.dart';
+part 'model/asset_pagination.dart';
 part 'model/details.dart';
 part 'model/geo_zone.dart';
 part 'model/make_recover_asset_by_geo_zone200_response.dart';
