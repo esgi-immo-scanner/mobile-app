@@ -2,7 +2,6 @@ import 'package:asset_manager/api.dart';
 import 'package:immo_scanner/core/app_export.dart';
 
 class AssetManagerClient extends GetConnect {
-  var client = DefaultApi(ApiClient(authentication: HttpBearerAuth()));
 
   @override
   void onInit() {
@@ -19,9 +18,8 @@ class AssetManagerClient extends GetConnect {
   }
 
   Future<List<Asset>?> listAsset() {
-    (client.apiClient.authentication as HttpBearerAuth).accessToken =
-        Get.find<PrefUtils>().getToken();
+    (defaultApiClient.authentication as HttpBearerAuth).accessToken(Get.find<PrefUtils>().getToken());
 
-    return client.searchAssets();
+    return DefaultApi(defaultApiClient).searchAssets();
   }
 }

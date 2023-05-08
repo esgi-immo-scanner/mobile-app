@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: Bookmarks api
+  description: >-
+    Manager Bookmarks
+
+    Repo:
+    [https://github.com/esgi-immo-scanner](https://github.com/esgi-immo-scanner/)
+  version: 1.0.0
+x-postman-script: |-
+  pm.variables.set("firebaseKey", "AIzaSyCuZJQbkIPnZGU1LkGYH4J3NpKWk7WwzAI")
+  pm.variables.set("accountEmail", "69loloro10@gmail.com")
+  pm.variables.set("accountPassword", "Q9pS2Xvm5kz7GNx")
+  pm.variables.set("bearerToken", "")
+
+  const key = pm.variables.get("firebaseKey")
+  const accountEmail = pm.variables.get("accountEmail")
+  const accountPassword = pm.variables.get("accountPassword")
+
+  pm.sendRequest({
+      url: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`,
+      method: "POST",
+      header: {
+          "Content-Type": "application/json"
+      },
+      body: {
+          mode: "raw",
+          raw: JSON.stringify({
+              "email": accountEmail,
+              "password": accountPassword,
+              "returnSecureToken": true
+          })
+      }
+  }, function(err, res) {
+      if (err) {
+          console.log(err);
+      } else {
+          pm.variables.set("bearerToken", res.json().idToken);
+      }
+  });
+
+security:
+  - bearerAuth: []
+servers:
+  - url: http://localhost:3003/api
+
+paths:
+  /bookmarks/make:
+    post:
+      tags:
+        - favorites
+      summary: Add a bookmark
+      operationId: makeBookmark
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookmarkRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bookmark'
+  /bookmarks:
+    get:
+      tags:
+        - favorites
+      summary: Get user's logged in bookmarks
+      operationId: userBookmarks
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Bookmark'
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    BookmarkRequest:
+      type: object
+      properties:
+        asset_id:
+          type: string
+      required:
+        - asset_id
+
+    Bookmark:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        user_id:
+          type: integer
+          format: string
+        asset_id:
+          type: string
+      required:
+        - user_id
+        - asset_id

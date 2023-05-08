@@ -1,0 +1,194 @@
+openapi: 3.0.1
+info:
+  title: Search API
+  version: 1.0.0
+x-postman-script: |-
+  pm.variables.set("firebaseKey", "AIzaSyCuZJQbkIPnZGU1LkGYH4J3NpKWk7WwzAI")
+  pm.variables.set("accountEmail", "69loloro10@gmail.com")
+  pm.variables.set("accountPassword", "Q9pS2Xvm5kz7GNx")
+  pm.variables.set("bearerToken", "")
+
+  const key = pm.variables.get("firebaseKey")
+  const accountEmail = pm.variables.get("accountEmail")
+  const accountPassword = pm.variables.get("accountPassword")
+
+  pm.sendRequest({
+      url: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`,
+      method: "POST",
+      header: {
+          "Content-Type": "application/json"
+      },
+      body: {
+          mode: "raw",
+          raw: JSON.stringify({
+              "email": accountEmail,
+              "password": accountPassword,
+              "returnSecureToken": true
+          })
+      }
+  }, function(err, res) {
+      if (err) {
+          console.log(err);
+      } else {
+          pm.variables.set("bearerToken", res.json().idToken);
+      }
+  });
+x-postman-variable:
+  firebaseKey: "AIzaSyCuZJQbkIPnZGU1LkGYH4J3NpKWk7WwzAI"
+  accountEmail: "69loloro10@gmail.com"
+  accountPassword: "Q9pS2Xvm5kz7GNx"
+  bearerToken: bearerTokenFetched
+
+security:
+  - bearerAuth: []
+
+servers:
+  - url: http://localhost:3002/api
+    description: Local server
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    SearchAssetsParams:
+      type: object
+      properties:
+        min_price:
+          type: integer
+          format: int32
+          minimum: 0
+        max_price:
+          type: integer
+          format: int32
+          minimum: 0
+        min_area:
+          type: integer
+          format: int32
+          minimum: 0
+        max_area:
+          type: integer
+          format: int32
+          minimum: 0
+        property_type:
+          type: string
+          enum:
+            - house
+            - apartment
+            - commercial
+        location:
+          type: string
+      required:
+        - min_price
+        - max_price
+        - min_area
+        - max_area
+        - property_type
+        - location
+
+        # Add properties for the search assets parameters
+    Asset:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        geo_zone:
+          $ref: '#/components/schemas/GeoZone'
+        price:
+          type: number
+          format: float
+        room_count:
+          type: integer
+          format: int32
+        surface_area:
+          type: number
+          format: float
+        pictures:
+          type: string
+        real_estate_type:
+          type: string
+      required:
+        - id
+        - geo_zone
+        - price
+        - room_count
+        - surface_area
+        - pictures
+        - real_estate_type
+    GeoZone:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        childs:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoZone'
+      required:
+        - id
+        - name
+    Search:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: string
+        assets:
+          type: array
+          items:
+            type: integer
+        filters:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+paths:
+  /search/perform_search:
+    post:
+      summary: Perform search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                search_filter:
+                  $ref: '#/components/schemas/SearchAssetsParams'
+                user_id:
+                  type: string
+      responses:
+        '200':
+          description: Search performed successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+
+  /search/search_history_logged:
+    get:
+      summary: Retrieve search history by user ID
+      responses:
+        '200':
+          description: Search history retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Search'
+

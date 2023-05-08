@@ -1,0 +1,773 @@
+openapi: 3.0.0
+info:
+  title: Asset Manager
+  description: >-
+    Retrieve assets from external provider
+
+    Repo:
+    [https://github.com/esgi-immo-scanner](https://github.com/esgi-immo-scanner/)
+  version: 1.0.0
+x-postman-script: |-
+  pm.variables.set("firebaseKey", "AIzaSyCuZJQbkIPnZGU1LkGYH4J3NpKWk7WwzAI")
+  pm.variables.set("accountEmail", "69loloro10@gmail.com")
+  pm.variables.set("accountPassword", "Q9pS2Xvm5kz7GNx")
+  pm.variables.set("bearerToken", "")
+
+  const key = pm.variables.get("firebaseKey")
+  const accountEmail = pm.variables.get("accountEmail")
+  const accountPassword = pm.variables.get("accountPassword")
+
+  pm.sendRequest({
+      url: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`,
+      method: "POST",
+      header: {
+          "Content-Type": "application/json"
+      },
+      body: {
+          mode: "raw",
+          raw: JSON.stringify({
+              "email": accountEmail,
+              "password": accountPassword,
+              "returnSecureToken": true
+          })
+      }
+  }, function(err, res) {
+      if (err) {
+          console.log(err);
+      } else {
+          pm.variables.set("bearerToken", res.json().idToken);
+      }
+  });
+
+security:
+  - bearerAuth: []
+servers:
+  - url: http://localhost:3001/api
+tags:
+  - name: asset-manager > geozones
+  - name: asset-manager > asset
+  - name: asset-manager > asset > recover
+  - name: asset-manager > asset > create-or-update
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    GeoZone:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "unique-geozone-id"
+        name:
+          type: string
+          example: "Zone A"
+        childs:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoZone'
+          example: []
+    Asset:
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        cluster:
+          type: string
+        task:
+          type: string
+        DPE:
+          type: string
+        DPE_string:
+          type: string
+        GES:
+          type: string
+        GES_string:
+          type: string
+        ad_type:
+          type: string
+        annonce_id:
+          type: string
+        area:
+          type: integer
+        association_time:
+          nullable: true
+        category_name:
+          type: string
+        city:
+          type: string
+        currency:
+          type: string
+        department:
+          type: string
+        description:
+          type: string
+        details:
+          $ref: '#/components/schemas/Details'
+        first_publication_date:
+          nullable: true
+        last_publication_date:
+          nullable: true
+        lat:
+          type: string
+        lng:
+          type: string
+        no_salesmen:
+          type: boolean
+        owner_name:
+          type: string
+        owner_siren:
+          type: string
+        owner_store_id:
+          type: string
+        owner_type:
+          type: string
+        phone:
+          type: string
+        pictures:
+          type: string
+        postal_code:
+          type: string
+        price:
+          type: integer
+        real_estate_type:
+          type: string
+        region:
+          type: string
+        room_count:
+          type: integer
+        scraping_time:
+          nullable: true
+        title:
+          type: string
+        urgent:
+          type: boolean
+        url:
+          type: string
+      type: object
+    Details:
+      example:
+        GES: GES
+        Honoraires: Honoraires
+        Classe énergie: Classe énergie
+        Type de bien: Type de bien
+        id: id
+        Référence: Référence
+        Nombre de chambres: Nombre de chambres
+        Surface: Surface
+      properties:
+        GES:
+          type: string
+        Surface:
+          type: string
+        Honoraires:
+          type: string
+        Référence:
+          type: string
+        Étage du bien:
+          type: string
+        Type de bien:
+          type: string
+        Classe énergie:
+          type: string
+        Nombre de chambres:
+          type: string
+      type: object
+
+paths:
+  /asset-manager/geozones/browse:
+    get:
+      tags:
+        - asset-manager > geozones
+      summary: browse
+      description: browse
+      operationId: browseGeoZones
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GeoZone'
+              example:
+                - id: <string>
+                  name: <string>
+                  childs: []
+
+  /asset-manager/geozones:
+    post:
+      tags:
+        - asset-manager > geozones
+      summary: create
+      description: create
+      operationId: createGeoZones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/GeoZone'
+            example:
+              id: <string>
+              name: <string>
+              childs: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+
+  /asset-manager/asset/recover:
+    post:
+      summary: MakeRecover
+      operationId: makeRecoverAssetByGeoZone
+      description: Root command that lauch all scraping and db persist process
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  geo_zone:
+                    type: string
+                    description: The Name of the geo zone for which the asset should be recovered.
+                    example: "12345"
+                  assets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Asset'
+              example:
+                - id: 1
+                - id: 2
+        400:
+          description: Auth Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+                properties:
+                  slug:
+                    type: string
+                    example: unable-to-get-jwt
+        500:
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                geo_zone:
+                  type: string
+                  description: The Name of the geo zone for which the asset should be recovered.
+                  example: "12345"
+
+  /asset-manager/asset/recover/scrapping:
+    post:
+      tags:
+        - asset-manager > asset > recover
+      summary: Make Scrapping
+      operationId: makeScrapping
+      description: Make scraping from lobstrio
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: country
+          in: query
+          schema:
+            type: string
+          example: <string>
+        - name: region
+          in: query
+          schema:
+            type: string
+          example: <string>
+        - name: department
+          in: query
+          schema:
+            type: string
+          example: <string>
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+              example:
+                - id: 1
+                  input_url: >-
+                    https://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone
+                  object: result
+                  annonce_id: 2326084128
+                  api_key: 54bb0281238b45a03f0ee695f73e704f
+                  ad_type: offer
+                  area: 198
+                  category_name: Ventes immobilières
+                  currency: EUR
+                  city: Beaujeu 69430
+                  charges_included: ''
+                  capacity: ''
+                  description: <string>
+                  department: Rhône
+                  DPE_string: D
+                  DPE_int: ''
+                  DPE: d
+                  district: ''
+                  detailed_time: ''
+                  expiration_date: ''
+                  first_publication_date: '2023-04-01 20:45:00+00:00'
+                  floor: ''
+                  furnished: ''
+                  GES_string: D
+                  GES_int: ''
+                  GES: d
+                  has_phone: 'True'
+                  has_swimming_pool: ''
+                  has_online_shop: 'False'
+                  is_exclusive: ''
+                  is_active: ''
+                  is_deactivated: ''
+                  is_detailed: ''
+                  lat: 46.15513
+                  lng: 4.58571
+                  last_publication_date: '2023-04-11 12:04:51+00:00'
+                  mail: ''
+                  no_salesmen: 'False'
+                  owner_type: 1
+                  owner_name: "PIETRAPOLIS LYON\t3"
+                  online_shop_url: ''
+                  owner_store_id: 65187574
+                  owner_siren: 424902286
+                  price: 245000
+                  picture: ''
+                  pictures: <string>
+                  postal_code: 69430
+                  phone: ''
+                  phone_from_user: ''
+                  region: Rhône-Alpes
+                  room_count: 7
+                  real_estate_type: Maison
+                  sleepingroom_count: ''
+                  square_metter_price: ''
+                  status_code: ''
+                  title: Maison 7 pièces 198 m²
+                  url: https://www.leboncoin.fr/ventes_immobilieres/2326084128.htm
+                  urgent: 'False'
+                  collected_at: '2023-04-11 10:15:42.465202+00:00'
+                  user_id: d1d00a2c-502b-4efc-863b-05c9bc223bb3
+                  details:
+                    GES: D
+                    Surface: 198 m²
+                    Honoraires: Oui
+                    Référence: 19699-PIETRAPOLIS
+                    Type de bien: Maison
+                    Nombre de chambres: 3 ch.
+                    surface du terrain: 1470 m²
+                    ascenseur: ''
+
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: <string>
+                slug: <string>
+  /asset-manager/asset/save:
+    post:
+      operationId: assetCreateOrUpdate
+      tags:
+        - asset-manager > asset > create-or-update
+      summary: CreateOrUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Asset'
+              example:
+                - id: 1
+                  DPE: d
+                  GES: b
+                  ad_type: offer
+                  annonce_id: "2317270447"
+                  input_url: >-
+                    https://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone
+
+      responses:
+        500:
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: <string>
+                slug: <string>
+        200:
+          description: Ok
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the asset.
+                    example: "12345"
+                  created_at:
+                    type: string
+                    description: The ID of the asset.
+              example:
+                id: <string>
+                asset_id: <string>
+                created_at: <dateTime>
+  /asset-manager/asset:
+    get:
+      operationId: assetFind
+      tags:
+        - asset-manager > asset
+      summary: FindAsset
+      description: find
+      parameters:
+        - name: id
+          in: query
+          schema:
+            type: string
+          example: <string>
+      responses:
+        '204':
+          description: No Content
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+              example:
+                - id: 1
+                  input_url: >-
+                    https://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone
+                  object: result
+                  annonce_id: 2326084128
+                  api_key: 54bb0281238b45a03f0ee695f73e704f
+                  ad_type: offer
+                  area: 198
+                  category_name: Ventes immobilières
+                  currency: EUR
+                  city: Beaujeu 69430
+                  charges_included: ''
+                  capacity: ''
+                  description: <string>
+                  department: Rhône
+                  DPE_string: D
+                  DPE_int: ''
+                  DPE: d
+                  district: ''
+                  detailed_time: ''
+                  expiration_date: ''
+                  first_publication_date: '2023-04-01 20:45:00+00:00'
+                  floor: ''
+                  furnished: ''
+                  GES_string: D
+                  GES_int: ''
+                  GES: d
+                  has_phone: 'True'
+                  has_swimming_pool: ''
+                  has_online_shop: 'False'
+                  is_exclusive: ''
+                  is_active: ''
+                  is_deactivated: ''
+                  is_detailed: ''
+                  lat: 46.15513
+                  lng: 4.58571
+                  last_publication_date: '2023-04-11 12:04:51+00:00'
+                  mail: ''
+                  no_salesmen: 'False'
+                  owner_type: 1
+                  owner_name: "PIETRAPOLIS LYON\t3"
+                  online_shop_url: ''
+                  owner_store_id: 65187574
+                  owner_siren: 424902286
+                  price: 245000
+                  picture: ''
+                  pictures: <string>
+                  postal_code: 69430
+                  phone: ''
+                  phone_from_user: ''
+                  region: Rhône-Alpes
+                  room_count: 7
+                  real_estate_type: Maison
+                  sleepingroom_count: ''
+                  square_metter_price: ''
+                  status_code: ''
+                  title: Maison 7 pièces 198 m²
+                  url: https://www.leboncoin.fr/ventes_immobilieres/2326084128.htm
+                  urgent: 'False'
+                  collected_at: '2023-04-11 10:15:42.465202+00:00'
+                  user_id: d1d00a2c-502b-4efc-863b-05c9bc223bb3
+                  details:
+                    ges: D
+                    pièces: 7
+                    surface: 198 m²
+                    honoraires: Oui
+                    reference: 19699-PIETRAPOLIS
+                    type de bien: Maison
+                    classe énergie: D
+                    nombre de chambres: 3 ch.
+                    surface du terrain: 1470 m²
+                    ascenseur: ''
+                    étage du bien: ''
+                    places de parking: ''
+        '500':
+          description: Internal Server Error
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: <string>
+                slug: <string>
+  /asset-manager/asset/identify-selled:
+    post:
+      operationId: assetIdentifySelled
+      description: 'Identify Selled asset by doing a comparison in scrapping result and db data'
+      summary: 'IdentifySelled'
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+              example:
+                - id: 1
+                  input_url: >-
+                    https://www.leboncoin.fr/ventes_immobilieres/offres/rhone_alpes/rhone
+                  object: result
+                  annonce_id: 2326084128
+                  api_key: 54bb0281238b45a03f0ee695f73e704f
+                  ad_type: offer
+                  area: 198
+                  category_name: Ventes immobilières
+                  currency: EUR
+                  city: Beaujeu 69430
+                  charges_included: ''
+                  capacity: ''
+                  description: <string>
+                  department: Rhône
+                  DPE_string: D
+                  DPE_int: ''
+                  DPE: d
+                  district: ''
+                  detailed_time: ''
+                  expiration_date: ''
+                  first_publication_date: '2023-04-01 20:45:00+00:00'
+                  floor: ''
+                  furnished: ''
+                  GES_string: D
+                  GES_int: ''
+                  GES: d
+                  has_phone: 'True'
+                  has_swimming_pool: ''
+                  has_online_shop: 'False'
+                  is_exclusive: ''
+                  is_active: 'False'
+                  is_deactivated: 'True'
+                  is_detailed: ''
+                  lat: 46.15513
+                  lng: 4.58571
+                  last_publication_date: '2023-04-11 12:04:51+00:00'
+                  mail: ''
+                  no_salesmen: 'False'
+                  owner_type: 1
+                  owner_name: "PIETRAPOLIS LYON\t3"
+                  online_shop_url: ''
+                  owner_store_id: 65187574
+                  owner_siren: 424902286
+                  price: 245000
+                  picture: ''
+                  pictures: <string>
+                  postal_code: 69430
+                  phone: ''
+                  phone_from_user: ''
+                  region: Rhône-Alpes
+                  room_count: 7
+                  real_estate_type: Maison
+                  sleepingroom_count: ''
+                  square_metter_price: ''
+                  status_code: ''
+                  title: Maison 7 pièces 198 m²
+                  url: https://www.leboncoin.fr/ventes_immobilieres/2326084128.htm
+                  urgent: 'False'
+                  collected_at: '2023-04-11 10'
+
+  /asset-manager/assets/search:
+    get:
+      summary: Search assets
+      description: Search for assets based on various criteria such as geo zone, price, rooms, and surface.
+      operationId: searchAssets
+      parameters:
+        - name: geo_zone
+          in: query
+          description: Geo zone to search for assets
+          required: false
+          schema:
+            type: string
+        - name: min_price
+          in: query
+          description: Minimum price for assets
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: max_price
+          in: query
+          description: Maximum price for assets
+          required: false
+          schema:
+            type: number
+            format: double
+        - name: min_rooms
+          in: query
+          description: Minimum number of rooms for assets
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: max_rooms
+          in: query
+          description: Maximum number of rooms for assets
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: min_surface
+          in: query
+          description: Minimum surface for assets
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: max_surface
+          in: query
+          description: Maximum surface for assets
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - name: limit
+          in: query
+          description: The maximum number of items to return
+          required: false
+          schema:
+            default: 10
+            type: integer
+            format: int
+        - name: page
+          in: query
+          description: The page number to return
+          required: false
+          schema:
+            default: 1
+            type: integer
+            format: int
+        - name: sort
+          in: query
+          description: The sorting order
+          required: false
+          schema:
+            default: Id desc
+            type: string
+        - name: ids
+          in: query
+          description: The ids of the assets to return (taking priority on other criteria)
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: A list of assets that match the search criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error

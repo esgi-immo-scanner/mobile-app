@@ -5,10 +5,12 @@ asset_manager_url=https://$(GH_TOKEN)@raw.githubusercontent.com/esgi-immo-scanne
 bookmarks_url=https://$(GH_TOKEN)@raw.githubusercontent.com/esgi-immo-scanner/ddd-microservices/main/internal/bookmarks/api/bookmarks.yml
 search_url=https://$(GH_TOKEN)@raw.githubusercontent.com/esgi-immo-scanner/ddd-microservices/main/internal/search/api/search.yml
 
+all: asset_manager.api search.api bookmarks.api
+
 %.api:
 	curl -s $($*_url) > api/$*.yml
 	@openapi-generator-cli generate -g dart \
 		--additional-properties pubName=$* \
 		--additional-properties pubAuthor=esgi-immo-scanner@gmail.com \
 		--additional-properties pubLibrary=$*.api \
-		-i api/$*.yml -o lib/api/$* \
+		-i api/$*.yml -o api/$* \
