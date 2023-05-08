@@ -1,3 +1,0 @@
-import 'package:immo_scanner/core/app_export.dart';import 'package:immo_scanner/presentation/add_new_property_meet_with_a_agent_screen/models/add_new_property_meet_with_a_agent_model.dart';class AddNewPropertyMeetWithAAgentController extends GetxController {Rx<AddNewPropertyMeetWithAAgentModel> addNewPropertyMeetWithAAgentModelObj = AddNewPropertyMeetWithAAgentModel().obs;
-
- }

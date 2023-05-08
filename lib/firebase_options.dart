@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,9 +46,18 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAJhbA1XlhGbz55j-9xNAa3qubKIqNC_qo',
+    appId: '1:42207824215:web:032c6f86d8ff34f55ed612',
+    messagingSenderId: '42207824215',
+    projectId: 'immo-scanner',
+    authDomain: 'immo-scanner.firebaseapp.com',
+    storageBucket: 'immo-scanner.appspot.com',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCuZJQbkIPnZGU1LkGYH4J3NpKWk7WwzAI',
-    appId: '1:42207824215:android:85d2ad3dab83137b5ed612',
+    appId: '1:42207824215:android:47df0fecc19095185ed612',
     messagingSenderId: '42207824215',
     projectId: 'immo-scanner',
     storageBucket: 'immo-scanner.appspot.com',
@@ -63,6 +69,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '42207824215',
     projectId: 'immo-scanner',
     storageBucket: 'immo-scanner.appspot.com',
+    androidClientId: '42207824215-5nd7dgmo4njpeond03g0er6583227gbc.apps.googleusercontent.com',
     iosClientId: '42207824215-9kfjfm22ikjs8uv5btq655i2bfcapo0a.apps.googleusercontent.com',
     iosBundleId: 'com.example.mobileApp',
   );
