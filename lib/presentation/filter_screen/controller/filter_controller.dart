@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/presentation/filter_screen/models/filter_model.dart';
 import 'package:immo_scanner/widgets/custom_bottom_bar.dart';
@@ -14,6 +15,8 @@ class FilterController extends GetxController {
   SelectionPopupModel? selectedDropDownValue3;
 
   SelectionPopupModel? selectedDropDownValue4;
+
+  Rx<RangeValues> range = const RangeValues(0, 50000000).obs;
 
   @override
   void onReady() {
@@ -78,5 +81,9 @@ class FilterController extends GetxController {
       }
     });
     filterModelObj.value.dropdownItemList4.refresh();
+  }
+
+  void onRangeChanged(RangeValues values) {
+    range.value = values;
   }
 }

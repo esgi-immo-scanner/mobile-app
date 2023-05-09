@@ -26,7 +26,7 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
                   margin: getMargin(left: 24),
                   onTap: onTapArrowleft20),
               centerTitle: true,
-              title: AppbarSubtitle(text: "Recommendations")),
+              title: AppbarSubtitle(text: "lbl_recommendations".tr)),
           body: SizedBox(
               width: size.width,
               child: SingleChildScrollView(
@@ -36,46 +36,50 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CustomButton(
-                                      height: getVerticalSize(40),
-                                      width: getHorizontalSize(92),
-                                      text: "lbl_filter".tr,
-                                      variant: ButtonVariant.OutlineGray300,
-                                      shape: ButtonShape.RoundedBorder5,
-                                      padding: ButtonPadding.PaddingT9,
-                                      fontStyle: ButtonFontStyle
-                                          .ManropeSemiBold14Gray900_1,
-                                      suffixWidget: Container(
-                                          margin: getMargin(left: 10),
-                                          child: CustomImageView(
-                                              svgPath: ImageConstant
-                                                  .imgMenuGray900))),
-                                  CustomButton(
-                                      height: getVerticalSize(40),
-                                      width: getHorizontalSize(87),
-                                      text: "lbl_sort".tr,
-                                      margin: getMargin(left: 8),
-                                      variant: ButtonVariant.OutlineGray300,
-                                      shape: ButtonShape.RoundedBorder5,
-                                      padding: ButtonPadding.PaddingT9,
-                                      fontStyle: ButtonFontStyle
-                                          .ManropeSemiBold14Gray900_1,
-                                      suffixWidget: Container(
-                                          margin: getMargin(left: 10),
-                                          child: CustomImageView(
-                                              svgPath: ImageConstant.imgSort))),
-                                  Spacer(),
-                                  Padding(
-                                      padding: getPadding(top: 10, bottom: 9),
-                                      child: Text((recentlyViewsController.assetList.length > 1 ? recentlyViewsController.assetList.length.toString() + " homes" : recentlyViewsController.assetList.length.toString() + " home"),
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.left,
-                                          style: AppStyle
-                                              .txtManropeSemiBold14Gray900))
-                                ]),
+                            // Row(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: [
+                            //       CustomButton(
+                            //           height: getVerticalSize(40),
+                            //           width: getHorizontalSize(92),
+                            //           text: "lbl_filter".tr,
+                            //           variant: ButtonVariant.OutlineGray300,
+                            //           shape: ButtonShape.RoundedBorder5,
+                            //           padding: ButtonPadding.PaddingT9,
+                            //           fontStyle: ButtonFontStyle
+                            //               .ManropeSemiBold14Gray900_1,
+                            //           suffixWidget: Container(
+                            //               margin: getMargin(left: 10),
+                            //               child: CustomImageView(
+                            //                   svgPath: ImageConstant
+                            //                       .imgMenuGray900))),
+                            //       CustomButton(
+                            //           height: getVerticalSize(40),
+                            //           width: getHorizontalSize(87),
+                            //           text: "lbl_sort".tr,
+                            //           margin: getMargin(left: 8),
+                            //           variant: ButtonVariant.OutlineGray300,
+                            //           shape: ButtonShape.RoundedBorder5,
+                            //           padding: ButtonPadding.PaddingT9,
+                            //           fontStyle: ButtonFontStyle
+                            //               .ManropeSemiBold14Gray900_1,
+                            //           suffixWidget: Container(
+                            //               margin: getMargin(left: 10),
+                            //               child: CustomImageView(
+                            //                   svgPath: ImageConstant.imgSort))),
+                            //       Spacer(),
+                            //       Padding(
+                            //           padding: getPadding(top: 10, bottom: 9),
+                            //           child: Obx(
+                            //             () => Text(
+                            //                 (recentlyViewsController.count.value
+                            //                     .toString()),
+                            //                 overflow: TextOverflow.ellipsis,
+                            //                 textAlign: TextAlign.left,
+                            //                 style: AppStyle
+                            //                     .txtManropeSemiBold14Gray900),
+                            //           ))
+                            //     ]),
                             Obx(() => ListView.builder(
                                 shrinkWrap: true,
                                 physics: NeverScrollableScrollPhysics(),
@@ -117,7 +121,8 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
       Column(children: [
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(asset.title ?? "",
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
@@ -157,7 +162,10 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
                     .copyWith(letterSpacing: getHorizontalSize(0.2)))
           ]),
         ),
-      ])
+      ]),
+      SizedBox(
+        height: getVerticalSize(5)
+      )
     ]);
   }
 }

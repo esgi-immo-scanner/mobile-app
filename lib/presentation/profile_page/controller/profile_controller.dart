@@ -18,7 +18,7 @@ class ProfileController extends GetxController {
   }
 
   void _handleLogoutSuccess() async {
-    Get.find<PrefUtils>().clearPreferencesData();
+    Get.find<PrefUtils>().logoutClear();
   }
 
   @override

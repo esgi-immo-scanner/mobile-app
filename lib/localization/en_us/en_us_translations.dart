@@ -180,7 +180,7 @@ final Map<String, String> enUs = {
   "msg_360_stillwater_rd": "360 Stillwater Rd Troutman",
   "msg_783_enter": " *****783). Enter it here to verify your identity",
   "msg_st_celina_del2": "St. Celina, Delaware 10299",
-  "msg_merta_nadi_stre": "Merta Nadi Street 88, Kuta, Bali",
+  "lyon_9": "69009",
   "lbl_reviews": "Reviews",
   "lbl_san_francisco": "San Francisco",
   "lbl_past_tour": "Past Tour",
@@ -241,7 +241,7 @@ final Map<String, String> enUs = {
   "lbl_filters": "Filters",
   "lbl_diana": "Diana",
   "lbl_retiring": "Retiring",
-  "lbl_recently_viewed": "Recently Viewed",
+  "lbl_recommendations": "Recommendations",
   "lbl_10_10_2021": "10/10/2021",
   "msg_breakfast_inclu": "Breakfast Included",
   "lbl_realix_estimate": "Realix Estimate",
@@ -565,9 +565,8 @@ final Map<String, String> enUs = {
   "msg_no_notification": "No Notifications Yet",
   "lbl_condos": "Condos",
   "lbl_tax_history": "Tax History",
-  "lbl_address": "Address",
+  "lbl_address": "Zone géographique",
   "lbl_200_15_000": "\$200 - \$15,000",
-  "lbl_recently_viewed2": "Recently viewed",
   "lbl_200_00": "\$200,00",
-  "lbl_full_name": "Full Name"
+  "lbl_full_name": "Nom complet"
 };

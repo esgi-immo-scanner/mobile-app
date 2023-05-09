@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:immo_scanner/core/app_export.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore_for_file: must_be_immutable
@@ -11,13 +12,30 @@ class PrefUtils {
 
   static SharedPreferences? _sharedPreferences;
 
+  RxString address = "".obs;
+
   Future<void> init() async {
     _sharedPreferences ??= await SharedPreferences.getInstance();
     print('SharedPreference Initialized');
   }
 
-  void clearPreferencesData() async {
-    _sharedPreferences!.clear();
+  void logoutClear() async {
+    _sharedPreferences!.remove("token");
+    _sharedPreferences!.remove("id");
+  }
+
+  Future<void> saveAddress(String value){
+    address.value = value;
+    return _sharedPreferences!.setString("address", value);
+  }
+
+  String initAndGetAddress() {
+    try {
+      address.value = _sharedPreferences!.getString("address") ?? '';
+      return address.value;
+    } catch (e) {
+      return '';
+    }
   }
 
   Future<void> setToken(String value) {

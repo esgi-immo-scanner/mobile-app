@@ -1,3 +1,4 @@
+import 'package:immo_scanner/presentation/home_page/home_page.dart';
 import 'package:immo_scanner/presentation/onboarding_screen/onboarding_screen.dart';
 import 'package:immo_scanner/presentation/onboarding_screen/binding/onboarding_binding.dart';
 import 'package:immo_scanner/presentation/splash_screen/splash_screen.dart';
@@ -162,6 +163,10 @@ class AppRoutes {
       bindings: [
         SplashBinding(),
       ],
+    ),
+    GetPage(
+      name: myHomePage,
+      page: () => HomePage(),
     ),
     GetPage(
       name: signInScreen,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomRangeSliderController extends GetxController {
-  RangeValues values = const RangeValues(0, 100);
+  RangeValues values = const RangeValues(0, 50000000);
 
   void onRangeChanged(RangeValues newValues) {
     // Print newValues

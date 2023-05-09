@@ -6,6 +6,7 @@ import 'package:immo_scanner/presentation/recently_views_screen/models/recently_
 class RecentlyViewsController extends GetxController {
   // Rx<RecentlyViewsModel> recentlyViewsModelObj = RecentlyViewsModel().obs;
   RxList<Asset> assetList = <Asset>[].obs;
+  RxInt count = 0.obs;
 
   @override
   void onReady() {
@@ -24,6 +25,7 @@ class RecentlyViewsController extends GetxController {
     for (var element in assetPagination!.data) {
       assetList.add(element);
     }
+    count.value = assetPagination.totalRows ?? 0;
 
   }
 

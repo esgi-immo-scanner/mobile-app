@@ -108,7 +108,7 @@ class ProfilePage extends StatelessWidget {
                                     Padding(
                                         padding: getPadding(
                                             left: 16, top: 12, bottom: 7),
-                                        child: Text("lbl_recently_viewed2".tr,
+                                        child: Text("lbl_recommendations".tr,
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle

@@ -153,11 +153,14 @@ class SignInScreen extends GetWidget<SignInController> {
     );
   }
 
-  onTapGoogle() async {
+  Future<void> onTapGoogle() async {
+    print("onTapGoogle");
+
     try {
       await controller.callGoogleSignIn();
       _onOnTapSignInSuccess();
     } catch (err) {
+      print("onTap : $err");
       Get.snackbar('Error', "Critical error while signing in with Google");
       Logger.log(err.toString());
     }

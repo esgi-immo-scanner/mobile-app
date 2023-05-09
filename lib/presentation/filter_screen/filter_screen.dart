@@ -24,12 +24,12 @@ import 'package:immo_scanner/widgets/custom_button.dart';
 import 'package:immo_scanner/widgets/custom_drop_down.dart';
 import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
-
 class FilterScreen extends GetWidget<FilterController> {
   @override
   Widget build(BuildContext context) {
     final FilterController filterController = Get.put(FilterController());
-    final CustomRangeSliderController rangeController = Get.put(CustomRangeSliderController());
+    final CustomRangeSliderController rangeController =
+        Get.put(CustomRangeSliderController());
 
     return SafeArea(
         child: Scaffold(
@@ -344,11 +344,11 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                             .txtManropeExtraBold16Gray900
                                                                             .copyWith(letterSpacing: getHorizontalSize(0.2))),
                                                                     Padding(
-                                                                        padding: getPadding(
-                                                                            bottom:
-                                                                                1),
-                                                                        child: rangeController.sliderValueText,
-                                                                        )
+                                                                      padding: getPadding(
+                                                                          bottom:
+                                                                              1),
+                                                                      child: Obx(() => Text('De ${controller.range.value.start.round()} à ${controller.range.value.end.round()} €')),
+                                                                    )
                                                                   ]))),
                                                       Align(
                                                           alignment:
@@ -368,23 +368,31 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                           .center,
                                                                   children: [
                                                                     Align(
-                                                                        alignment:
-                                                                            Alignment
-                                                                                .bottomCenter,
-                                                                        child: Padding(
-                                                                            padding:
-                                                                                getPadding(bottom: 7),
-                                                                            // child: SizedBox(width: getHorizontalSize(327), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.gray300)))
-                                                                            child: GetBuilder<CustomRangeSliderController>(
-                                                                              builder: (rangeController) => RangeSlider(
-                                                                                min: 0,
-                                                                                max: 100,
-                                                                                values: rangeController.values,
-                                                                                onChanged: rangeController.onRangeChanged,
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .bottomCenter,
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            getPadding(bottom: 7),
+                                                                        // child: SizedBox(width: getHorizontalSize(327), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.gray300)))
+                                                                        child: Obx(() =>
+                                                                            RangeSlider(
+                                                                              values: controller.range.value,
+                                                                              min: 0,
+                                                                              max: 50000000,
+                                                                              divisions: 50,
+                                                                              labels: RangeLabels(
+                                                                                controller.range.value.start.toStringAsFixed(0),
+                                                                                controller.range.value.end.toStringAsFixed(0),
                                                                               ),
-                                                                            ),
-                                                                          )
-                                                                          ),
+                                                                              onChanged: (RangeValues values) {
+                                                                                controller.onRangeChanged(values);
+                                                                              },
+                                                                            )),
+                                                                      ),
+                                                                    )
+
                                                                     // Align(
                                                                     //     alignment:
                                                                     //         Alignment
@@ -411,10 +419,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                     //                 CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
                                                                     //               ]))
                                                                     //         ]))
-                                                                  ]
-                                                                  )
-                                                                  )
-                                                                ),
+                                                                  ]))),
                                                       Padding(
                                                           padding: getPadding(
                                                               left: 24,

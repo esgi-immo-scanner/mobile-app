@@ -173,9 +173,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
     );
   }
 
-  onTapGoogle() async {
+  Future<void> onTapGoogle() async {
+    print('onTapGoogle');
     try {
-      controller.callGoogleSignIn();
+      await controller.callGoogleSignIn();
       _onOnTapSignUpSuccess();
     } catch (err) {
       Get.snackbar('Error', err.toString());
