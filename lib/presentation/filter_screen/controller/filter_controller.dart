@@ -112,6 +112,44 @@ class FilterController extends GetxController {
     leModel.incrementValue();
   }
 
+  reset(){
+    filterModelObj.value.dropdownItemListDPEMin.forEach((element) {
+      element.isSelected = false;
+    });
+    filterModelObj.value.dropdownItemListDPEMin[0].isSelected = true;
+    filterModelObj.value.dropdownItemListDPEMin.refresh();
+
+    filterModelObj.value.dropdownItemListDPEMax.forEach((element) {
+      element.isSelected = false;
+    });
+    filterModelObj.value.dropdownItemListDPEMax[0].isSelected = true;
+    filterModelObj.value.dropdownItemListDPEMax.refresh();
+
+    filterModelObj.value.dropdownItemGESMin.forEach((element) {
+      element.isSelected = false;
+    });
+    filterModelObj.value.dropdownItemGESMin[0].isSelected = true;
+    filterModelObj.value.dropdownItemGESMin.refresh();
+
+    filterModelObj.value.dropdownItemGESMax.forEach((element) {
+      element.isSelected = false;
+    });
+    filterModelObj.value.dropdownItemGESMax[0].isSelected = true;
+    filterModelObj.value.dropdownItemGESMax.refresh();
+
+    filterModelObj.value.listMoreLessItemList.forEach((element) {
+      element.resetValue();
+    });
+
+    rangePrice.value = const RangeValues(0, 50000000);
+    rangeSurface.value = const RangeValues(0, 500);
+
+    isHomeSelected.value = true;
+    isAppartmentSelected.value = false;
+
+    appartmentButtonVariant.value = ButtonVariant.OutlineBluegray40014Disabled;
+    homeButtonVariant.value = ButtonVariant.OutlineBluegray40014;
+  }
   /*
 
   Range prix

@@ -14,7 +14,7 @@ class LessMoreItemModel {
 
   Rx<String> titleTxt = Rx("Title");
 
-  Rx<String> valueTxt = Rx("2");
+  Rx<String> valueTxt = Rx("0");
 
   String? id = "";
 
@@ -37,5 +37,10 @@ class LessMoreItemModel {
     if(value != 0){
       iconMoins.value = ImageConstant.imgClock24x24Blue;
     }
+  }
+
+  resetValue(){
+    valueTxt.value = "0";
+    iconMoins.value = ImageConstant.imgClock24x24;
   }
 }

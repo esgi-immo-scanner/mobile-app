@@ -19,7 +19,7 @@ class Options2ItemWidget extends StatelessWidget {
         showCheckmark: false,
         labelPadding: EdgeInsets.zero,
         label: Text(
-          options2ItemModelObj.freewifiTxt.value,
+          options2ItemModelObj.title.value,
           textAlign: TextAlign.left,
           style: TextStyle(
             color: ColorConstant.gray900,
@@ -33,7 +33,7 @@ class Options2ItemWidget extends StatelessWidget {
         selected: options2ItemModelObj.isSelected.value,
         backgroundColor: ColorConstant.gray50,
         selectedColor: ColorConstant.gray50,
-        shape: options2ItemModelObj.isSelected.value
+        shape: !options2ItemModelObj.isSelected.value
             ? RoundedRectangleBorder(
                 side: BorderSide(
                   color: ColorConstant.gray5099,

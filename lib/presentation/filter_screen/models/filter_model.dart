@@ -16,16 +16,20 @@ class FilterModel {
       "2",
       "chambres"),
     LessMoreItemModel(
-      "Nombre pieces",
+      "Nombre pièces",
       "2",
       "pieces"),
       ].obs;
 
   RxList<SelectionPopupModel> dropdownItemListDPEMin = [
     SelectionPopupModel(
+      id: 0,
+      title: "Min",
+      isSelected: true,
+    ),
+    SelectionPopupModel(
       id: 1,
       title: "A",
-      isSelected: true,
     ),
     SelectionPopupModel(
       id: 2,
@@ -51,9 +55,13 @@ class FilterModel {
 
   RxList<SelectionPopupModel> dropdownItemListDPEMax = [
     SelectionPopupModel(
+      id: 0,
+      title: "Min",
+      isSelected: true,
+    ),
+    SelectionPopupModel(
       id: 1,
       title: "A",
-      isSelected: true,
     ),
     SelectionPopupModel(
       id: 2,
@@ -79,9 +87,13 @@ class FilterModel {
 
   RxList<SelectionPopupModel> dropdownItemGESMin = [
     SelectionPopupModel(
+      id: 0,
+      title: "Min",
+      isSelected: true,
+    ),
+    SelectionPopupModel(
       id: 1,
       title: "A",
-      isSelected: true,
     ),
     SelectionPopupModel(
       id: 2,
@@ -107,9 +119,13 @@ class FilterModel {
 
   RxList<SelectionPopupModel> dropdownItemGESMax =[
     SelectionPopupModel(
+      id: 0,
+      title: "Min",
+      isSelected: true,
+    ),
+    SelectionPopupModel(
       id: 1,
       title: "A",
-      isSelected: true,
     ),
     SelectionPopupModel(
       id: 2,
@@ -133,10 +149,24 @@ class FilterModel {
     ),
   ].obs;
 
-  RxList<ChipviewhomeItemModel> chipviewhomeItemList =
-      RxList.generate(5, (index) => ChipviewhomeItemModel());
-
-  RxList<Options2ItemModel> options2ItemList =
-      RxList.generate(8, (index) => Options2ItemModel());
+  // RxList<Options2ItemModel> options2ItemList =
+  //     RxList.generate(8, (index) => Options2ItemModel());
+  RxList<Options2ItemModel> options2ItemList = [
+    Options2ItemModel(
+      "Ascenceur",
+    ),
+    Options2ItemModel(
+      "RDC",
+    ),
+    Options2ItemModel(
+      "Places de parking",
+    ),
+    Options2ItemModel(
+      "Urgent",
+    ),
+    Options2ItemModel(
+      "Sans honoraires",
+    ),
+  ].obs;
 
 }
