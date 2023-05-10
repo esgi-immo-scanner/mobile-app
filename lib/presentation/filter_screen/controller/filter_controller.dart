@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/presentation/filter_screen/models/filter_model.dart';
+import 'package:immo_scanner/presentation/filter_screen/models/lessMoreCounter_item_model.dart';
 import 'package:immo_scanner/widgets/custom_bottom_bar.dart';
+import 'package:immo_scanner/widgets/custom_button.dart';
 
 class FilterController extends GetxController {
   Rx<FilterModel> filterModelObj = FilterModel().obs;
@@ -16,7 +18,14 @@ class FilterController extends GetxController {
 
   SelectionPopupModel? selectedDropDownValue4;
 
-  Rx<RangeValues> range = const RangeValues(0, 50000000).obs;
+  Rx<RangeValues> rangePrice = const RangeValues(0, 50000000).obs;
+  Rx<RangeValues> rangeSurface = const RangeValues(0, 500).obs;
+
+  RxBool isHomeSelected = true.obs;
+  RxBool isAppartmentSelected = false.obs;
+
+  Rx<ButtonVariant> appartmentButtonVariant = ButtonVariant.OutlineBluegray40014Disabled.obs;
+  Rx<ButtonVariant> homeButtonVariant = ButtonVariant.OutlineBluegray40014.obs;
 
   @override
   void onReady() {
@@ -28,62 +37,98 @@ class FilterController extends GetxController {
     super.onClose();
   }
 
-  onSelected(dynamic value) {
+  onSelectedDPEMin(dynamic value) {
     selectedDropDownValue = value as SelectionPopupModel;
-    filterModelObj.value.dropdownItemList.forEach((element) {
+    filterModelObj.value.dropdownItemListDPEMin.forEach((element) {
       element.isSelected = false;
       if (element.id == value.id) {
         element.isSelected = true;
       }
     });
-    filterModelObj.value.dropdownItemList.refresh();
+    filterModelObj.value.dropdownItemListDPEMin.refresh();
   }
 
-  onSelected1(dynamic value) {
+  onSelectedDPEMax(dynamic value) {
     selectedDropDownValue1 = value as SelectionPopupModel;
-    filterModelObj.value.dropdownItemList1.forEach((element) {
+    filterModelObj.value.dropdownItemListDPEMax.forEach((element) {
       element.isSelected = false;
       if (element.id == value.id) {
         element.isSelected = true;
       }
     });
-    filterModelObj.value.dropdownItemList1.refresh();
+    filterModelObj.value.dropdownItemListDPEMax.refresh();
   }
 
-  onSelected2(dynamic value) {
+  onSelectedGESMin(dynamic value) {
     selectedDropDownValue2 = value as SelectionPopupModel;
-    filterModelObj.value.dropdownItemList2.forEach((element) {
+    filterModelObj.value.dropdownItemGESMin.forEach((element) {
       element.isSelected = false;
       if (element.id == value.id) {
         element.isSelected = true;
       }
     });
-    filterModelObj.value.dropdownItemList2.refresh();
+    filterModelObj.value.dropdownItemGESMin.refresh();
   }
 
-  onSelected3(dynamic value) {
+  onSelectedGESMax(dynamic value) {
     selectedDropDownValue3 = value as SelectionPopupModel;
-    filterModelObj.value.dropdownItemList3.forEach((element) {
+    filterModelObj.value.dropdownItemGESMax.forEach((element) {
       element.isSelected = false;
       if (element.id == value.id) {
         element.isSelected = true;
       }
     });
-    filterModelObj.value.dropdownItemList3.refresh();
+    filterModelObj.value.dropdownItemGESMax.refresh();
   }
 
-  onSelected4(dynamic value) {
-    selectedDropDownValue4 = value as SelectionPopupModel;
-    filterModelObj.value.dropdownItemList4.forEach((element) {
-      element.isSelected = false;
-      if (element.id == value.id) {
-        element.isSelected = true;
-      }
-    });
-    filterModelObj.value.dropdownItemList4.refresh();
+
+  void onRangePriceChanged(RangeValues values) {
+    rangePrice.value = values;
+  }
+  void onRangeSurfaceChanged(RangeValues values) {
+    rangeSurface.value = values;
   }
 
-  void onRangeChanged(RangeValues values) {
-    range.value = values;
+  onTapHomeButton(){
+    print("onTapHomeButton");
+    appartmentButtonVariant.value = ButtonVariant.OutlineBluegray40014Disabled;
+    homeButtonVariant.value = ButtonVariant.OutlineBluegray40014;
+    isHomeSelected.value = true;
+    isAppartmentSelected.value = false;
   }
+
+  onTapAppartmentButton(){
+    print("onTapAppartmentButton");
+    appartmentButtonVariant.value = ButtonVariant.OutlineBluegray40014;
+    homeButtonVariant.value = ButtonVariant.OutlineBluegray40014Disabled;
+    isHomeSelected.value = false;
+    isAppartmentSelected.value = true;
+  }
+
+  onLessMoreItemMinus(LessMoreItemModel leModel){
+    leModel.decrementValue();
+  }
+
+  onLessMoreItemPlus(LessMoreItemModel leModel){
+    leModel.incrementValue();
+  }
+
+  /*
+
+  Range prix
+  Range surface
+
+  + - Nb chambre
+  + - piece
+
+  Menu deroulant DPE
+  Menu deroulant GES
+
+  Supprimer property type
+
+  Amneties : 
+  Ascenceur, RDC, Places de parking, Urgent, Sans honoraires
+
+  */
+
 }

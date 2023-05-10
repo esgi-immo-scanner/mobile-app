@@ -163,6 +163,8 @@ class CustomButton extends StatelessWidget {
         return ColorConstant.gray50;
       case ButtonVariant.OutlineBluegray40014:
         return ColorConstant.whiteA700;
+      case ButtonVariant.OutlineBluegray40014Disabled:
+        return ColorConstant.blueGray5001;
       case ButtonVariant.OutlineBlue500_2:
         return ColorConstant.whiteA700;
       case ButtonVariant.FillBluegray50:
@@ -568,6 +570,7 @@ enum ButtonVariant {
   OutlineBlue500_2,
   FillBluegray50,
   OutlineBlue500_3,
+  OutlineBluegray40014Disabled,
 }
 enum ButtonFontStyle {
   ManropeBold16WhiteA700_1,

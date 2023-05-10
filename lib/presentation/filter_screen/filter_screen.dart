@@ -1,12 +1,12 @@
+import 'package:immo_scanner/presentation/filter_screen/widgets/lessmore_item_widget.dart';
 import 'package:immo_scanner/widgets/custom_range_slider.dart';
 
 import '../filter_screen/widgets/chipviewhome_item_widget.dart';
-import '../filter_screen/widgets/listbeds_item_widget.dart';
 import '../filter_screen/widgets/listimg_item_widget.dart';
 import '../filter_screen/widgets/options2_item_widget.dart';
 import 'controller/filter_controller.dart';
 import 'models/chipviewhome_item_model.dart';
-import 'models/listbeds_item_model.dart';
+import 'models/lessMoreCounter_item_model.dart';
 import 'models/listimg_item_model.dart';
 import 'models/options2_item_model.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +28,6 @@ class FilterScreen extends GetWidget<FilterController> {
   @override
   Widget build(BuildContext context) {
     final FilterController filterController = Get.put(FilterController());
-    final CustomRangeSliderController rangeController =
-        Get.put(CustomRangeSliderController());
 
     return SafeArea(
         child: Scaffold(
@@ -52,25 +50,6 @@ class FilterScreen extends GetWidget<FilterController> {
             //                         width: getSize(16),
             //                         svgPath: ImageConstant.imgLocation,
             //                         margin: getMargin(bottom: 3)),
-            //                     CustomDropDown(
-            //                         width: getHorizontalSize(119),
-            //                         focusNode: FocusNode(),
-            //                         icon: Container(
-            //                             margin: getMargin(left: 6),
-            //                             child: CustomImageView(
-            //                                 svgPath:
-            //                                     ImageConstant.imgArrowdown)),
-            //                         hintText: "lbl_hanoi_vietnam".tr,
-            //                         margin: getMargin(left: 8),
-            //                         variant: DropDownVariant.None,
-            //                         fontStyle: DropDownFontStyle
-            //                             .ManropeSemiBold14Gray900,
-            //                         items: controller
-            //                             .filterModelObj.value.dropdownItemList4,
-            //                         onChanged: (value) {
-            //                           controller.onSelected4(value);
-            //                         })
-            //                   ]))
             //             ])),
             //     actions: [
             //       AppbarIconbutton3(
@@ -283,16 +262,16 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       MainAxisAlignment
                                                                           .spaceBetween,
                                                                   children: [
-                                                                    CustomButton(
+                                                                    Obx( () =>CustomButton(
+                                                                      onTap: () => filterController.onTapHomeButton(),
                                                                         height: getVerticalSize(
                                                                             40),
                                                                         width: getHorizontalSize(
                                                                             159),
-                                                                        text: "lbl_for_sale"
+                                                                        text: "lbl_home"
                                                                             .tr,
                                                                         variant:
-                                                                            ButtonVariant
-                                                                                .OutlineBluegray40014,
+                                                                            filterController.homeButtonVariant.value,
                                                                         shape: ButtonShape
                                                                             .RoundedBorder5,
                                                                         padding:
@@ -300,21 +279,25 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 .PaddingAll12,
                                                                         fontStyle:
                                                                             ButtonFontStyle.ManropeBold14Gray900_1),
-                                                                    Padding(
-                                                                        padding: getPadding(
-                                                                            top:
-                                                                                10,
-                                                                            right:
-                                                                                50,
-                                                                            bottom:
-                                                                                9),
-                                                                        child: Text(
-                                                                            "lbl_for_rent"
-                                                                                .tr,
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            textAlign: TextAlign.left,
-                                                                            style: AppStyle.txtManropeSemiBold14))
+                                                                    ),
+                                                                    Obx(() =>CustomButton(
+                                                                      onTap: () => filterController.onTapAppartmentButton(),
+                                                                        height: getVerticalSize(
+                                                                            40),
+                                                                        width: getHorizontalSize(
+                                                                            159),
+                                                                        text: "lbl_appartment"
+                                                                            .tr,
+                                                                        variant:
+                                                                            filterController.appartmentButtonVariant.value,
+                                                                        shape: ButtonShape
+                                                                            .RoundedBorder5,
+                                                                        padding:
+                                                                            ButtonPadding
+                                                                                .PaddingAll12,
+                                                                        fontStyle:
+                                                                            ButtonFontStyle.ManropeBold14Gray900_1),
+                                                                    ),
                                                                   ]))),
                                                       Align(
                                                           alignment:
@@ -332,8 +315,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                           .spaceBetween,
                                                                   children: [
                                                                     Text(
-                                                                        "lbl_price_range"
-                                                                            .tr,
+                                                                        "Prix",
                                                                         overflow:
                                                                             TextOverflow
                                                                                 .ellipsis,
@@ -347,9 +329,13 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       padding: getPadding(
                                                                           bottom:
                                                                               1),
-                                                                      child: Obx(() => Text('De ${controller.range.value.start.round()} à ${controller.range.value.end.round()} €')),
+                                                                      child: Obx(
+                                                                          () =>
+                                                                              Text('De ${filterController.rangePrice.value.start.round()} à ${filterController.rangePrice.value.end.round()} €')),
                                                                     )
-                                                                  ]))),
+                                                                  ])
+                                                                )
+                                                            ),
                                                       Align(
                                                           alignment:
                                                               Alignment.center,
@@ -378,54 +364,109 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         // child: SizedBox(width: getHorizontalSize(327), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.gray300)))
                                                                         child: Obx(() =>
                                                                             RangeSlider(
-                                                                              values: controller.range.value,
+                                                                              values: filterController.rangePrice.value,
                                                                               min: 0,
                                                                               max: 50000000,
                                                                               divisions: 50,
                                                                               labels: RangeLabels(
-                                                                                controller.range.value.start.toStringAsFixed(0),
-                                                                                controller.range.value.end.toStringAsFixed(0),
+                                                                                filterController.rangePrice.value.start.toStringAsFixed(0),
+                                                                                filterController.rangePrice.value.end.toStringAsFixed(0),
                                                                               ),
                                                                               onChanged: (RangeValues values) {
-                                                                                controller.onRangeChanged(values);
+                                                                                filterController.onRangePriceChanged(values);
                                                                               },
                                                                             )),
                                                                       ),
                                                                     )
 
-                                                                    // Align(
-                                                                    //     alignment:
-                                                                    //         Alignment
-                                                                    //             .center,
-                                                                    //     child: Row(
-                                                                    //         mainAxisAlignment:
-                                                                    //             MainAxisAlignment.center,
-                                                                    //         children: [
-                                                                    //           Container(
-                                                                    //               width: getHorizontalSize(26),
-                                                                    //               padding: getPadding(left: 3, top: 8, right: 3, bottom: 8),
-                                                                    //               decoration: AppDecoration.fillBlue500.copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                                                                    //               child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowleft10x10, height: getSize(10), width: getSize(10)),
-                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
-                                                                    //               ])),
-                                                                    //           Padding(padding: getPadding(bottom: 7), child: SizedBox(width: getHorizontalSize(103), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.blue500))),
-                                                                    //           Container(
-                                                                    //               width: getHorizontalSize(26),
-                                                                    //               padding: getPadding(left: 3, top: 7, right: 3, bottom: 7),
-                                                                    //               decoration: AppDecoration.fillBlue500.copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                                                                    //               child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowleft10x10, height: getSize(10), width: getSize(10)),
-                                                                    //                 CustomImageView(svgPath: ImageConstant.imgArrowrightBlueGray501, height: getSize(10), width: getSize(10))
-                                                                    //               ]))
-                                                                    //         ]))
+                                                                  ]))),
+                                                      Align(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Padding(
+                                                              padding:
+                                                                  getPadding(
+                                                                      left: 24,
+                                                                      top: 27,
+                                                                      right:
+                                                                          24),
+                                                              child: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Text(
+                                                                        "Surface",
+                                                                        overflow:
+                                                                            TextOverflow
+                                                                                .ellipsis,
+                                                                        textAlign:
+                                                                            TextAlign
+                                                                                .left,
+                                                                        style: AppStyle
+                                                                            .txtManropeExtraBold16Gray900
+                                                                            .copyWith(letterSpacing: getHorizontalSize(0.2))),
+                                                                    Padding(
+                                                                      padding: getPadding(
+                                                                          bottom:
+                                                                              1),
+                                                                      child: Obx(
+                                                                          () =>
+                                                                              Text('De ${filterController.rangeSurface.value.start.round()} à ${filterController.rangeSurface.value.end.round()} m²')),
+                                                                    )
+                                                                  ])
+                                                                )
+                                                            ),
+                                                      Align(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Container(
+                                                              height:
+                                                                  getVerticalSize(
+                                                                      24),
+                                                              width:
+                                                                  getHorizontalSize(
+                                                                      327),
+                                                              margin: getMargin(
+                                                                  top: 22),
+                                                              child: Stack(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Align(
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .bottomCenter,
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            getPadding(bottom: 7),
+                                                                        // child: SizedBox(width: getHorizontalSize(327), child: Divider(height: getVerticalSize(3), thickness: getVerticalSize(3), color: ColorConstant.gray300)))
+                                                                        child: Obx(() =>
+                                                                            RangeSlider(
+                                                                              values: filterController.rangeSurface.value,
+                                                                              min: 0,
+                                                                              max: 500,
+                                                                              divisions: 50,
+                                                                              labels: RangeLabels(
+                                                                                filterController.rangeSurface.value.start.toStringAsFixed(0),
+                                                                                filterController.rangeSurface.value.end.toStringAsFixed(0),
+                                                                              ),
+                                                                              onChanged: (RangeValues values) {
+                                                                                filterController.onRangeSurfaceChanged(values);
+                                                                              },
+                                                                            )),
+                                                                      ),
+                                                                    )
+
                                                                   ]))),
                                                       Padding(
                                                           padding: getPadding(
                                                               left: 24,
                                                               top: 25),
                                                           child: Text(
-                                                              "lbl_features".tr,
+                                                              "Options",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -448,7 +489,8 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       top: 20,
                                                                       right:
                                                                           24),
-                                                              child: Obx(() => ListView
+                                                              child: Obx(() => 
+                                                              ListView
                                                                   .separated(
                                                                       physics:
                                                                           NeverScrollableScrollPhysics(),
@@ -464,25 +506,28 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                       itemCount: filterController
                                                                           .filterModelObj
                                                                           .value
-                                                                          .listbedsItemList
+                                                                          .listMoreLessItemList
                                                                           .length,
                                                                       itemBuilder:
                                                                           (context,
                                                                               index) {
-                                                                        ListbedsItemModel model = filterController
+                                                                        LessMoreItemModel model = filterController
                                                                             .filterModelObj
                                                                             .value
-                                                                            .listbedsItemList[index];
-                                                                        return ListbedsItemWidget(
+                                                                            .listMoreLessItemList[index];
+                                                                        return ListLessMoreItemWidget(
                                                                             model);
-                                                                      })))),
+                                                                      })
+                                                              // Row(children: [
+                                                              //   ListLessMoreItemWidget(LessMoreItemModel("Nb pieces", 0, 0))
+                                                              // ],)
+                                                              ))),
                                                       Padding(
                                                           padding: getPadding(
                                                               left: 24,
                                                               top: 27),
                                                           child: Text(
-                                                              "lbl_property_facts"
-                                                                  .tr,
+                                                              "Energie",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -500,8 +545,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                               left: 24,
                                                               top: 17),
                                                           child: Text(
-                                                              "lbl_square_feet"
-                                                                  .tr,
+                                                              "DPE",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -545,11 +589,11 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         items: filterController
                                                                             .filterModelObj
                                                                             .value
-                                                                            .dropdownItemList,
+                                                                            .dropdownItemListDPEMin,
                                                                         onChanged:
                                                                             (value) {
                                                                           filterController
-                                                                              .onSelected(value);
+                                                                              .onSelectedDPEMin(value);
                                                                         }),
                                                                     CustomImageView(
                                                                         svgPath:
@@ -589,11 +633,11 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         items: filterController
                                                                             .filterModelObj
                                                                             .value
-                                                                            .dropdownItemList1,
+                                                                            .dropdownItemListDPEMax,
                                                                         onChanged:
                                                                             (value) {
                                                                           filterController
-                                                                              .onSelected1(value);
+                                                                              .onSelectedDPEMax(value);
                                                                         })
                                                                   ]))),
                                                       Padding(
@@ -601,7 +645,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                               left: 24,
                                                               top: 16),
                                                           child: Text(
-                                                              "lbl_lot_size".tr,
+                                                              "GES",
                                                               overflow:
                                                                   TextOverflow
                                                                       .ellipsis,
@@ -645,11 +689,11 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         items: filterController
                                                                             .filterModelObj
                                                                             .value
-                                                                            .dropdownItemList2,
+                                                                            .dropdownItemGESMin,
                                                                         onChanged:
                                                                             (value) {
                                                                           filterController
-                                                                              .onSelected2(value);
+                                                                              .onSelectedGESMin(value);
                                                                         }),
                                                                     CustomImageView(
                                                                         svgPath:
@@ -689,71 +733,20 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                         items: filterController
                                                                             .filterModelObj
                                                                             .value
-                                                                            .dropdownItemList3,
+                                                                            .dropdownItemGESMax,
                                                                         onChanged:
                                                                             (value) {
                                                                           filterController
-                                                                              .onSelected3(value);
+                                                                              .onSelectedGESMax(value);
                                                                         })
                                                                   ]))),
-                                                      Padding(
-                                                          padding: getPadding(
-                                                              left: 24,
-                                                              top: 27),
-                                                          child: Text(
-                                                              "lbl_property_type"
-                                                                  .tr,
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .left,
-                                                              style: AppStyle
-                                                                  .txtManropeExtraBold16Gray900
-                                                                  .copyWith(
-                                                                      letterSpacing:
-                                                                          getHorizontalSize(
-                                                                              0.2)))),
-                                                      Align(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          child: Padding(
-                                                              padding:
-                                                                  getPadding(
-                                                                      top: 14),
-                                                              child: Wrap(
-                                                                  runSpacing:
-                                                                      getVerticalSize(
-                                                                          5),
-                                                                  spacing:
-                                                                      getHorizontalSize(
-                                                                          5),
-                                                                  children: List<
-                                                                          Widget>.generate(
-                                                                      filterController
-                                                                          .filterModelObj
-                                                                          .value
-                                                                          .chipviewhomeItemList
-                                                                          .length,
-                                                                      (index) {
-                                                                    ChipviewhomeItemModel
-                                                                        model =
-                                                                        filterController
-                                                                            .filterModelObj
-                                                                            .value
-                                                                            .chipviewhomeItemList[index];
-                                                                    return ChipviewhomeItemWidget(
-                                                                        model);
-                                                                  })))),
                                                       Padding(
                                                           padding: getPadding(
                                                               left: 24,
                                                               top: 25),
                                                           child: Row(children: [
                                                             Text(
-                                                                "lbl_amenities"
-                                                                    .tr,
+                                                                "Options",
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
@@ -934,4 +927,6 @@ class FilterScreen extends GetWidget<FilterController> {
   onTapBtnClose() {
     Get.back();
   }
+
+
 }

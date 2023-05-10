@@ -8,7 +8,7 @@ final Map<String, String> enUs = {
   "lbl_jul": "JUL",
   "lbl_4k": "\$4k",
   "lbl_i_m_not_sure": "I’m not sure",
-  "lbl_for_sale": "For Sale",
+  "lbl_home": "Home",
   "msg_security_deposi": "Security Deposit",
   "lbl_4_600_00": "\$4,600.00",
   "msg_associate_capit":
@@ -471,7 +471,7 @@ final Map<String, String> enUs = {
   "msg_360_stillwater": "360 Stillwater Rd...",
   "msg_modetate_wate": "Modetate - Water stress expected to  be 5% in 2050",
   "msg_of_course_see": "Of course, see you on Sunday!",
-  "lbl_for_rent": "For Rent",
+  "lbl_appartment": "Appartment",
   "msg_you_already_hav2": "You already have an account?",
   "msg_this_helps_your":
       "This helps your agent prepare the most accurate home estimate",

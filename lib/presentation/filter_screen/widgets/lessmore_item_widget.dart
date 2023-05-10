@@ -1,13 +1,14 @@
+import 'package:immo_scanner/presentation/filter_screen/models/lessMoreCounter_item_model.dart';
+
 import '../controller/filter_controller.dart';
-import '../models/listbeds_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
-class ListbedsItemWidget extends StatelessWidget {
-  ListbedsItemWidget(this.listbedsItemModelObj);
+class ListLessMoreItemWidget extends StatelessWidget {
+  ListLessMoreItemWidget(this.listLessMoreItemModelObj);
 
-  ListbedsItemModel listbedsItemModelObj;
+  LessMoreItemModel listLessMoreItemModelObj;
 
   var controller = Get.find<FilterController>();
 
@@ -24,7 +25,7 @@ class ListbedsItemWidget extends StatelessWidget {
             ),
             child: Obx(
               () => Text(
-                listbedsItemModelObj.bedsTxt.value,
+                listLessMoreItemModelObj.titleTxt.value,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtManropeMedium16.copyWith(
@@ -36,13 +37,16 @@ class ListbedsItemWidget extends StatelessWidget {
             ),
           ),
           Spacer(),
-          CustomImageView(
-            svgPath: ImageConstant.imgClock24x24,
-            height: getSize(
-              24,
-            ),
-            width: getSize(
-              24,
+          InkWell(
+            onTap: () => controller.onLessMoreItemMinus(listLessMoreItemModelObj),
+            child: CustomImageView(
+              svgPath: ImageConstant.imgClock24x24,
+              height: getSize(
+                24,
+              ),
+              width: getSize(
+                24,
+              ),
             ),
           ),
           Padding(
@@ -52,7 +56,7 @@ class ListbedsItemWidget extends StatelessWidget {
             ),
             child: Obx(
               () => Text(
-                listbedsItemModelObj.fourTxt.value,
+                listLessMoreItemModelObj.valueTxt.value,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtManropeExtraBold16Gray900.copyWith(
@@ -63,16 +67,19 @@ class ListbedsItemWidget extends StatelessWidget {
               ),
             ),
           ),
-          CustomImageView(
-            svgPath: ImageConstant.imgPlus1,
-            height: getSize(
-              24,
-            ),
-            width: getSize(
-              24,
-            ),
-            margin: getMargin(
-              left: 15,
+          InkWell(
+            onTap: () => controller.onLessMoreItemPlus(listLessMoreItemModelObj),
+            child: CustomImageView(
+              svgPath: ImageConstant.imgPlus1,
+              height: getSize(
+                24,
+              ),
+              width: getSize(
+                24,
+              ),
+              margin: getMargin(
+                left: 15,
+              ),
             ),
           ),
         ],
