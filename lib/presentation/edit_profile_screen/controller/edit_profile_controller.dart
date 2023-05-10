@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/data/models/me/get_me_resp.dart';
-import 'package:immo_scanner/data/apiClient/asset_manager_api_client.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class EditProfileController extends GetxController {

@@ -1,11 +1,8 @@
 import 'package:immo_scanner/presentation/filter_screen/widgets/lessmore_item_widget.dart';
-import 'package:immo_scanner/widgets/custom_range_slider.dart';
 
-import '../filter_screen/widgets/chipviewhome_item_widget.dart';
 import '../filter_screen/widgets/listimg_item_widget.dart';
 import '../filter_screen/widgets/options2_item_widget.dart';
 import 'controller/filter_controller.dart';
-import 'models/chipviewhome_item_model.dart';
 import 'models/lessMoreCounter_item_model.dart';
 import 'models/listimg_item_model.dart';
 import 'models/options2_item_model.dart';
@@ -15,10 +12,6 @@ import 'package:immo_scanner/presentation/home_page/home_page.dart';
 import 'package:immo_scanner/presentation/home_search_page/home_search_page.dart';
 import 'package:immo_scanner/presentation/my_home_page/my_home_page.dart';
 import 'package:immo_scanner/presentation/profile_page/profile_page.dart';
-import 'package:immo_scanner/widgets/app_bar/appbar_iconbutton_3.dart';
-import 'package:immo_scanner/widgets/app_bar/appbar_image.dart';
-import 'package:immo_scanner/widgets/app_bar/appbar_subtitle_2.dart';
-import 'package:immo_scanner/widgets/app_bar/custom_app_bar.dart';
 import 'package:immo_scanner/widgets/custom_bottom_bar.dart';
 import 'package:immo_scanner/widgets/custom_button.dart';
 import 'package:immo_scanner/widgets/custom_drop_down.dart';

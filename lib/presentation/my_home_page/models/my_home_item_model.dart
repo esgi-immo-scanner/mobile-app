@@ -1,3 +1,4 @@
-import 'package:get/get.dart';class MyHomeItemModel {String? id = "";
 
- }
+class MyHomeItemModel {
+  String? id = "";
+}

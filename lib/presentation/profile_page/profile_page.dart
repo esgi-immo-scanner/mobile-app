@@ -4,7 +4,6 @@ import 'controller/profile_controller.dart';
 import 'models/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
-import 'package:immo_scanner/widgets/app_bar/appbar_iconbutton_1.dart';
 import 'package:immo_scanner/widgets/app_bar/appbar_subtitle.dart';
 import 'package:immo_scanner/widgets/app_bar/custom_app_bar.dart';
 import 'package:immo_scanner/widgets/custom_icon_button.dart';

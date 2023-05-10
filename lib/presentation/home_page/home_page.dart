@@ -4,7 +4,6 @@ import 'models/home_item_model.dart';
 import 'models/home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
-import 'package:immo_scanner/widgets/app_bar/appbar_dropdown.dart';
 import 'package:immo_scanner/widgets/app_bar/appbar_iconbutton.dart';
 import 'package:immo_scanner/widgets/app_bar/appbar_image.dart';
 import 'package:immo_scanner/widgets/app_bar/appbar_subtitle_2.dart';

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

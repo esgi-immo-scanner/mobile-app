@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:immo_scanner/core/app_export.dart';
 import 'package:immo_scanner/data/models/me/get_me_resp.dart';
 import 'package:immo_scanner/presentation/home_page/models/home_model.dart';

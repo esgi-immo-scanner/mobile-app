@@ -4,10 +4,8 @@ import 'models/my_home_item_model.dart';
 import 'models/my_home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:immo_scanner/core/app_export.dart';
-import 'package:immo_scanner/widgets/app_bar/appbar_iconbutton_1.dart';
 import 'package:immo_scanner/widgets/app_bar/appbar_subtitle.dart';
 import 'package:immo_scanner/widgets/app_bar/custom_app_bar.dart';
-import 'package:immo_scanner/widgets/custom_button.dart';
 
 // ignore_for_file: must_be_immutable
 class MyHomePage extends StatelessWidget {
