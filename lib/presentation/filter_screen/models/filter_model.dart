@@ -13,11 +13,11 @@ class FilterModel {
       [
     LessMoreItemModel(
       "Nombre chambres",
-      "2",
+      "0",
       "chambres"),
     LessMoreItemModel(
       "Nombre pièces",
-      "2",
+      "0",
       "pieces"),
       ].obs;
 

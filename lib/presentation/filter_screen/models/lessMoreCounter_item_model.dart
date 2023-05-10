@@ -7,9 +7,10 @@ class LessMoreItemModel {
     this.titleTxt.value = titleTxt;
     this.valueTxt.value = valueTxt;
     id = id;
+
   }
 
-  Rx<String> iconMoins = Rx(ImageConstant.imgClock24x24Blue);
+  Rx<String> iconMoins = Rx(ImageConstant.imgClock24x24);
 
 
   Rx<String> titleTxt = Rx("Title");

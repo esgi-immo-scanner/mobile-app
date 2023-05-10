@@ -57,7 +57,6 @@ class FilterScreen extends GetWidget<FilterController> {
                   width: size.width,
                   child: SingleChildScrollView(
                       child: Container(
-                          height: getVerticalSize(1123),
                           width: double.maxFinite,
                           child: Stack(alignment: Alignment.center, children: [
                             // Align(
@@ -565,7 +564,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                           MainAxisAlignment
                                                                               .center,
                                                                       children: [
-                                                                        CustomDropDown(
+                                                                         Obx(() => CustomDropDown(
                                                                             width: getHorizontalSize(
                                                                                 139),
                                                                             focusNode:
@@ -590,7 +589,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 (value) {
                                                                               filterController
                                                                                   .onSelectedDPEMin(value);
-                                                                            }),
+                                                                            })),
                                                                         CustomImageView(
                                                                             svgPath:
                                                                                 ImageConstant
@@ -606,7 +605,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                     15,
                                                                                 bottom:
                                                                                     14)),
-                                                                        CustomDropDown(
+                                                                        Obx(() => CustomDropDown(
                                                                             width: getHorizontalSize(
                                                                                 139),
                                                                             focusNode:
@@ -634,7 +633,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 (value) {
                                                                               filterController
                                                                                   .onSelectedDPEMax(value);
-                                                                            })
+                                                                            }))
                                                                       ]))),
                                                           Padding(
                                                               padding: getPadding(
@@ -665,7 +664,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                           MainAxisAlignment
                                                                               .center,
                                                                       children: [
-                                                                        CustomDropDown(
+                                                                        Obx(() => CustomDropDown(
                                                                             width: getHorizontalSize(
                                                                                 139),
                                                                             focusNode:
@@ -690,7 +689,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 (value) {
                                                                               filterController
                                                                                   .onSelectedGESMin(value);
-                                                                            }),
+                                                                            })),
                                                                         CustomImageView(
                                                                             svgPath:
                                                                                 ImageConstant
@@ -706,7 +705,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                     15,
                                                                                 bottom:
                                                                                     14)),
-                                                                        CustomDropDown(
+                                                                        Obx(() => CustomDropDown(
                                                                             width: getHorizontalSize(
                                                                                 139),
                                                                             focusNode:
@@ -734,7 +733,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 (value) {
                                                                               filterController
                                                                                   .onSelectedGESMax(value);
-                                                                            })
+                                                                            }))
                                                                       ]))),
                                                           Padding(
                                                               padding: getPadding(
