@@ -332,6 +332,7 @@ class ImageConstant {
       'assets/images/img_rectangle361_100x100.png';
 
   static String imgClock24x24 = 'assets/images/img_clock_24x24.svg';
+  static String imgClock24x24Blue = 'assets/images/img_clock_24x24_blue.svg';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
 }

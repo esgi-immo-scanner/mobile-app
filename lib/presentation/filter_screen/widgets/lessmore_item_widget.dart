@@ -39,15 +39,15 @@ class ListLessMoreItemWidget extends StatelessWidget {
           Spacer(),
           InkWell(
             onTap: () => controller.onLessMoreItemMinus(listLessMoreItemModelObj),
-            child: CustomImageView(
-              svgPath: ImageConstant.imgClock24x24,
+            child: Obx(() => CustomImageView(
+              svgPath: listLessMoreItemModelObj.iconMoins.value,
               height: getSize(
                 24,
               ),
               width: getSize(
                 24,
               ),
-            ),
+            ),),
           ),
           Padding(
             padding: getPadding(
