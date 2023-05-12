@@ -24,39 +24,19 @@ class AssetManagerAssetRecoverApi {
   ///
   /// Parameters:
   ///
-  /// * [String] accept:
-  ///
-  /// * [String] country:
-  ///
-  /// * [String] region:
-  ///
-  /// * [String] department:
-  Future<Response> makeScrappingWithHttpInfo({ String? accept, String? country, String? region, String? department, }) async {
+  /// * [MakeRecoverAssetsByGeoZoneRequest] makeRecoverAssetsByGeoZoneRequest (required):
+  Future<Response> makeRecoverAssetsByGeoZoneWithHttpInfo(MakeRecoverAssetsByGeoZoneRequest makeRecoverAssetsByGeoZoneRequest,) async {
     // ignore: prefer_const_declarations
-    final path = r'/asset-manager/asset/recover/scrapping';
+    final path = r'/asset-manager/asset/recover';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = makeRecoverAssetsByGeoZoneRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (country != null) {
-      queryParams.addAll(_queryParams('', 'country', country));
-    }
-    if (region != null) {
-      queryParams.addAll(_queryParams('', 'region', region));
-    }
-    if (department != null) {
-      queryParams.addAll(_queryParams('', 'department', department));
-    }
-
-    if (accept != null) {
-      headerParams[r'Accept'] = parameterToString(accept);
-    }
-
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -76,15 +56,9 @@ class AssetManagerAssetRecoverApi {
   ///
   /// Parameters:
   ///
-  /// * [String] accept:
-  ///
-  /// * [String] country:
-  ///
-  /// * [String] region:
-  ///
-  /// * [String] department:
-  Future<List<Asset>?> makeScrapping({ String? accept, String? country, String? region, String? department, }) async {
-    final response = await makeScrappingWithHttpInfo( accept: accept, country: country, region: region, department: department, );
+  /// * [MakeRecoverAssetsByGeoZoneRequest] makeRecoverAssetsByGeoZoneRequest (required):
+  Future<List<Asset>?> makeRecoverAssetsByGeoZone(MakeRecoverAssetsByGeoZoneRequest makeRecoverAssetsByGeoZoneRequest,) async {
+    final response = await makeRecoverAssetsByGeoZoneWithHttpInfo(makeRecoverAssetsByGeoZoneRequest,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

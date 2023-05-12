@@ -42,7 +42,10 @@ x-postman-script: |-
 security:
   - bearerAuth: []
 servers:
+  - url: http://esgi-immo-scanner.paas-loic-404.online/api
+    description: Production server
   - url: http://localhost:3001/api
+    description: Local server
 tags:
   - name: asset-manager > geozones
   - name: asset-manager > asset
@@ -246,7 +249,6 @@ paths:
         content:
           application/json:
             schema:
-              type: object
               $ref: '#/components/schemas/GeoZone'
             example:
               id: <string>
@@ -263,46 +265,11 @@ paths:
 
   /asset-manager/asset/recover:
     post:
-      summary: MakeRecover
-      operationId: makeRecoverAssetByGeoZone
-      description: Root command that lauch all scraping and db persist process
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  geo_zone:
-                    type: string
-                    description: The Name of the geo zone for which the asset should be recovered.
-                    example: "12345"
-                  assets:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Asset'
-              example:
-                - id: 1
-                - id: 2
-        400:
-          description: Auth Error
-          headers:
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-                properties:
-                  slug:
-                    type: string
-                    example: unable-to-get-jwt
-        500:
-          description: Internal Server Error
-          headers:
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
+      tags:
+        - asset-manager > asset > recover
+      summary: Make Scrapping
+      operationId: makeRecoverAssetsByGeoZone
+      description: Make scraping from lobstrio
       requestBody:
         required: true
         content:
@@ -310,39 +277,11 @@ paths:
             schema:
               type: object
               properties:
-                geo_zone:
+                geozone_name:
                   type: string
-                  description: The Name of the geo zone for which the asset should be recovered.
-                  example: "12345"
-
-  /asset-manager/asset/recover/scrapping:
-    post:
-      tags:
-        - asset-manager > asset > recover
-      summary: Make Scrapping
-      operationId: makeScrapping
-      description: Make scraping from lobstrio
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: country
-          in: query
-          schema:
-            type: string
-          example: <string>
-        - name: region
-          in: query
-          schema:
-            type: string
-          example: <string>
-        - name: department
-          in: query
-          schema:
-            type: string
-          example: <string>
+            example: {
+              geozone_name: ain
+            }
       responses:
         '200':
           description: OK
@@ -696,7 +635,7 @@ paths:
                   urgent: 'False'
                   collected_at: '2023-04-11 10'
 
-  /asset-manager/assets/search:
+  /asset-manager/asset/search:
     get:
       summary: Search assets
       description: Search for assets based on various criteria such as geo zone, price, rooms, and surface.
@@ -771,7 +710,7 @@ paths:
           description: The sorting order
           required: false
           schema:
-            default: Id desc
+            default: Id+desc
             type: string
         - name: ids
           in: query
@@ -787,7 +726,6 @@ paths:
           content:
             application/json:
               schema:
-                type: object
                 $ref: '#/components/schemas/AssetPagination'
         '400':
           description: Bad request

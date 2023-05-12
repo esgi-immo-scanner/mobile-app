@@ -11,7 +11,7 @@
 part of asset_manager.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://localhost:3001/api', this.authentication,});
+  ApiClient({this.basePath = 'http://esgi-immo-scanner.paas-loic-404.online/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -191,10 +191,8 @@ class ApiClient {
           return Details.fromJson(value);
         case 'GeoZone':
           return GeoZone.fromJson(value);
-        case 'MakeRecoverAssetByGeoZone200Response':
-          return MakeRecoverAssetByGeoZone200Response.fromJson(value);
-        case 'MakeRecoverAssetByGeoZoneRequest':
-          return MakeRecoverAssetByGeoZoneRequest.fromJson(value);
+        case 'MakeRecoverAssetsByGeoZoneRequest':
+          return MakeRecoverAssetsByGeoZoneRequest.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

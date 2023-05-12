@@ -5,7 +5,7 @@
 import 'package:bookmarks/api.dart';
 ```
 
-All URIs are relative to *http://localhost:3003/api*
+All URIs are relative to *http://esgi-immo-scanner.paas-loic-404.online/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

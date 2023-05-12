@@ -43,6 +43,8 @@ security:
   - bearerAuth: []
 
 servers:
+  - url: http://esgi-immo-scanner.paas-loic-404.online/api
+    description: Production server
   - url: http://localhost:3002/api
     description: Local server
 

@@ -5,13 +5,12 @@
 import 'package:asset_manager/api.dart';
 ```
 
-All URIs are relative to *http://localhost:3001/api*
+All URIs are relative to *http://esgi-immo-scanner.paas-loic-404.online/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**assetIdentifySelled**](DefaultApi.md#assetidentifyselled) | **POST** /asset-manager/asset/identify-selled | IdentifySelled
-[**makeRecoverAssetByGeoZone**](DefaultApi.md#makerecoverassetbygeozone) | **POST** /asset-manager/asset/recover | MakeRecover
-[**searchAssets**](DefaultApi.md#searchassets) | **GET** /asset-manager/assets/search | Search assets
+[**searchAssets**](DefaultApi.md#searchassets) | **GET** /asset-manager/asset/search | Search assets
 
 
 # **assetIdentifySelled**
@@ -55,55 +54,6 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **makeRecoverAssetByGeoZone**
-> MakeRecoverAssetByGeoZone200Response makeRecoverAssetByGeoZone(makeRecoverAssetByGeoZoneRequest)
-
-MakeRecover
-
-Root command that lauch all scraping and db persist process
-
-### Example
-```dart
-import 'package:asset_manager/api.dart';
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
-
-final api_instance = DefaultApi();
-final makeRecoverAssetByGeoZoneRequest = MakeRecoverAssetByGeoZoneRequest(); // MakeRecoverAssetByGeoZoneRequest | 
-
-try {
-    final result = api_instance.makeRecoverAssetByGeoZone(makeRecoverAssetByGeoZoneRequest);
-    print(result);
-} catch (e) {
-    print('Exception when calling DefaultApi->makeRecoverAssetByGeoZone: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **makeRecoverAssetByGeoZoneRequest** | [**MakeRecoverAssetByGeoZoneRequest**](MakeRecoverAssetByGeoZoneRequest.md)|  | 
-
-### Return type
-
-[**MakeRecoverAssetByGeoZone200Response**](MakeRecoverAssetByGeoZone200Response.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -159,7 +109,7 @@ Name | Type | Description  | Notes
  **maxSurface** | **int**| Maximum surface for assets | [optional] 
  **limit** | **int**| The maximum number of items to return | [optional] [default to 10]
  **page** | **int**| The page number to return | [optional] [default to 1]
- **sort** | **String**| The sorting order | [optional] [default to 'Id desc']
+ **sort** | **String**| The sorting order | [optional] [default to 'Id+desc']
  **ids** | [**List<String>**](String.md)| The ids of the assets to return (taking priority on other criteria) | [optional] [default to const []]
 
 ### Return type

@@ -60,7 +60,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3002/api*
+All URIs are relative to *http://esgi-immo-scanner.paas-loic-404.online/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

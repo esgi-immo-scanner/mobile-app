@@ -67,62 +67,6 @@ class DefaultApi {
     return null;
   }
 
-  /// MakeRecover
-  ///
-  /// Root command that lauch all scraping and db persist process
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [MakeRecoverAssetByGeoZoneRequest] makeRecoverAssetByGeoZoneRequest (required):
-  Future<Response> makeRecoverAssetByGeoZoneWithHttpInfo(MakeRecoverAssetByGeoZoneRequest makeRecoverAssetByGeoZoneRequest,) async {
-    // ignore: prefer_const_declarations
-    final path = r'/asset-manager/asset/recover';
-
-    // ignore: prefer_final_locals
-    Object? postBody = makeRecoverAssetByGeoZoneRequest;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['application/json'];
-
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// MakeRecover
-  ///
-  /// Root command that lauch all scraping and db persist process
-  ///
-  /// Parameters:
-  ///
-  /// * [MakeRecoverAssetByGeoZoneRequest] makeRecoverAssetByGeoZoneRequest (required):
-  Future<MakeRecoverAssetByGeoZone200Response?> makeRecoverAssetByGeoZone(MakeRecoverAssetByGeoZoneRequest makeRecoverAssetByGeoZoneRequest,) async {
-    final response = await makeRecoverAssetByGeoZoneWithHttpInfo(makeRecoverAssetByGeoZoneRequest,);
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'MakeRecoverAssetByGeoZone200Response',) as MakeRecoverAssetByGeoZone200Response;
-    
-    }
-    return null;
-  }
-
   /// Search assets
   ///
   /// Search for assets based on various criteria such as geo zone, price, rooms, and surface.
@@ -165,7 +109,7 @@ class DefaultApi {
   ///   The ids of the assets to return (taking priority on other criteria)
   Future<Response> searchAssetsWithHttpInfo({ String? geoZone, double? minPrice, double? maxPrice, int? minRooms, int? maxRooms, int? minSurface, int? maxSurface, int? limit, int? page, String? sort, List<String>? ids, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/asset-manager/assets/search';
+    final path = r'/asset-manager/asset/search';
 
     // ignore: prefer_final_locals
     Object? postBody;

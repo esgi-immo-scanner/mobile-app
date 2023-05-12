@@ -12,8 +12,7 @@ doc/AssetPagination.md
 doc/DefaultApi.md
 doc/Details.md
 doc/GeoZone.md
-doc/MakeRecoverAssetByGeoZone200Response.md
-doc/MakeRecoverAssetByGeoZoneRequest.md
+doc/MakeRecoverAssetsByGeoZoneRequest.md
 git_push.sh
 lib/api.dart
 lib/api/asset_manager_asset_api.dart
@@ -34,6 +33,6 @@ lib/model/asset_create_or_update200_response.dart
 lib/model/asset_pagination.dart
 lib/model/details.dart
 lib/model/geo_zone.dart
-lib/model/make_recover_asset_by_geo_zone200_response.dart
-lib/model/make_recover_asset_by_geo_zone_request.dart
+lib/model/make_recover_assets_by_geo_zone_request.dart
 pubspec.yaml
+test/make_recover_assets_by_geo_zone_request_test.dart

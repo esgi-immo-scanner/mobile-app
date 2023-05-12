@@ -5,15 +5,15 @@
 import 'package:asset_manager/api.dart';
 ```
 
-All URIs are relative to *http://localhost:3001/api*
+All URIs are relative to *http://esgi-immo-scanner.paas-loic-404.online/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**makeScrapping**](AssetManagerAssetRecoverApi.md#makescrapping) | **POST** /asset-manager/asset/recover/scrapping | Make Scrapping
+[**makeRecoverAssetsByGeoZone**](AssetManagerAssetRecoverApi.md#makerecoverassetsbygeozone) | **POST** /asset-manager/asset/recover | Make Scrapping
 
 
-# **makeScrapping**
-> List<Asset> makeScrapping(accept, country, region, department)
+# **makeRecoverAssetsByGeoZone**
+> List<Asset> makeRecoverAssetsByGeoZone(makeRecoverAssetsByGeoZoneRequest)
 
 Make Scrapping
 
@@ -30,16 +30,13 @@ import 'package:asset_manager/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = AssetManagerAssetRecoverApi();
-final accept = application/json; // String | 
-final country = <string>; // String | 
-final region = <string>; // String | 
-final department = <string>; // String | 
+final makeRecoverAssetsByGeoZoneRequest = MakeRecoverAssetsByGeoZoneRequest(); // MakeRecoverAssetsByGeoZoneRequest | 
 
 try {
-    final result = api_instance.makeScrapping(accept, country, region, department);
+    final result = api_instance.makeRecoverAssetsByGeoZone(makeRecoverAssetsByGeoZoneRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling AssetManagerAssetRecoverApi->makeScrapping: $e\n');
+    print('Exception when calling AssetManagerAssetRecoverApi->makeRecoverAssetsByGeoZone: $e\n');
 }
 ```
 
@@ -47,10 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **accept** | **String**|  | [optional] 
- **country** | **String**|  | [optional] 
- **region** | **String**|  | [optional] 
- **department** | **String**|  | [optional] 
+ **makeRecoverAssetsByGeoZoneRequest** | [**MakeRecoverAssetsByGeoZoneRequest**](MakeRecoverAssetsByGeoZoneRequest.md)|  | 
 
 ### Return type
 
@@ -62,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

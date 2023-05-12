@@ -61,18 +61,17 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:3001/api*
+All URIs are relative to *http://esgi-immo-scanner.paas-loic-404.online/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssetManagerAssetApi* | [**assetFind**](doc//AssetManagerAssetApi.md#assetfind) | **GET** /asset-manager/asset | FindAsset
 *AssetManagerAssetCreateOrUpdateApi* | [**assetCreateOrUpdate**](doc//AssetManagerAssetCreateOrUpdateApi.md#assetcreateorupdate) | **POST** /asset-manager/asset/save | CreateOrUpdate
-*AssetManagerAssetRecoverApi* | [**makeScrapping**](doc//AssetManagerAssetRecoverApi.md#makescrapping) | **POST** /asset-manager/asset/recover/scrapping | Make Scrapping
+*AssetManagerAssetRecoverApi* | [**makeRecoverAssetsByGeoZone**](doc//AssetManagerAssetRecoverApi.md#makerecoverassetsbygeozone) | **POST** /asset-manager/asset/recover | Make Scrapping
 *AssetManagerGeozonesApi* | [**browseGeoZones**](doc//AssetManagerGeozonesApi.md#browsegeozones) | **GET** /asset-manager/geozones/browse | browse
 *AssetManagerGeozonesApi* | [**createGeoZones**](doc//AssetManagerGeozonesApi.md#creategeozones) | **POST** /asset-manager/geozones | create
 *DefaultApi* | [**assetIdentifySelled**](doc//DefaultApi.md#assetidentifyselled) | **POST** /asset-manager/asset/identify-selled | IdentifySelled
-*DefaultApi* | [**makeRecoverAssetByGeoZone**](doc//DefaultApi.md#makerecoverassetbygeozone) | **POST** /asset-manager/asset/recover | MakeRecover
-*DefaultApi* | [**searchAssets**](doc//DefaultApi.md#searchassets) | **GET** /asset-manager/assets/search | Search assets
+*DefaultApi* | [**searchAssets**](doc//DefaultApi.md#searchassets) | **GET** /asset-manager/asset/search | Search assets
 
 
 ## Documentation For Models
@@ -82,8 +81,7 @@ Class | Method | HTTP request | Description
  - [AssetPagination](doc//AssetPagination.md)
  - [Details](doc//Details.md)
  - [GeoZone](doc//GeoZone.md)
- - [MakeRecoverAssetByGeoZone200Response](doc//MakeRecoverAssetByGeoZone200Response.md)
- - [MakeRecoverAssetByGeoZoneRequest](doc//MakeRecoverAssetByGeoZoneRequest.md)
+ - [MakeRecoverAssetsByGeoZoneRequest](doc//MakeRecoverAssetsByGeoZoneRequest.md)
 
 
 ## Documentation For Authorization

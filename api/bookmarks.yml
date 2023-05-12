@@ -42,8 +42,10 @@ x-postman-script: |-
 security:
   - bearerAuth: []
 servers:
+  - url: http://esgi-immo-scanner.paas-loic-404.online/api
+    description: Production server
   - url: http://localhost:3003/api
-
+    description: Local server
 paths:
   /bookmarks/make:
     post:

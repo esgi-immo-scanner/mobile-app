@@ -11,7 +11,7 @@
 part of bookmarks.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://localhost:3003/api', this.authentication,});
+  ApiClient({this.basePath = 'http://esgi-immo-scanner.paas-loic-404.online/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
