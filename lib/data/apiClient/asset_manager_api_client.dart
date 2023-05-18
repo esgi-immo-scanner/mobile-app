@@ -2,7 +2,7 @@ import 'package:asset_manager/api.dart';
 import 'package:immo_scanner/core/app_export.dart';
 
 class AssetManagerClient extends GetConnect {
-  var client = DefaultApi(ApiClient(authentication: HttpBearerAuth(), basePath: "https://274a0ab22b53c8.lhr.life/api"));
+  var client = DefaultApi(ApiClient(authentication: HttpBearerAuth()));
 
   @override
   void onInit() {
