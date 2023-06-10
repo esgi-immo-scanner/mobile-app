@@ -51,6 +51,7 @@ class Asset {
     this.title,
     this.urgent,
     this.url,
+    this.geozone,
   });
 
   ///
@@ -333,6 +334,14 @@ class Asset {
   ///
   String? url;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GeoZone? geozone;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Asset &&
      other.id == id &&
@@ -372,7 +381,8 @@ class Asset {
      other.scrapingTime == scrapingTime &&
      other.title == title &&
      other.urgent == urgent &&
-     other.url == url;
+     other.url == url &&
+     other.geozone == geozone;
 
   @override
   int get hashCode =>
@@ -414,10 +424,11 @@ class Asset {
     (scrapingTime == null ? 0 : scrapingTime!.hashCode) +
     (title == null ? 0 : title!.hashCode) +
     (urgent == null ? 0 : urgent!.hashCode) +
-    (url == null ? 0 : url!.hashCode);
+    (url == null ? 0 : url!.hashCode) +
+    (geozone == null ? 0 : geozone!.hashCode);
 
   @override
-  String toString() => 'Asset[id=$id, object=$object, cluster=$cluster, task=$task, DPE=$DPE, dPEString=$dPEString, GES=$GES, gESString=$gESString, adType=$adType, annonceId=$annonceId, area=$area, associationTime=$associationTime, categoryName=$categoryName, city=$city, currency=$currency, department=$department, description=$description, details=$details, firstPublicationDate=$firstPublicationDate, lastPublicationDate=$lastPublicationDate, lat=$lat, lng=$lng, noSalesmen=$noSalesmen, ownerName=$ownerName, ownerSiren=$ownerSiren, ownerStoreId=$ownerStoreId, ownerType=$ownerType, phone=$phone, pictures=$pictures, postalCode=$postalCode, price=$price, realEstateType=$realEstateType, region=$region, roomCount=$roomCount, scrapingTime=$scrapingTime, title=$title, urgent=$urgent, url=$url]';
+  String toString() => 'Asset[id=$id, object=$object, cluster=$cluster, task=$task, DPE=$DPE, dPEString=$dPEString, GES=$GES, gESString=$gESString, adType=$adType, annonceId=$annonceId, area=$area, associationTime=$associationTime, categoryName=$categoryName, city=$city, currency=$currency, department=$department, description=$description, details=$details, firstPublicationDate=$firstPublicationDate, lastPublicationDate=$lastPublicationDate, lat=$lat, lng=$lng, noSalesmen=$noSalesmen, ownerName=$ownerName, ownerSiren=$ownerSiren, ownerStoreId=$ownerStoreId, ownerType=$ownerType, phone=$phone, pictures=$pictures, postalCode=$postalCode, price=$price, realEstateType=$realEstateType, region=$region, roomCount=$roomCount, scrapingTime=$scrapingTime, title=$title, urgent=$urgent, url=$url, geozone=$geozone]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -611,6 +622,11 @@ class Asset {
     } else {
       json[r'url'] = null;
     }
+    if (this.geozone != null) {
+      json[r'geozone'] = this.geozone;
+    } else {
+      json[r'geozone'] = null;
+    }
     return json;
   }
 
@@ -671,6 +687,7 @@ class Asset {
         title: mapValueOfType<String>(json, r'title'),
         urgent: mapValueOfType<bool>(json, r'urgent'),
         url: mapValueOfType<String>(json, r'url'),
+        geozone: GeoZone.fromJson(json[r'geozone']),
       );
     }
     return null;

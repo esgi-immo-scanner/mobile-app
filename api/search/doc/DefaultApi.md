@@ -5,7 +5,7 @@
 import 'package:search/api.dart';
 ```
 
-All URIs are relative to *http://esgi-immo-scanner.paas-loic-404.online/api*
+All URIs are relative to *https://immo-scanner.enzofoucaud.fr/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -11,7 +11,7 @@
 part of asset_manager.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://esgi-immo-scanner.paas-loic-404.online/api', this.authentication,});
+  ApiClient({this.basePath = 'https://immo-scanner.enzofoucaud.fr/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

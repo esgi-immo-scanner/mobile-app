@@ -42,9 +42,9 @@ x-postman-script: |-
 security:
   - bearerAuth: []
 servers:
-  - url: http://esgi-immo-scanner.paas-loic-404.online/api
+  - url: https://immo-scanner.enzofoucaud.fr/api
     description: Production server
-  - url: http://localhost:3001/api
+  - url: https://localhost:3001/api
     description: Local server
 tags:
   - name: asset-manager > geozones
@@ -175,6 +175,8 @@ components:
           type: boolean
         url:
           type: string
+        geozone:
+          $ref: '#/components/schemas/GeoZone'
       type: object
     Details:
       example:
