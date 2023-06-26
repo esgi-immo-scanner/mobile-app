@@ -58,6 +58,9 @@ class SliderarrowleftItemWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomIconButton(
+                          onTap: () {
+                            Get.back();
+                          },
                           height: 40,
                           width: 40,
                           variant: IconButtonVariant.OutlineGray5066,
@@ -70,7 +73,7 @@ class SliderarrowleftItemWidget extends StatelessWidget {
                           width: 40,
                           variant: IconButtonVariant.OutlineGray5066,
                           child: CustomImageView(
-                            svgPath: ImageConstant.imgCall1,
+                            svgPath: ImageConstant.imgFavorite,
                           ),
                         ),
                       ],
