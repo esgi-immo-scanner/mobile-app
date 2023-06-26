@@ -73,32 +73,32 @@ class HomePage extends StatelessWidget {
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              CustomSearchView(
-                                  focusNode: FocusNode(),
-                                  controller: controller.group34551Controller,
-                                  hintText: "lbl_search".tr,
-                                  prefix: Container(
-                                      margin: getMargin(
-                                          left: 16,
-                                          top: 16,
-                                          right: 12,
-                                          bottom: 16),
-                                      child: CustomImageView(
-                                          svgPath: ImageConstant.imgSearch)),
-                                  prefixConstraints: BoxConstraints(
-                                      maxHeight: getVerticalSize(56)),
-                                  suffix: Container(
-                                      margin: getMargin(
-                                          left: 30,
-                                          top: 16,
-                                          right: 16,
-                                          bottom: 16),
-                                      child: CustomImageView(
-                                          svgPath: ImageConstant.imgSettings)),
-                                  suffixConstraints: BoxConstraints(
-                                      maxHeight: getVerticalSize(56))),
+                              // CustomSearchView(
+                              //     focusNode: FocusNode(),
+                              //     controller: controller.group34551Controller,
+                              //     hintText: "lbl_search".tr,
+                              //     prefix: Container(
+                              //         margin: getMargin(
+                              //             left: 16,
+                              //             top: 16,
+                              //             right: 12,
+                              //             bottom: 16),
+                              //         child: CustomImageView(
+                              //             svgPath: ImageConstant.imgSearch)),
+                              //     prefixConstraints: BoxConstraints(
+                              //         maxHeight: getVerticalSize(56)),
+                              //     suffix: Container(
+                              //         margin: getMargin(
+                              //             left: 30,
+                              //             top: 16,
+                              //             right: 16,
+                              //             bottom: 16),
+                              //         child: CustomImageView(
+                              //             svgPath: ImageConstant.imgSettings)),
+                              //     suffixConstraints: BoxConstraints(
+                              //         maxHeight: getVerticalSize(56))),
                               Padding(
-                                  padding: getPadding(top: 24),
+                                  padding: getPadding(top: 0),
                                   child: Obx(() => ListView.separated(
                                       physics: NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
