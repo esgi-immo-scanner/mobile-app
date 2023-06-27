@@ -1,4 +1,7 @@
+import 'package:asset_manager/api.dart';
+import 'package:bookmarks/api.dart';
 import 'package:immo_scanner/core/app_export.dart';
+import 'package:immo_scanner/data/apiClient/asset_manager_api_client.dart';
 import 'package:immo_scanner/data/models/me/get_me_resp.dart';
 import 'package:immo_scanner/presentation/home_page/models/home_model.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +16,9 @@ class HomeController extends GetxController {
   SelectionPopupModel? selectedDropDownValue;
 
   Profile getMeResp = Profile();
+
+  RxList<Asset> assetList = <Asset>[].obs;
+  RxInt count = 0.obs;
 
   @override
   Future<void> onReady() async {
@@ -37,4 +43,10 @@ class HomeController extends GetxController {
     });
     homeModelObj.value.dropdownItemList.refresh();
   }
+
+  // void _getFav() async {
+  //   // print(await Get.find<AssetManagerClient>().listAsset());
+  //   List<Bookmark>? assetList = await Get.find<FavoritesApi>().userBookmarks();
+    
+  // }
 }

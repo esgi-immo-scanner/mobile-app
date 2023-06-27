@@ -25,7 +25,6 @@ class RecentlyViewsController extends GetxController {
       assetList.add(element);
     }
     count.value = assetPagination.totalRows ?? 0;
-
   }
 
 }
