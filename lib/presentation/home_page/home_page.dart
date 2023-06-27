@@ -54,15 +54,15 @@ class HomePage extends StatelessWidget {
                                 ])),
                           )
                         ])),
-                actions: [
+                // actions: [
                   // AppbarIconbutton(
                   //     svgPath: ImageConstant.imgOptions,
                   //     margin: getMargin(left: 24, top: 10, right: 10)),
-                  AppbarIconbutton(
-                      svgPath: ImageConstant.imgNotification,
-                      margin: getMargin(left: 12, top: 10, right: 34),
-                      onTap: onTapNotification)
-                ],
+                  // AppbarIconbutton(
+                  //     svgPath: ImageConstant.imgNotification,
+                  //     margin: getMargin(left: 12, top: 10, right: 34),
+                  //     onTap: onTapNotification)
+                // ],
                 styleType: Style.bgFillGray50),
             body: SizedBox(
                 width: size.width,

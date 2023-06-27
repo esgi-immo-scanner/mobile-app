@@ -27,6 +27,7 @@ class SignInScreen extends GetWidget<SignInController> {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtManropeExtraBold24Gray900)),
+                      SizedBox(height: getVerticalSize(50)),
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -79,7 +80,8 @@ class SignInScreen extends GetWidget<SignInController> {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtManropeSemiBold14)),
-                      const Spacer(),
+                      // const Spacer(),
+                      SizedBox(height: getVerticalSize(50)),
                       Text("msg_or_continue_wit".tr,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
@@ -100,30 +102,36 @@ class SignInScreen extends GetWidget<SignInController> {
                           onTap: onTapGoogle),
                       Padding(
                           padding: getPadding(left: 42, top: 30, right: 41),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("msg_don_t_have_an_a2".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style: AppStyle.txtManrope16.copyWith(
-                                        letterSpacing: getHorizontalSize(0.3))),
-                                GestureDetector(
-                                    onTap: () {
-                                      onTapTxtSignup();
-                                    },
-                                    child: Padding(
-                                        padding: getPadding(left: 4, top: 1),
-                                        child: Text("lbl_sign_up".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeExtraBold16
-                                                .copyWith(
-                                                    letterSpacing:
-                                                        getHorizontalSize(
-                                                            0.2)))))
-                              ]))
+                          child: Column(
+                            children: [
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("msg_don_t_have_an_a2".tr,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.left,
+                                        style: AppStyle.txtManrope16.copyWith(
+                                            letterSpacing:
+                                                getHorizontalSize(0.3))),
+                                  ]),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                      onTap: () {
+                                        onTapTxtSignup();
+                                      },
+                                      child: Text("lbl_sign_up".tr,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                          style: AppStyle.txtManropeExtraBold16
+                                              .copyWith(
+                                                  letterSpacing:
+                                                      getHorizontalSize(0.2)))),
+                                ],
+                              )
+                            ],
+                          ))
                     ]))));
   }
 

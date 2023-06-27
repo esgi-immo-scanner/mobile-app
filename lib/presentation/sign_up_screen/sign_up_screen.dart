@@ -32,8 +32,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     fontSize: getFontSize(24),
                                     fontFamily: 'Manrope',
                                     fontWeight: FontWeight.w800)),
+                                    // Linebreak
+                            TextSpan(text: "\n"),
                             TextSpan(
-                                text: "lbl_vertex_account".tr,
+                                text: "lbl_account_app".tr,
                                 style: TextStyle(
                                     color: ColorConstant.blue500,
                                     fontSize: getFontSize(24),
@@ -115,9 +117,11 @@ class SignUpScreen extends GetWidget<SignUpController> {
                       Align(
                           alignment: Alignment.center,
                           child: Padding(
-                              padding: getPadding(
-                                  left: 22, top: 27, right: 21, bottom: 5),
-                              child: Row(
+                            padding: getPadding(
+                                left: 22, top: 27, right: 21, bottom: 5),
+                            child: Column(
+                              children: [
+                                Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text("msg_you_already_hav2".tr,
@@ -126,6 +130,11 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                         style: AppStyle.txtManrope16.copyWith(
                                             letterSpacing:
                                                 getHorizontalSize(0.3))),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
                                     GestureDetector(
                                         onTap: () {
                                           onTapTxtSignup();
@@ -141,7 +150,11 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                         letterSpacing:
                                                             getHorizontalSize(
                                                                 0.2)))))
-                                  ])))
+                                  ],
+                                )
+                              ],
+                            ),
+                          ))
                     ]))));
   }
 

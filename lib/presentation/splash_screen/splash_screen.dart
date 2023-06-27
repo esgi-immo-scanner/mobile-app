@@ -13,11 +13,14 @@ class SplashScreen extends GetWidget<SplashController> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomImageView(
-                          svgPath: ImageConstant.imgHomeWhiteA700,
-                          height: getVerticalSize(99),
-                          width: getHorizontalSize(90),
-                          margin: getMargin(bottom: 5))
+                      Text("Immo Scanner",
+                          textAlign: TextAlign.center,
+                      style:TextStyle(
+                        color: ColorConstant.whiteA700,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                      
                     ]))));
   }
 }

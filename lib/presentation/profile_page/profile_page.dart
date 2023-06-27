@@ -248,7 +248,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   onTapMyfavorites() {
-    Get.toNamed(AppRoutes.favoriteScreen);
+    Get.toNamed(AppRoutes.myHomePage);
   }
 
   onTapPasttour() {
