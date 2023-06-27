@@ -428,7 +428,7 @@ final Map<String, String> enUs = {
   "msg_enjoy_the_beaut": "Recherchez facilement",
   "lbl_agent_detail": "Agent Detail",
   "msg_this_home_is_wi": "This home is within Seattle Publics Schools",
-  "lbl_welcome_back": "Bienvenu !",
+  "lbl_welcome_back": "Bienvenue !",
   "lbl_relatively": "Relatively",
   "msg_very_high_24_storms": "Very High - 24 Storms expected in 2050",
   "lbl_4_00_pm": "4:00 PM",
