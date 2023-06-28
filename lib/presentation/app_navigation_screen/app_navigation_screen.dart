@@ -1672,7 +1672,8 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
   }
 
   onTapOnboarding() {
-    Get.toNamed(AppRoutes.onboardingScreen);
+    // Get.toNamed(AppRoutes.onboardingScreen);
+    Get.offAllNamed(AppRoutes.onboardingScreen);
   }
 
   onTapSplash() {

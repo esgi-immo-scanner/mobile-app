@@ -151,7 +151,7 @@ class SignInScreen extends GetWidget<SignInController> {
 
   void _onOnTapSignInSuccess() {
     Get.offAllNamed(AppRoutes.homeContainerScreen);
-    
+
   }
 
   void _onOnTapSignInError() {
