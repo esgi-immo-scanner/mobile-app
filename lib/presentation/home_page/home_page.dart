@@ -26,14 +26,13 @@ class HomePage extends StatelessWidget {
             appBar: CustomAppBar(
                 height: getVerticalSize(60),
                 title: Padding(
-                    padding: getPadding(left: 24),
+                    padding: getPadding(left: 24, top: 15),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           AppbarSubtitle2(
                               text: "lbl_location".tr,
-                              margin: getMargin(right: 129)),
-                          
+                              margin: getMargin(right: 300)),
                           InkWell(
                                     onTap: (){
                                       onTapAddress();
@@ -110,13 +109,9 @@ class HomePage extends StatelessWidget {
                                         return SizedBox(
                                             height: getVerticalSize(24));
                                       },
-                                      itemCount: controller.homeModelObj.value
-                                          .homeItemList.length,
+                                      itemCount: controller.assetList.length,
                                       itemBuilder: (context, index) {
-                                        HomeItemModel model = controller
-                                            .homeModelObj
-                                            .value
-                                            .homeItemList[index];
+                                        Asset model = controller.assetList[index];
                                         return HomeItemWidget(model,
                                             onTapImgImg: onTapImgImg);
                                       })),

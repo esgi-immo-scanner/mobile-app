@@ -29,6 +29,7 @@ class CustomImageView extends StatelessWidget {
   EdgeInsetsGeometry? margin;
   BorderRadius? radius;
   BoxBorder? border;
+  final bool imageFromNetwork;
 
   ///a [CustomImageView] it can be used for showing any type of images
   /// it will shows the placeholder image if image is not found on network image
@@ -47,6 +48,7 @@ class CustomImageView extends StatelessWidget {
     this.margin,
     this.border,
     this.placeHolder = 'assets/images/image_not_found.png',
+    this.imageFromNetwork = false,
   }) : super(key: key);
 
   @override
@@ -141,13 +143,23 @@ class CustomImageView extends StatelessWidget {
         ),
       );
     } else if (imagePath != null && imagePath!.isNotEmpty) {
-      return Image.asset(
-        imagePath!,
-        height: height,
-        width: width,
-        fit: fit ?? BoxFit.cover,
-        color: color,
-      );
+      if(imageFromNetwork){
+        return Image.network(
+          imagePath!,
+          height: height,
+          width: width,
+          fit: fit ?? BoxFit.cover,
+          color: color,
+        );
+      }else{
+        return Image.asset(
+          imagePath!,
+          height: height,
+          width: width,
+          fit: fit ?? BoxFit.cover,
+          color: color,
+        );
+      }
     }
     return const SizedBox();
   }

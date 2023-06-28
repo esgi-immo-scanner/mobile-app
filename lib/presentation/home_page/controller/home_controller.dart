@@ -24,6 +24,7 @@ class HomeController extends GetxController {
   Future<void> onReady() async {
     Get.find<PrefUtils>().initAndGetAddress();
     super.onReady();
+    _listAssets();
   }
 
   @override
@@ -33,20 +34,23 @@ class HomeController extends GetxController {
     print("onClose");
   }
 
-  onSelected(dynamic value) {
-    selectedDropDownValue = value as SelectionPopupModel;
-    homeModelObj.value.dropdownItemList.forEach((element) {
-      element.isSelected = false;
-      if (element.id == value.id) {
-        element.isSelected = true;
-      }
-    });
-    homeModelObj.value.dropdownItemList.refresh();
-  }
-
-  // void _getFav() async {
-  //   // print(await Get.find<AssetManagerClient>().listAsset());
-  //   List<Bookmark>? assetList = await Get.find<FavoritesApi>().userBookmarks();
-    
+  // onSelected(dynamic value) {
+  //   selectedDropDownValue = value as SelectionPopupModel;
+  //   homeModelObj.value.dropdownItemList.forEach((element) {
+  //     element.isSelected = false;
+  //     if (element.id == value.id) {
+  //       element.isSelected = true;
+  //     }
+  //   });
+  //   homeModelObj.value.dropdownItemList.refresh();
   // }
+
+  void _listAssets() async {
+    // print(await Get.find<AssetManagerClient>().listAsset());
+    AssetPagination? assetPagination = await Get.find<AssetManagerClient>().listAsset();
+    for (var element in assetPagination!.data) {
+      assetList.add(element);
+    }
+    count.value = assetPagination.totalRows ?? 0;
+  }
 }

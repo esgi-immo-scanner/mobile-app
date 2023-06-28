@@ -75,6 +75,7 @@ class EditProfileController extends GetxController {
 
   Future<void> saveChanges() async {
     try {
+      print(FirebaseAuth.instance.currentUser);
       FirebaseAuth.instance.setLanguageCode(Get.locale?.toString() ?? "en");
       await FirebaseAuth.instance.currentUser!.updateEmail(emailOneController.text);
       await FirebaseAuth.instance.currentUser!.updateDisplayName(fullnameOneController.text);
