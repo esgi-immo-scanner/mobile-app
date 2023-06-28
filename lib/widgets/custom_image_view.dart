@@ -100,6 +100,8 @@ class CustomImageView extends StatelessWidget {
   }
 
   Widget _buildImageView() {
+    print("Build CustomImageView $url");
+
     if (svgPath != null && svgPath!.isNotEmpty) {
       return SizedBox(
         height: height,

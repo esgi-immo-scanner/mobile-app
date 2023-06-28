@@ -1529,7 +1529,6 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                               color: ColorConstant
                                                                   .bluegray400))
                                                     ]))),
-                                        
                                         GestureDetector(
                                             onTap: () {
                                               onTapEditProfile();
@@ -1677,7 +1676,8 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
   }
 
   onTapSplash() {
-    Get.toNamed(AppRoutes.splashScreen);
+    // Get.toNamed(AppRoutes.splashScreen);
+    Get.offAllNamed(AppRoutes.splashScreen);
   }
 
   onTapSignin() {

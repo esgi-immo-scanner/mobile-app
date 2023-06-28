@@ -24,4 +24,11 @@ class ProfileModel {
     String get getEmail => email.value;
     String get getAddress => address.value;
     String get getPhotoUrl => photoUrl.value;
+
+    // Rx Setters
+    set setFullName(String fullName) => this.fullName.value = fullName;
+    set setEmail(String email) => this.email.value = email;
+    set setAddress(String address) => this.address.value = address;
+    set setPhotoUrl(String photoUrl) => this.photoUrl.value = photoUrl;
+
 }

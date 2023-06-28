@@ -46,16 +46,17 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                                   child: Stack(
                                       alignment: Alignment.bottomRight,
                                       children: [
-                                        CustomImageView(
+                                        Obx(() =>CustomImageView(
                                             // imagePath: ImageConstant
                                                 // .imgRectangle361100x100,
-                                                imagePath: editProfileController.photoController.text,
+                                                url: editProfileController.getMeResp.value.photoUrl,
                                             height: getSize(100),
                                             width: getSize(100),
                                             radius: BorderRadius.circular(
                                                 getHorizontalSize(50)),
                                             alignment: Alignment.center, 
-                                            imageFromNetwork: true),
+                                            // imageFromNetwork: true
+                                            )),
                                         CustomIconButton(
                                             height: 24,
                                             width: 24,

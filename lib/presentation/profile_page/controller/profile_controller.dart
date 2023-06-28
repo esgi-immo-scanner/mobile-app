@@ -6,13 +6,14 @@ import 'package:immo_scanner/data/models/me/get_me_resp.dart';
 import 'package:immo_scanner/presentation/profile_page/models/profile_model.dart';
 
 class ProfileController extends GetxController {
-  ProfileController(this.profileModelObj);
+  // ProfileController(this.profileModelObj);
+  ProfileController();
 
 
-  Profile getMeResp = Profile();
+  Rx<Profile> getMeResp = Profile().obs;
 
 
-  Rx<ProfileModel> profileModelObj;
+  // Rx<ProfileModel> profileModelObj;
 
   @override
   Future<void> onReady() async {
@@ -48,32 +49,32 @@ class ProfileController extends GetxController {
     print("callFetchMe ProfileController");
     try {
       var user = FirebaseAuth.instance.currentUser;
-      getMeResp = Profile(
+      getMeResp.value = Profile(
         fullName: user!.displayName,
         email: user.email,
         address: Get.find<PrefUtils>().initAndGetAddress(),
         photoUrl: user.photoURL,
       );
-      _handleFetchMeSuccess();
+      // _handleFetchMeSuccess();
     } on Profile catch (e) {
-      getMeResp = e;
+      getMeResp.value = e;
       rethrow;
     }
   }
 
-  void _handleFetchMeSuccess() {
-    // emailOneController.text = getMeResp.email!.toString();
-    // fullnameOneController.text = getMeResp.fullName!.toString();
-    // photoController.text = getMeResp.photoUrl!.toString();
-    // addressOneController.text = Get.find<PrefUtils>().initAndGetAddress();
-    print("handleFetchMeSuccess ProfileController");
-    profileModelObj.update((val) {
-      val!.fullName.value = getMeResp.fullName!.toString();
-      val.email.value = getMeResp.email!.toString();
-      val.address.value = Get.find<PrefUtils>().initAndGetAddress().toString();
-      val.photoUrl.value = getMeResp.photoUrl!.toString();
-    });
-  }
+  // void _handleFetchMeSuccess() {
+  //   // emailOneController.text = getMeResp.email!.toString();
+  //   // fullnameOneController.text = getMeResp.fullName!.toString();
+  //   // photoController.text = getMeResp.photoUrl!.toString();
+  //   // addressOneController.text = Get.find<PrefUtils>().initAndGetAddress();
+  //   print("handleFetchMeSuccess ProfileController");
+  //   profileModelObj.update((val) {
+  //     val!.fullName.value = getMeResp.value.fullName.toString();
+  //     val.email.value = getMeResp.value.email.toString();
+  //     val.address.value = Get.find<PrefUtils>().initAndGetAddress().toString();
+  //     val.photoUrl.value = getMeResp.value.photoUrl.toString();
+  //   });
+  // }
 
   void _onFetchMeSuccess() {}
   void _onFetchMeError() {
@@ -81,4 +82,5 @@ class ProfileController extends GetxController {
       msg: "Error fetching profile data",
     );
   }
+  
 }
