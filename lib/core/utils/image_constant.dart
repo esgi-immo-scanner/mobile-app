@@ -7,6 +7,7 @@ class ImageConstant {
   static String imgImg418x3272 = 'assets/images/img_img_418x327_2.png';
 
   static String imgDpe = 'assets/images/img_dpe.png';
+  
   static String imgCall40x40 = 'assets/images/img_call_40x40.svg';
 
   static String imgCommentBold24px = 'assets/images/img_comment_bold_24px.svg';

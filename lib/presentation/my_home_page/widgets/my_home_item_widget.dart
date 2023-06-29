@@ -28,7 +28,7 @@ class MyHomeItemWidget extends StatelessWidget {
         child: Row(
           children: [
             CustomImageView(
-              imagePath: ImageConstant.imgImage109x102,
+              url: asset.pictures ?? "",
               height: getVerticalSize(
                 109,
               ),
@@ -75,7 +75,7 @@ class MyHomeItemWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         CustomImageView(
-                          svgPath: ImageConstant.imgDpe,
+                          imagePath: ImageConstant.imgDpe,
                           height: getSize(
                             16,
                           ),
