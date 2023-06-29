@@ -1,3 +1,5 @@
+import 'package:asset_manager/api.dart';
+
 import '../my_home_page/widgets/my_home_item_widget.dart';
 import 'controller/my_home_controller.dart';
 import 'models/my_home_item_model.dart';
@@ -13,6 +15,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.createDefaultData();
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,
@@ -38,10 +41,10 @@ class MyHomePage extends StatelessWidget {
                             return SizedBox(height: getVerticalSize(16));
                           },
                           itemCount: controller
-                              .myHomeModelObj.value.myHomeItemList.length,
+                              .assetList.value.length,
                           itemBuilder: (context, index) {
-                            MyHomeItemModel model = controller
-                                .myHomeModelObj.value.myHomeItemList[index];
+                            Asset model = controller
+                                .assetList.value[index];
                             return MyHomeItemWidget(model,
                                 onTapProperty: onTapProperty);
                           })),

@@ -11,7 +11,8 @@
 part of asset_manager.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://immo-scanner.enzofoucaud.fr/api', this.authentication,});
+  ApiClient({this.basePath = 'https://192.168.1.20:3001/api', this.authentication,});
+  // ApiClient({this.basePath = 'https://immo-scanner.enzofoucaud.fr/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

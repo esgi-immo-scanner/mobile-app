@@ -54,4 +54,8 @@ class HomeController extends GetxController {
     }
     count.value = assetPagination.totalRows ?? 0;
   }
+
+  void onTapFav(Asset asset){
+    print("Add to fav : "+asset.id.toString());
+  }
 }

@@ -99,30 +99,33 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
   getListElement(Asset asset) {
     return Column(children: [
       Container(
-          height: getVerticalSize(180),
-          width: getHorizontalSize(327),
-          margin: getMargin(top: 24),
-          child: Stack(alignment: Alignment.topRight, children: [
-            CustomImageView(
-                imagePath: ImageConstant.imgImg418x3271,
-                height: getVerticalSize(180),
-                width: getHorizontalSize(327),
-                radius: BorderRadius.circular(getHorizontalSize(10)),
-                alignment: Alignment.center),
-            CustomIconButton(
-                height: 36,
-                width: 36,
-                margin: getMargin(top: 16, right: 16),
-                variant: IconButtonVariant.OutlineBluegray50_1,
-                alignment: Alignment.topRight,
-                child: CustomImageView(svgPath: ImageConstant.imgClock))
-          ])),
+        height: getVerticalSize(180),
+        width: getHorizontalSize(327),
+        margin: getMargin(top: 24),
+        child: Stack(alignment: Alignment.topRight, children: [
+          // CustomImageView(
+          //     imagePath: ImageConstant.imgImg418x3271,
+          //     height: getVerticalSize(180),
+          //     width: getHorizontalSize(327),
+          //     radius: BorderRadius.circular(getHorizontalSize(10)),
+          //     alignment: Alignment.center),
+          getRightImage(asset),
+          CustomIconButton(
+            height: 36,
+            width: 36,
+            margin: getMargin(top: 16, right: 16),
+            variant: IconButtonVariant.OutlineBluegray50_1,
+            alignment: Alignment.topRight,
+            child: CustomImageView(svgPath: ImageConstant.imgClock),
+          ),
+        ]),
+      ),
       Column(children: [
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(asset.title ?? "",
+            Text(asset.title != "" ? asset.title ?? "" : "[ No Title ]",
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtManropeExtraBold18
@@ -148,7 +151,7 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
                   width: getSize(14),
                   margin: getMargin(bottom: 2)),
             ),
-            Text(asset.region ?? "",
+            Text(asset.region != "" ? asset.region ?? "" : "[No location]",
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
                 style: AppStyle.txtManrope12
@@ -162,9 +165,24 @@ class RecentlyViewsScreen extends GetWidget<RecentlyViewsController> {
           ]),
         ),
       ]),
-      SizedBox(
-        height: getVerticalSize(5)
-      )
+      SizedBox(height: getVerticalSize(5))
     ]);
+  }
+  getRightImage(Asset asset){
+    if(asset.url != null && asset.url != ""){
+        return CustomImageView(
+              url: asset.url,
+              height: getVerticalSize(180),
+              width: getHorizontalSize(327),
+              radius: BorderRadius.circular(getHorizontalSize(10)),
+              alignment: Alignment.center);
+      }else{
+          return CustomImageView(
+            imagePath: ImageConstant.imgImg418x3271,
+            height: getVerticalSize(180),
+            width: getHorizontalSize(327),
+            radius: BorderRadius.circular(getHorizontalSize(10)),
+            alignment: Alignment.center);
+      }
   }
 }

@@ -25,7 +25,7 @@ class AssetManagerClient extends GetConnect {
     try {
       return await client.searchAssets();
     } catch (e) {
-      Get.snackbar("Error", "Error while recovering recomamndation");
+      Get.snackbar("Error", "Error while recovering assets");
     }
   }
 }

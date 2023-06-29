@@ -28,24 +28,7 @@ class HomeItemWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgImg418x3271,
-            height: getVerticalSize(
-              418,
-            ),
-            width: getHorizontalSize(
-              327,
-            ),
-            radius: BorderRadius.circular(
-              getHorizontalSize(
-                10,
-              ),
-            ),
-            alignment: Alignment.center,
-            onTap: () {
-              onTapImgImg?.call();
-            },
-          ),
+          getRightImage(homeAssetModelObj),
           Align(
             alignment: Alignment.center,
             child: Padding(
@@ -65,6 +48,9 @@ class HomeItemWidget extends StatelessWidget {
                     child: CustomImageView(
                       svgPath: ImageConstant.imgClock,
                     ),
+                    onTap: () {
+                      controller.onTapFav(homeAssetModelObj);
+                    },
                   ),
                   Container(
                     margin: getMargin(
@@ -89,7 +75,7 @@ class HomeItemWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                "lbl_golden_meadows".tr,
+                                homeAssetModelObj.title != "" ? homeAssetModelObj.title ?? "" : "[ No Title ]",
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtManropeExtraBold18.copyWith(
@@ -121,7 +107,7 @@ class HomeItemWidget extends StatelessWidget {
                                         left: 4,
                                       ),
                                       child: Text(
-                                        "msg_st_celina_del2".tr,
+                                        homeAssetModelObj.region != "" ? homeAssetModelObj.region ?? "" : "[No location]",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtManrope12.copyWith(
@@ -146,7 +132,7 @@ class HomeItemWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                "lbl_500".tr,
+                                homeAssetModelObj.price.toString()+" €",
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtManropeExtraBold18Blue500
@@ -184,5 +170,47 @@ class HomeItemWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  getRightImage(Asset asset) {
+    if (asset.url != null && asset.url != "") {
+      return CustomImageView(
+        url: asset.url!,
+        height: getVerticalSize(
+          418,
+        ),
+        width: getHorizontalSize(
+          327,
+        ),
+        radius: BorderRadius.circular(
+          getHorizontalSize(
+            10,
+          ),
+        ),
+        alignment: Alignment.center,
+        onTap: () {
+          onTapImgImg?.call();
+        },
+      );
+    } else {
+      return CustomImageView(
+        imagePath: ImageConstant.imgImg418x3271,
+        height: getVerticalSize(
+          418,
+        ),
+        width: getHorizontalSize(
+          327,
+        ),
+        radius: BorderRadius.circular(
+          getHorizontalSize(
+            10,
+          ),
+        ),
+        alignment: Alignment.center,
+        onTap: () {
+          onTapImgImg?.call();
+        },
+      );
+    }
   }
 }

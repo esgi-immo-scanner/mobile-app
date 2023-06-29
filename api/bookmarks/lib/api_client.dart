@@ -11,7 +11,8 @@
 part of bookmarks.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://immo-scanner.enzofoucaud.fr/api', this.authentication,});
+  ApiClient({this.basePath = 'https://localhost:3003/api', this.authentication,});
+  // ApiClient({this.basePath = 'https://immo-scanner.enzofoucaud.fr/api', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;

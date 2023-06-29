@@ -1,3 +1,5 @@
+import 'package:asset_manager/api.dart';
+
 import '../controller/my_home_controller.dart';
 import '../models/my_home_item_model.dart';
 import 'package:flutter/material.dart';
@@ -5,9 +7,9 @@ import 'package:immo_scanner/core/app_export.dart';
 
 // ignore: must_be_immutable
 class MyHomeItemWidget extends StatelessWidget {
-  MyHomeItemWidget(this.myHomeItemModelObj, {this.onTapProperty});
+  MyHomeItemWidget(this.asset, {this.onTapProperty});
 
-  MyHomeItemModel myHomeItemModelObj;
+  Asset asset;
 
   var controller = Get.find<MyHomeController>();
 
@@ -57,7 +59,7 @@ class MyHomeItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    "msg_primary_apartme".tr,
+                    asset.title ?? "",
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
                     style: AppStyle.txtManropeBold16.copyWith(
@@ -73,7 +75,7 @@ class MyHomeItemWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         CustomImageView(
-                          svgPath: ImageConstant.imgLock,
+                          svgPath: ImageConstant.imgDpe,
                           height: getSize(
                             16,
                           ),
@@ -90,7 +92,7 @@ class MyHomeItemWidget extends StatelessWidget {
                             left: 4,
                           ),
                           child: Text(
-                            "lbl_3".tr,
+                            asset.DPE ?? "",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
                             style: AppStyle.txtManropeMedium14Bluegray500,
@@ -115,7 +117,7 @@ class MyHomeItemWidget extends StatelessWidget {
                             left: 4,
                           ),
                           child: Text(
-                            "lbl_2".tr,
+                            asset.roomCount.toString() ?? "",
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
                             style: AppStyle.txtManropeMedium14Bluegray500,
@@ -143,7 +145,7 @@ class MyHomeItemWidget extends StatelessWidget {
                             text: TextSpan(
                               children: [
                                 TextSpan(
-                                  text: "lbl_1_880".tr,
+                                  text: asset.area.toString() ?? "",
                                   style: TextStyle(
                                     color: ColorConstant.blueGray500,
                                     fontSize: getFontSize(
@@ -168,7 +170,7 @@ class MyHomeItemWidget extends StatelessWidget {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: "lbl_ft".tr,
+                                  text: " m²",
                                   style: TextStyle(
                                     color: ColorConstant.blueGray500,
                                     fontSize: getFontSize(
@@ -194,7 +196,7 @@ class MyHomeItemWidget extends StatelessWidget {
                       top: 8,
                     ),
                     child: Text(
-                      "lbl_1_600_1_800".tr,
+                      asset.price.toString()+ " €" ?? "",
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.left,
                       style: AppStyle.txtManropeExtraBold16.copyWith(
