@@ -35,7 +35,7 @@ class PolicyScreen extends GetWidget<PolicyController> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
               ),
               TextSpan(
-                text: 'Nous sommes ImmoScan, le contrôleur des données que vous fournissez à travers notre application. Nous prenons votre vie privée au sérieux. Cette politique de confidentialité décrit quelles informations nous recueillons et comment nous les utilisons.\n\n',
+                text: 'Nous sommes ImmoScanner, le contrôleur des données que vous fournissez à travers notre application. Nous prenons votre vie privée au sérieux. Cette politique de confidentialité décrit quelles informations nous recueillons et comment nous les utilisons.\n\n',
                 style: TextStyle(fontSize: 16, color: Colors.black87),
               ),
               TextSpan(
@@ -59,7 +59,7 @@ class PolicyScreen extends GetWidget<PolicyController> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
               ),
               TextSpan(
-                text: 'Vous avez le droit d’accéder à vos données, de les rectifier, de demander leur suppression, de restreindre leur traitement, de vous opposer à leur traitement, et de demander leur transférabilité. Pour exercer ces droits, veuillez nous contacter à contact@immoscan.com Vous avez également le droit de déposer une plainte auprès de l’autorité de contrôle de votre pays.\n\n',
+                text: 'Vous avez le droit d’accéder à vos données, de les rectifier, de demander leur suppression, de restreindre leur traitement, de vous opposer à leur traitement, et de demander leur transférabilité. Pour exercer ces droits, veuillez nous contacter à contact@immoscanner.com Vous avez également le droit de déposer une plainte auprès de l’autorité de contrôle de votre pays.\n\n',
                 style: TextStyle(fontSize: 16, color: Colors.black87),
               ),
               TextSpan(
