@@ -46,7 +46,8 @@ class HomeController extends GetxController {
   // }
 
   void _listAssets() async {
-    // print(await Get.find<AssetManagerClient>().listAsset());
+    print("listAssets");
+    print(await Get.find<AssetManagerClient>().listAsset());
     AssetPagination? assetPagination = await Get.find<AssetManagerClient>().listAsset();
     for (var element in assetPagination!.data) {
       assetList.add(element);
