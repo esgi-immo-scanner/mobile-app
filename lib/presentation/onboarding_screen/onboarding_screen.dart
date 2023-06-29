@@ -58,6 +58,6 @@ class OnboardingScreen extends GetWidget<OnboardingController> {
   }
 
   onTapGetstarted() {
-    Get.toNamed(AppRoutes.signInScreen);
+    Get.offAllNamed(AppRoutes.signInScreen);
   }
 }

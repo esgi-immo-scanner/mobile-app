@@ -16,7 +16,7 @@ class EditProfileController extends GetxController {
 
   Rx<EditProfileModel> editProfileModelObj = EditProfileModel().obs;
 
-  Profile getMeResp = Profile();
+  Rx<Profile> getMeResp = Profile().obs;
 
   @override
   Future<void> onReady() async {
@@ -44,25 +44,29 @@ class EditProfileController extends GetxController {
   }
 
   Future<void> callFetchMe() async {
+    print("Fetching profile data");
     try {
       var user = FirebaseAuth.instance.currentUser;
-      getMeResp = Profile(
+      print(FirebaseAuth.instance.currentUser);
+      getMeResp.value = Profile(
         fullName: user!.displayName,
         email: user.email,
         address: Get.find<PrefUtils>().initAndGetAddress(),
         photoUrl: user.photoURL,
       );
+      print(getMeResp.value.fullName);
       _handleFetchMeSuccess();
     } on Profile catch (e) {
-      getMeResp = e;
+      getMeResp.value = e;
       rethrow;
     }
   }
 
   void _handleFetchMeSuccess() {
-    emailOneController.text = getMeResp.email!.toString();
-    fullnameOneController.text = getMeResp.fullName!.toString();
-    photoController.text = getMeResp.photoUrl!.toString();
+    print("handleFetchMeSuccess");
+    emailOneController.text = getMeResp.value.email!.toString();
+    fullnameOneController.text = getMeResp.value.fullName!.toString();
+    photoController.text = getMeResp.value.photoUrl!.toString();
     addressOneController.text = Get.find<PrefUtils>().initAndGetAddress();
   }
 
@@ -74,11 +78,14 @@ class EditProfileController extends GetxController {
   }
 
   Future<void> saveChanges() async {
+    print('saveChanges');
     try {
+      print(FirebaseAuth.instance.currentUser);
       FirebaseAuth.instance.setLanguageCode(Get.locale?.toString() ?? "en");
       await FirebaseAuth.instance.currentUser!.updateEmail(emailOneController.text);
       await FirebaseAuth.instance.currentUser!.updateDisplayName(fullnameOneController.text);
       Get.find<PrefUtils>().saveAddress(addressOneController.text);
+      _updateProfile();
     } catch (e) {
       Get.snackbar("Error", "Updating profile data");
       return;
@@ -87,5 +94,17 @@ class EditProfileController extends GetxController {
     Get.snackbar("Success", "Profile updated successfully");
     // Get.toNamed(AppRoutes.profilePage);
     // Get.toNamed(AppRoutes.homeContainerScreen);
+  }
+
+  void _updateProfile() {
+    print("_updateProfile");
+    getMeResp.value.fullName = fullnameOneController.text;
+    getMeResp.value.email = emailOneController.text;
+    getMeResp.value.address = addressOneController.text;
+    getMeResp.value.photoUrl = photoController.text;
+    print(getMeResp.value.fullName);
+    print(getMeResp.value.email);
+    print(getMeResp.value.address);
+    print(getMeResp.value.photoUrl);
   }
 }

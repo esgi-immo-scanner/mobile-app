@@ -10,10 +10,12 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore_for_file: must_be_immutable
 class ProfilePage extends StatelessWidget {
-  ProfileController controller = Get.put(ProfileController(ProfileModel().obs));
+  // ProfileController controller = Get.put(ProfileController(ProfileModel(address: "".obs, email: "".obs, fullName: "".obs, photoUrl: "".obs).obs));
+  ProfileController controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    controller.onReady();
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,
@@ -38,14 +40,16 @@ class ProfilePage extends StatelessWidget {
                           child: Stack(
                               alignment: Alignment.bottomRight,
                               children: [
-                                CustomImageView(
-                                    imagePath:
-                                        ImageConstant.imgRectangle36170x70,
+                                Obx(() => CustomImageView(
+                                    url: controller.getMeResp.value.photoUrl,
+                                        // ImageConstant.imgRectangle36170x70,
                                     height: getSize(70),
                                     width: getSize(70),
                                     radius: BorderRadius.circular(
                                         getHorizontalSize(35)),
-                                    alignment: Alignment.center),
+                                    alignment: Alignment.center,
+                                    // imageFromNetwork: true
+                                    )),
                                 CustomIconButton(
                                     height: 24,
                                     width: 24,
@@ -62,17 +66,17 @@ class ProfilePage extends StatelessWidget {
                               ])),
                       Padding(
                           padding: getPadding(top: 8),
-                          child: Text("msg_cameron_william".tr,
+                          child: Obx(() => Text(controller.getMeResp.value.fullName ?? "",
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtManropeBold18.copyWith(
-                                  letterSpacing: getHorizontalSize(0.2)))),
+                                  letterSpacing: getHorizontalSize(0.2))))),
                       Padding(
                           padding: getPadding(top: 4),
-                          child: Text("lbl_hello_gmail_com".tr,
+                          child:Obx(() => Text(controller.getMeResp.value.email  ?? "",
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
-                              style: AppStyle.txtManropeMedium14Bluegray500)),
+                              style: AppStyle.txtManropeMedium14Bluegray500))),
                       Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -240,7 +244,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   onTapBtnEdit() {
-    Get.toNamed(AppRoutes.editProfileScreen);
+    Get.toNamed(AppRoutes.editProfileScreen)?.then((value) => controller.onReady()); // Update when go back
   }
 
   onTapRowinstagram() {

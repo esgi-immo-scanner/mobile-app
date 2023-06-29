@@ -37,6 +37,10 @@ import 'package:immo_scanner/presentation/confirm_request_screen/confirm_request
 import 'package:immo_scanner/presentation/confirm_request_screen/binding/confirm_request_binding.dart';
 import 'package:immo_scanner/presentation/settings_screen/settings_screen.dart';
 import 'package:immo_scanner/presentation/settings_screen/binding/settings_binding.dart';
+import 'package:immo_scanner/presentation/terms_of_use/terms_screen.dart';
+import 'package:immo_scanner/presentation/terms_of_use/binding/terms_binding.dart';
+import 'package:immo_scanner/presentation/policy_page/binding/policy_binding.dart';
+import 'package:immo_scanner/presentation/policy_page/policy_screen.dart';
 import 'package:immo_scanner/presentation/faqs_get_help_screen/faqs_get_help_screen.dart';
 import 'package:immo_scanner/presentation/faqs_get_help_screen/binding/faqs_get_help_binding.dart';
 import 'package:immo_scanner/presentation/past_tours_screen/past_tours_screen.dart';
@@ -134,6 +138,10 @@ class AppRoutes {
   static const String profilePage = '/profile_page';
 
   static const String settingsScreen = '/settings_screen';
+
+  static const String termsScreen = '/terms_screen';
+
+  static const String policyScreen = '/policy_screen';
 
   static const String faqsGetHelpScreen = '/faqs_get_help_screen';
 
@@ -285,6 +293,20 @@ class AppRoutes {
       page: () => SettingsScreen(),
       bindings: [
         SettingsBinding(),
+      ],
+    ),
+    GetPage(
+      name: termsScreen,
+      page: () => TermsScreen(),
+      bindings: [
+        TermsBinding(),
+      ],
+    ),
+    GetPage(
+      name: policyScreen,
+      page: () => PolicyScreen(),
+      bindings: [
+        PolicyBinding(),
       ],
     ),
     GetPage(

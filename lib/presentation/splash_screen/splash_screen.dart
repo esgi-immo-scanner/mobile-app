@@ -13,14 +13,15 @@ class SplashScreen extends GetWidget<SplashController> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("ImmoScanner",
-                          textAlign: TextAlign.center,
-                      style:TextStyle(
-                        color: ColorConstant.whiteA700,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                      
+                      Text(
+                        "ImmoScanner",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: ColorConstant.whiteA700,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ]))));
   }
 }

@@ -46,14 +46,17 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                                   child: Stack(
                                       alignment: Alignment.bottomRight,
                                       children: [
-                                        CustomImageView(
-                                            imagePath: ImageConstant
-                                                .imgRectangle361100x100,
+                                        Obx(() =>CustomImageView(
+                                            // imagePath: ImageConstant
+                                                // .imgRectangle361100x100,
+                                                url: editProfileController.getMeResp.value.photoUrl,
                                             height: getSize(100),
                                             width: getSize(100),
                                             radius: BorderRadius.circular(
                                                 getHorizontalSize(50)),
-                                            alignment: Alignment.center),
+                                            alignment: Alignment.center, 
+                                            // imageFromNetwork: true
+                                            )),
                                         CustomIconButton(
                                             height: 24,
                                             width: 24,
@@ -70,7 +73,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                                       ])))),
                       Padding(
                           padding: getPadding(top: 33),
-                          child: Text("lbl_full_name".tr,
+                          child: Text("Nom",
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtManropeMedium12Bluegray500
@@ -79,11 +82,11 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                       CustomTextFormField(
                           focusNode: FocusNode(),
                           controller: controller.fullnameOneController,
-                          hintText: "lbl_andrew_preston".tr,
+                          hintText: "Nom",
                           margin: getMargin(top: 7)),
                       Padding(
                           padding: getPadding(top: 17),
-                          child: Text("lbl_email".tr,
+                          child: Text("Email",
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtManropeMedium12Bluegray500
@@ -92,7 +95,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                       CustomTextFormField(
                           focusNode: FocusNode(),
                           controller: controller.emailOneController,
-                          hintText: "lbl_test_gmail_com".tr,
+                          hintText: "Email",
                           margin: getMargin(top: 7),
                           textInputType: TextInputType.emailAddress),
                       Padding(

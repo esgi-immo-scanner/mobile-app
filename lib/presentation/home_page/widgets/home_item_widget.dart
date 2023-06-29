@@ -1,3 +1,5 @@
+import 'package:asset_manager/api.dart';
+
 import '../controller/home_controller.dart';
 import '../models/home_item_model.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +8,9 @@ import 'package:immo_scanner/widgets/custom_icon_button.dart';
 
 // ignore: must_be_immutable
 class HomeItemWidget extends StatelessWidget {
-  HomeItemWidget(this.homeItemModelObj, {this.onTapImgImg});
+  HomeItemWidget(this.homeAssetModelObj, {this.onTapImgImg});
 
-  HomeItemModel homeItemModelObj;
+  Asset homeAssetModelObj;
 
   var controller = Get.find<HomeController>();
 

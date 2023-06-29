@@ -142,45 +142,51 @@ class SettingsScreen extends GetWidget<SettingsController> {
                               style: AppStyle.txtManropeExtraBold14Bluegray500
                                   .copyWith(
                                       letterSpacing: getHorizontalSize(0.2)))),
-                      Padding(
-                          padding: getPadding(top: 14),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("lbl_terms_of_use".tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                    style:
-                                        AppStyle.txtManropeSemiBold14Gray900),
-                                CustomImageView(
-                                    svgPath: ImageConstant.imgArrowright20x20,
-                                    height: getSize(20),
-                                    width: getSize(20))
-                              ])),
+                      GestureDetector(
+                        onTap: () => onTapTerms(),
+                        child: Padding(
+                            padding: getPadding(top: 14),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("lbl_terms_of_use".tr,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
+                                      style:
+                                          AppStyle.txtManropeSemiBold14Gray900),
+                                  CustomImageView(
+                                      svgPath: ImageConstant.imgArrowright20x20,
+                                      height: getSize(20),
+                                      width: getSize(20))
+                                ])),
+                      ),
                       Padding(
                           padding: getPadding(top: 16),
                           child: Divider(
                               height: getVerticalSize(1),
                               thickness: getVerticalSize(1),
                               color: ColorConstant.gray300)),
-                      Padding(
-                          padding: getPadding(top: 15),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                    padding: getPadding(top: 2),
-                                    child: Text("lbl_privacy_policy".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style: AppStyle
-                                            .txtManropeSemiBold14Gray900)),
-                                CustomImageView(
-                                    svgPath: ImageConstant.imgArrowright20x20,
-                                    height: getSize(20),
-                                    width: getSize(20),
-                                    margin: getMargin(bottom: 2))
-                              ])),
+                      GestureDetector(
+                        onTap: () => onTapPolicy(),
+                        child: Padding(
+                            padding: getPadding(top: 15),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                      padding: getPadding(top: 2),
+                                      child: Text("lbl_privacy_policy".tr,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.left,
+                                          style: AppStyle
+                                              .txtManropeSemiBold14Gray900)),
+                                  CustomImageView(
+                                      svgPath: ImageConstant.imgArrowright20x20,
+                                      height: getSize(20),
+                                      width: getSize(20),
+                                      margin: getMargin(bottom: 2))
+                                ])),
+                      ),
                       // Padding(
                       //     padding: getPadding(top: 14),
                       //     child: Divider(
@@ -241,5 +247,13 @@ class SettingsScreen extends GetWidget<SettingsController> {
 
   onTapArrowleft16() {
     Get.back();
+  }
+
+  onTapTerms() {
+    Get.toNamed(AppRoutes.termsScreen);
+  }
+
+  onTapPolicy(){
+    Get.toNamed(AppRoutes.policyScreen);
   }
 }

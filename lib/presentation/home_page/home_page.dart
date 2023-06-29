@@ -1,3 +1,6 @@
+import 'package:asset_manager/api.dart';
+import 'package:immo_scanner/widgets/custom_icon_button.dart';
+
 import '../home_page/widgets/home_item_widget.dart';
 import 'controller/home_controller.dart';
 import 'models/home_item_model.dart';
@@ -23,14 +26,13 @@ class HomePage extends StatelessWidget {
             appBar: CustomAppBar(
                 height: getVerticalSize(60),
                 title: Padding(
-                    padding: getPadding(left: 24),
+                    padding: getPadding(left: 24, top: 15),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           AppbarSubtitle2(
                               text: "lbl_location".tr,
-                              margin: getMargin(right: 129)),
-                          
+                              margin: getMargin(right: 300)),
                           InkWell(
                                     onTap: (){
                                       onTapAddress();
@@ -99,24 +101,105 @@ class HomePage extends StatelessWidget {
                               //         maxHeight: getVerticalSize(56))),
                               Padding(
                                   padding: getPadding(top: 0),
-                                  child: Obx(() => ListView.separated(
+                                  child: 
+                                  Obx(() => ListView.separated(
                                       physics: NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
                                       separatorBuilder: (context, index) {
                                         return SizedBox(
                                             height: getVerticalSize(24));
                                       },
-                                      itemCount: controller.homeModelObj.value
-                                          .homeItemList.length,
+                                      itemCount: controller.assetList.length,
                                       itemBuilder: (context, index) {
-                                        HomeItemModel model = controller
-                                            .homeModelObj
-                                            .value
-                                            .homeItemList[index];
+                                        Asset model = controller.assetList[index];
                                         return HomeItemWidget(model,
                                             onTapImgImg: onTapImgImg);
-                                      })))
+                                      })),
+                                      // Custom not working currently
+                                      // Obx(() => ListView.builder(
+                                      //   shrinkWrap: true,
+                                      //   physics: NeverScrollableScrollPhysics(),
+                                      //   itemCount:
+                                      //       recentlyViewsController.assetList.length,
+                                      //   itemBuilder: (context, index) {
+                                      //     return getListElement(
+                                      //         recentlyViewsController.assetList[index]);
+                                      // }))
+                                  )
                             ]))))));
+  }
+
+
+  getListElement(Asset asset) {
+    return Column(children: [
+      Container(
+          height: getVerticalSize(180),
+          width: getHorizontalSize(327),
+          margin: getMargin(top: 24),
+          child: Stack(alignment: Alignment.topRight, children: [
+            CustomImageView(
+                imagePath: ImageConstant.imgImg418x3271,
+                height: getVerticalSize(180),
+                width: getHorizontalSize(327),
+                radius: BorderRadius.circular(getHorizontalSize(10)),
+                alignment: Alignment.center),
+            CustomIconButton(
+                height: 36,
+                width: 36,
+                margin: getMargin(top: 16, right: 16),
+                variant: IconButtonVariant.OutlineBluegray50_1,
+                alignment: Alignment.topRight,
+                child: CustomImageView(svgPath: ImageConstant.imgClock))
+          ])),
+      Column(children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text(asset.title ?? "",
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+                style: AppStyle.txtManropeExtraBold18
+                    .copyWith(letterSpacing: getHorizontalSize(0.2))),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text("lbl_price".tr,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.right,
+                  style: AppStyle.txtManrope12
+                      .copyWith(letterSpacing: getHorizontalSize(0.4))),
+            ),
+          ]),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child: Row(children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 5.0),
+              child: CustomImageView(
+                  svgPath: ImageConstant.imgLocation,
+                  height: getSize(14),
+                  width: getSize(14),
+                  margin: getMargin(bottom: 2)),
+            ),
+            Text(asset.region ?? "",
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+                style: AppStyle.txtManrope12
+                    .copyWith(letterSpacing: getHorizontalSize(0.4))),
+            Spacer(),
+            Text(asset.price.toString() + " €",
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+                style: AppStyle.txtManropeExtraBold18Blue500
+                    .copyWith(letterSpacing: getHorizontalSize(0.2)))
+          ]),
+        ),
+      ]),
+      SizedBox(
+        height: getVerticalSize(5)
+      )
+    ]);
   }
 
   onTapImgImg() {

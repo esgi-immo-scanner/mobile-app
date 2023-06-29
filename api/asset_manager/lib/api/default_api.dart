@@ -206,6 +206,7 @@ class DefaultApi {
   ///   The ids of the assets to return (taking priority on other criteria)
   Future<AssetPagination?> searchAssets({ String? geoZone, double? minPrice, double? maxPrice, int? minRooms, int? maxRooms, int? minSurface, int? maxSurface, int? limit, int? page, String? sort, List<String>? ids, }) async {
     final response = await searchAssetsWithHttpInfo( geoZone: geoZone, minPrice: minPrice, maxPrice: maxPrice, minRooms: minRooms, maxRooms: maxRooms, minSurface: minSurface, maxSurface: maxSurface, limit: limit, page: page, sort: sort, ids: ids, );
+    print("Response api : ${response.statusCode}");
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
