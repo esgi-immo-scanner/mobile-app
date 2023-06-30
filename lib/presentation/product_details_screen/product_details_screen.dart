@@ -1,3 +1,5 @@
+import 'package:asset_manager/api.dart';
+
 import '../product_details_screen/widgets/listdate_item_widget.dart';
 import '../product_details_screen/widgets/listfive_item_widget.dart';
 import '../product_details_screen/widgets/listrectangle4224_item_widget.dart';
@@ -16,8 +18,46 @@ import 'package:immo_scanner/widgets/custom_radio_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
+  // Get arguments given by Get.toNamed last page
+  // var arguments = Get.arguments;
+  Asset assetDemo = Asset(
+        id: "5",
+        title: "Studio 1 pièce 30 m²",
+        description: "Ce studio récemment rénové est idéalement situé à proximité des commerces, offrant ainsi un grand confort de vie. Avec une surface de 30 m², il est parfait pour une personne seule ou un couple à la recherche d'un espace fonctionnel et moderne. L'appartement est lumineux et dispose d'une configuration intelligente pour optimiser chaque mètre carré.",
+        area: 30,
+        GES: "E",
+        DPE: "E",
+        price: 100000,
+        roomCount: 1,
+        pictures:
+            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_1.jpg?raw=true",
+        annonceId: "5",
+        city: "Toulouse",
+        postalCode: "31000",
+        department: "Haute-Garonne",
+        ownerName: "Sophie Mercier",
+        ownerSiren: "567891234",
+        ownerStoreId: "49688",
+        phone: "0483927561",
+        realEstateType: "Studio",
+        region: "Occitanie",
+        currency: "EUR",
+        categoryName: "Vente",
+        details: Details(
+            GES: "E",
+            classeNergie: "E",
+            nombreDeChambres: "1",
+            surface: "30",
+            honoraires: "4%",
+            tageDuBien: "3",
+            typeDeBien: "Studio"),
+      );
+
+
   @override
   Widget build(BuildContext context) {
+    // arguments = Get.arguments;
+    // print(arguments);
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,
@@ -94,7 +134,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                       ])),
                               Padding(
                                   padding: getPadding(left: 8, top: 34),
-                                  child: Text("lbl_description".tr,
+                                  child: Text("Informations",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style: AppStyle.txtManropeBold18.copyWith(
@@ -120,7 +160,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              Text("lbl_bathroom2".tr,
+                                              Text("Chambres",
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   textAlign: TextAlign.left,
@@ -134,8 +174,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                                   child: Padding(
                                                       padding:
                                                           getPadding(top: 1),
-                                                      child: Text(
-                                                          "lbl_2_rooms".tr,
+                                                      child: Text("  "+(assetDemo.details?.nombreDeChambres ?? ""),
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           textAlign:
@@ -164,7 +203,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              Text("lbl_bedroom2".tr,
+                                              Text("Salle de bains",
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   textAlign: TextAlign.left,
@@ -175,7 +214,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                                                   0.4))),
                                               Padding(
                                                   padding: getPadding(top: 1),
-                                                  child: Text("lbl_3_rooms".tr,
+                                                  child: Text("  2",
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
@@ -203,7 +242,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              Text("lbl_square".tr,
+                                              Text("Surface",
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   textAlign: TextAlign.left,
@@ -214,7 +253,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                                                   0.4))),
                                               Padding(
                                                   padding: getPadding(top: 1),
-                                                  child: Text("lbl_1_880_ft".tr,
+                                                  child: Text((assetDemo.details?.surface ?? "")+" m²",
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
@@ -228,7 +267,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                   ])),
                               Padding(
                                   padding: getPadding(left: 8, top: 31),
-                                  child: Text("lbl_about".tr,
+                                  child: Text("Description",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style: AppStyle.txtManropeBold18.copyWith(
@@ -238,7 +277,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                   width: getHorizontalSize(327),
                                   margin:
                                       getMargin(left: 8, top: 13, right: 39),
-                                  child: Text("msg_casablanca_ground2".tr,
+                                  child: Text(assetDemo.description ?? "",
                                       maxLines: null,
                                       textAlign: TextAlign.left,
                                       style:
@@ -246,7 +285,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                               Padding(
                                   padding: getPadding(left: 8, top: 13),
                                   child: Row(children: [
-                                    Text("lbl_see_more".tr,
+                                    Text("Voir plus",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtManropeBold14Blue500
@@ -334,37 +373,37 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                               // Gallery end
 
                               // Location start
-                              // Padding(
-                              //     padding: getPadding(left: 8, top: 32),
-                              //     child: Text("lbl_location".tr,
-                              //         overflow: TextOverflow.ellipsis,
-                              //         textAlign: TextAlign.left,
-                              //         style: AppStyle.txtManropeBold18.copyWith(
-                              //             letterSpacing:
-                              //                 getHorizontalSize(0.2)))),
-                              // Container(
-                              //     height: getVerticalSize(152),
-                              //     width: getHorizontalSize(327),
-                              //     margin: getMargin(left: 8, top: 15),
-                              //     child: Stack(
-                              //         alignment: Alignment.topLeft,
-                              //         children: [
-                              //           CustomImageView(
-                              //               imagePath: ImageConstant
-                              //                   .imgMapsiclemap152x3271,
-                              //               height: getVerticalSize(152),
-                              //               width: getHorizontalSize(327),
-                              //               radius: BorderRadius.circular(
-                              //                   getHorizontalSize(16)),
-                              //               alignment: Alignment.center),
-                              //           CustomImageView(
-                              //               svgPath: ImageConstant.imgEye80x80,
-                              //               height: getSize(80),
-                              //               width: getSize(80),
-                              //               alignment: Alignment.topLeft,
-                              //               margin:
-                              //                   getMargin(left: 93, top: 31))
-                              //         ])),
+                              Padding(
+                                  padding: getPadding(left: 8, top: 32),
+                                  child: Text("Localisation",
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
+                                      style: AppStyle.txtManropeBold18.copyWith(
+                                          letterSpacing:
+                                              getHorizontalSize(0.2)))),
+                              Container(
+                                  height: getVerticalSize(152),
+                                  width: getHorizontalSize(327),
+                                  margin: getMargin(left: 8, top: 15),
+                                  child: Stack(
+                                      alignment: Alignment.topLeft,
+                                      children: [
+                                        CustomImageView(
+                                            imagePath: ImageConstant
+                                                .imgMapsiclemap152x3271,
+                                            height: getVerticalSize(152),
+                                            width: getHorizontalSize(327),
+                                            radius: BorderRadius.circular(
+                                                getHorizontalSize(16)),
+                                            alignment: Alignment.center),
+                                        CustomImageView(
+                                            svgPath: ImageConstant.imgEye80x80,
+                                            height: getSize(80),
+                                            width: getSize(80),
+                                            alignment: Alignment.topLeft,
+                                            margin:
+                                                getMargin(left: 93, top: 31))
+                                      ])),
                               // Location end
 
                               // Contact start
@@ -487,91 +526,91 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                               //                   .txtManropeRegular14Gray9001))
                               //     ])),
                               // Key details end
-                              Padding(
-                                  padding: getPadding(left: 8, top: 21),
-                                  child: Text("lbl_price_insights".tr,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.left,
-                                      style: AppStyle.txtManropeBold16.copyWith(
-                                          letterSpacing:
-                                              getHorizontalSize(0.2)))),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 8, top: 11, right: 39),
-                                  child: Row(children: [
-                                    Text("lbl_list_price".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style: AppStyle
-                                            .txtManropeRegular14Gray9001),
-                                    Padding(
-                                        padding: getPadding(left: 200),
-                                        child: Text("lbl_3_000".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900))
-                                  ])),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 8, top: 12, right: 39),
-                                  child: Row(children: [
-                                    Padding(
-                                        padding: getPadding(top: 1),
-                                        child: Text("msg_est_mo_paymen".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeRegular14Gray9001)),
-                                    Padding(
-                                        padding:
-                                            getPadding(left: 150, bottom: 1),
-                                        child: Text("lbl_15_0002".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900))
-                                  ])),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 8, top: 11, right: 39),
-                                  child: Row(children: [
-                                    Text("lbl_relax_estimate".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style: AppStyle
-                                            .txtManropeRegular14Gray9001),
-                                    Padding(
-                                        padding: getPadding(left: 160),
-                                        child: Text("lbl_3_000".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900))
-                                  ])),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 8, top: 13, right: 39),
-                                  child: Row(children: [
-                                    Padding(
-                                        padding: getPadding(top: 1),
-                                        child: Text("lbl_price_sq_ft".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeRegular14Gray9001)),
-                                    Padding(
-                                        padding:
-                                            getPadding(left: 220, bottom: 1),
-                                        child: Text("lbl2".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900))
-                                  ])),
+                              // Padding(
+                              //     padding: getPadding(left: 8, top: 21),
+                              //     child: Text("lbl_price_insights".tr,
+                              //         overflow: TextOverflow.ellipsis,
+                              //         textAlign: TextAlign.left,
+                              //         style: AppStyle.txtManropeBold16.copyWith(
+                              //             letterSpacing:
+                              //                 getHorizontalSize(0.2)))),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 8, top: 11, right: 39),
+                              //     child: Row(children: [
+                              //       Text("lbl_list_price".tr,
+                              //           overflow: TextOverflow.ellipsis,
+                              //           textAlign: TextAlign.left,
+                              //           style: AppStyle
+                              //               .txtManropeRegular14Gray9001),
+                              //       Padding(
+                              //           padding: getPadding(left: 200),
+                              //           child: Text("lbl_3_000".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeSemiBold14Gray900))
+                              //     ])),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 8, top: 12, right: 39),
+                              //     child: Row(children: [
+                              //       Padding(
+                              //           padding: getPadding(top: 1),
+                              //           child: Text("msg_est_mo_paymen".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeRegular14Gray9001)),
+                              //       Padding(
+                              //           padding:
+                              //               getPadding(left: 150, bottom: 1),
+                              //           child: Text("lbl_15_0002".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeSemiBold14Gray900))
+                              //     ])),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 8, top: 11, right: 39),
+                              //     child: Row(children: [
+                              //       Text("lbl_relax_estimate".tr,
+                              //           overflow: TextOverflow.ellipsis,
+                              //           textAlign: TextAlign.left,
+                              //           style: AppStyle
+                              //               .txtManropeRegular14Gray9001),
+                              //       Padding(
+                              //           padding: getPadding(left: 160),
+                              //           child: Text("lbl_3_000".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeSemiBold14Gray900))
+                              //     ])),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 8, top: 13, right: 39),
+                              //     child: Row(children: [
+                              //       Padding(
+                              //           padding: getPadding(top: 1),
+                              //           child: Text("lbl_price_sq_ft".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeRegular14Gray9001)),
+                              //       Padding(
+                              //           padding:
+                              //               getPadding(left: 220, bottom: 1),
+                              //           child: Text("lbl2".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeSemiBold14Gray900))
+                              //     ])),
                               Padding(
                                   padding: getPadding(left: 8, top: 19),
-                                  child: Text("lbl_home_facts2".tr,
+                                  child: Text("Informations sur le bien",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style: AppStyle.txtManropeBold16.copyWith(
@@ -583,14 +622,14 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                   child: Row(children: [
                                     Padding(
                                         padding: getPadding(bottom: 1),
-                                        child: Text("lbl_on_market".tr,
+                                        child: Text("En vente depuis",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
                                                 .txtManropeRegular14Gray9001)),
                                     Padding(
-                                        padding: getPadding(left: 180, top: 1),
-                                        child: Text("lbl_30_days".tr,
+                                        padding: getPadding(left: 150, top: 1),
+                                        child: Text("30 jours",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
@@ -602,15 +641,15 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                   child: Row(children: [
                                     Padding(
                                         padding: getPadding(top: 1),
-                                        child: Text("lbl_community".tr,
+                                        child: Text("Région",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
                                                 .txtManropeRegular14Gray9001)),
                                     Padding(
                                         padding:
-                                            getPadding(left: 140, bottom: 1),
-                                        child: Text("lbl_san_francisco".tr,
+                                            getPadding(left: 196, bottom: 1),
+                                        child: Text(assetDemo.region ?? "",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
@@ -622,77 +661,77 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                   child: Row(children: [
                                     Padding(
                                         padding: getPadding(top: 1),
-                                        child: Text("lbl_country".tr,
+                                        child: Text("Département",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
                                                 .txtManropeRegular14Gray9001)),
                                     Padding(
                                         padding:
-                                            getPadding(left: 160, bottom: 1),
-                                        child: Text("lbl_san_francisco".tr,
+                                            getPadding(left: 118, bottom: 1),
+                                        child: Text(assetDemo.department ?? "",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
                                                 .txtManropeSemiBold14Gray900))
                                   ])),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 8, top: 11, right: 39),
-                                  child: Row(children: [
-                                    Text("lbl_mls".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style: AppStyle
-                                            .txtManropeRegular14Gray9001),
-                                    Padding(
-                                        padding: getPadding(left: 180),
-                                        child: Text("lbl_42212314554".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900))
-                                  ])),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 8, top: 11, right: 39),
+                              //     child: Row(children: [
+                              //       Text("lbl_mls".tr,
+                              //           overflow: TextOverflow.ellipsis,
+                              //           textAlign: TextAlign.left,
+                              //           style: AppStyle
+                              //               .txtManropeRegular14Gray9001),
+                              //       Padding(
+                              //           padding: getPadding(left: 180),
+                              //           child: Text("lbl_42212314554".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeSemiBold14Gray900))
+                              //     ])),
                               Padding(
                                   padding:
                                       getPadding(left: 8, top: 12, right: 39),
                                   child: Row(children: [
-                                    Text("lbl_built".tr,
+                                    Text("Construit",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle
                                             .txtManropeRegular14Gray9001),
                                     Padding(
-                                        padding: getPadding(left: 240),
-                                        child: Text("lbl_1992".tr,
+                                        padding: getPadding(left: 208),
+                                        child: Text("2004",
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: AppStyle
                                                 .txtManropeSemiBold14Gray900))
                                   ])),
-                              Padding(
-                                  padding:
-                                      getPadding(left: 8, top: 13, right: 39),
-                                  child: Row(children: [
-                                    Padding(
-                                        padding: getPadding(bottom: 1),
-                                        child: Text("lbl_lot_size".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeRegular14Gray9001)),
-                                    Padding(
-                                        padding: getPadding(left: 142, top: 1),
-                                        child: Text("msg_3_400_square_fe".tr,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.left,
-                                            style: AppStyle
-                                                .txtManropeSemiBold14Gray900))
-                                  ])),
+                              // Padding(
+                              //     padding:
+                              //         getPadding(left: 8, top: 13, right: 39),
+                              //     child: Row(children: [
+                              //       Padding(
+                              //           padding: getPadding(bottom: 1),
+                              //           child: Text("lbl_lot_size".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeRegular14Gray9001)),
+                              //       Padding(
+                              //           padding: getPadding(left: 142, top: 1),
+                              //           child: Text("msg_3_400_square_fe".tr,
+                              //               overflow: TextOverflow.ellipsis,
+                              //               textAlign: TextAlign.left,
+                              //               style: AppStyle
+                              //                   .txtManropeSemiBold14Gray900))
+                              //     ])),
                               Padding(
                                   padding: getPadding(left: 8, top: 15),
                                   child: Row(children: [
-                                    Text("lbl_see_more".tr,
+                                    Text("Voir plus",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtManropeBold14Blue500
@@ -1035,7 +1074,7 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                               //         })),
                               Padding(
                                   padding: getPadding(left: 8, top: 19),
-                                  child: Text("lbl_home_facts2".tr,
+                                  child: Text("Historique de prix",
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.left,
                                       style: AppStyle.txtManropeBold16.copyWith(
@@ -1044,7 +1083,34 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                               Padding(
                                   padding:
                                       getPadding(left: 8, top: 15, right: 39),
-                                  child: Text("Mettre stats ici")),
+                                  // child: Text("Mettre stats ici")),
+                                  child:
+                                  // image
+                                  Column(
+                                    children: [
+                                      Container(
+                                          height: getVerticalSize(200),
+                                          width: getHorizontalSize(327),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(
+                                                  getHorizontalSize(10)),
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      ImageConstant.stat3),
+                                                  fit: BoxFit.cover))),
+                                      // Container(
+                                      //     height: getVerticalSize(200),
+                                      //     width: getHorizontalSize(327),
+                                      //     decoration: BoxDecoration(
+                                      //         borderRadius: BorderRadius.circular(
+                                      //             getHorizontalSize(10)),
+                                      //         image: DecorationImage(
+                                      //             image: AssetImage(
+                                      //                 ImageConstant.stat1),
+                                      //             fit: BoxFit.cover))),
+
+                                    ],
+                                  )),
                               Padding(
                                   padding: getPadding(top: 16),
                                   child: Divider(
@@ -1068,12 +1134,12 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                               children: [
                                 Padding(
                                     padding: getPadding(top: 4, bottom: 3),
-                                    child: Text("lbl_price2".tr,
+                                    child: Text("Prix",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle
                                             .txtManropeMedium14Gray9001)),
-                                Text("lbl_1_940_00".tr,
+                                Text(assetDemo.price.toString() + " €",
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
                                     style: AppStyle.txtManropeExtraBold20Blue500
@@ -1086,22 +1152,22 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CustomIconButton(
-                                    height: 44,
-                                    width: 44,
-                                    margin: getMargin(top: 2, bottom: 2),
-                                    variant:
-                                        IconButtonVariant.OutlineBluegray50_1,
-                                    padding: IconButtonPadding.PaddingAll12,
-                                    child: CustomImageView(
-                                        svgPath: ImageConstant.imgFavorite)),
-                                CustomButton(
-                                    height: getVerticalSize(48),
-                                    text: "lbl_schedule_tour".tr,
-                                    shape: ButtonShape.RoundedBorder10,
-                                    padding: ButtonPadding.PaddingAll13,
-                                    fontStyle: ButtonFontStyle
-                                        .ManropeBold16WhiteA700_1)
+                                // CustomIconButton(
+                                //     height: 44,
+                                //     width: 44,
+                                //     margin: getMargin(top: 2, bottom: 2),
+                                //     variant:
+                                //         IconButtonVariant.OutlineBluegray50_1,
+                                //     padding: IconButtonPadding.PaddingAll12,
+                                //     child: CustomImageView(
+                                //         svgPath: ImageConstant.imgFavorite)),
+                                // CustomButton(
+                                //     height: getVerticalSize(48),
+                                //     text: "lbl_schedule_tour".tr,
+                                //     shape: ButtonShape.RoundedBorder10,
+                                //     padding: ButtonPadding.PaddingAll13,
+                                //     fontStyle: ButtonFontStyle
+                                //         .ManropeBold16WhiteA700_1)
                               ]))
                     ]))));
   }

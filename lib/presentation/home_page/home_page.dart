@@ -19,6 +19,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.createDefaultData();
+
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -116,6 +118,7 @@ class HomePage extends StatelessWidget {
                                       Asset model = controller.assetList[index];
                                       return HomeItemWidget(model,
                                           onTapImgImg: onTapImgImg);
+                                          // onTapImgImg: onTapImgImg(controller.assetList[index]));
                                     })),
                                 // Custom not working currently
                                 // Obx(() => ListView.builder(
@@ -203,7 +206,10 @@ class HomePage extends StatelessWidget {
   // }
 
   onTapImgImg() {
+  // onTapImgImg(Asset asset) {
     Get.toNamed(AppRoutes.productDetailsScreen);
+    // Go to productDetailsScreen and give the asset
+    // Get.toNamed(AppRoutes.productDetailsScreen, arguments: asset);
   }
 
   onTapNotification() {

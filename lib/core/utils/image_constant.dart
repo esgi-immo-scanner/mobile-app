@@ -8,6 +8,10 @@ class ImageConstant {
 
   static String imgDpe = 'assets/images/img_dpe.png';
   
+  static String stat1 = 'assets/images/stat_1.jpg';
+
+  static String stat3 = 'assets/images/stat_3.jpg';
+
   static String imgCall40x40 = 'assets/images/img_call_40x40.svg';
 
   static String imgCommentBold24px = 'assets/images/img_comment_bold_24px.svg';

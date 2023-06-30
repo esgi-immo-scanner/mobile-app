@@ -263,8 +263,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 40),
                                                                             width: getHorizontalSize(
                                                                                 159),
-                                                                            text: "lbl_home"
-                                                                                .tr,
+                                                                            text: "Maison",
                                                                             variant:
                                                                                 filterController.homeButtonVariant.value,
                                                                             shape: ButtonShape
@@ -281,8 +280,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 40),
                                                                             width: getHorizontalSize(
                                                                                 159),
-                                                                            text: "lbl_appartment"
-                                                                                .tr,
+                                                                            text: "Appartement",
                                                                             variant:
                                                                                 filterController.appartmentButtonVariant.value,
                                                                             shape: ButtonShape
@@ -361,7 +359,7 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                                 RangeSlider(
                                                                                   values: filterController.rangePrice.value,
                                                                                   min: 0,
-                                                                                  max: 50000000,
+                                                                                  max: 1000000,
                                                                                   divisions: 50,
                                                                                   labels: RangeLabels(
                                                                                     filterController.rangePrice.value.start.toStringAsFixed(0),
@@ -517,285 +515,285 @@ class FilterScreen extends GetWidget<FilterController> {
                                                                   //   ListLessMoreItemWidget(LessMoreItemModel("Nb pieces", 0, 0))
                                                                   // ],)
                                                                   ))),
-                                                          // Padding(
-                                                          //     padding: getPadding(
-                                                          //         left: 24,
-                                                          //         top: 27),
-                                                          //     child: Text(
-                                                          //         "Energie",
-                                                          //         overflow:
-                                                          //             TextOverflow
-                                                          //                 .ellipsis,
-                                                          //         textAlign:
-                                                          //             TextAlign
-                                                          //                 .left,
-                                                          //         style: AppStyle
-                                                          //             .txtManropeExtraBold16Gray900
-                                                          //             .copyWith(
-                                                          //                 letterSpacing:
-                                                          //                     getHorizontalSize(
-                                                          //                         0.2)))),
-                                                          // Padding(
-                                                          //     padding: getPadding(
-                                                          //         left: 24,
-                                                          //         top: 17),
-                                                          //     child: Text(
-                                                          //         "DPE",
-                                                          //         overflow:
-                                                          //             TextOverflow
-                                                          //                 .ellipsis,
-                                                          //         textAlign:
-                                                          //             TextAlign
-                                                          //                 .left,
-                                                          //         style: AppStyle
-                                                          //             .txtManropeSemiBold14Gray900)),
-                                                          // Align(
-                                                          //     alignment:
-                                                          //         Alignment.center,
-                                                          //     child: Padding(
-                                                          //         padding:
-                                                          //             getPadding(
-                                                          //                 left: 24,
-                                                          //                 top: 6,
-                                                          //                 right:
-                                                          //                     24),
-                                                          //         child: Row(
-                                                          //             mainAxisAlignment:
-                                                          //                 MainAxisAlignment
-                                                          //                     .center,
-                                                          //             children: [
-                                                          //                Obx(() => CustomDropDown(
-                                                          //                   width: getHorizontalSize(
-                                                          //                       139),
-                                                          //                   focusNode:
-                                                          //                       FocusNode(),
-                                                          //                   icon: Container(
-                                                          //                       margin: getMargin(
-                                                          //                           left:
-                                                          //                               30,
-                                                          //                           right:
-                                                          //                               12),
-                                                          //                       child: CustomImageView(
-                                                          //                           svgPath: ImageConstant
-                                                          //                               .imgArrowdownBlueGray50016x16)),
-                                                          //                   hintText:
-                                                          //                       "lbl_min"
-                                                          //                           .tr,
-                                                          //                   items: filterController
-                                                          //                       .filterModelObj
-                                                          //                       .value
-                                                          //                       .dropdownItemListDPEMin,
-                                                          //                   onChanged:
-                                                          //                       (value) {
-                                                          //                     filterController
-                                                          //                         .onSelectedDPEMin(value);
-                                                          //                   })),
-                                                          //               CustomImageView(
-                                                          //                   svgPath:
-                                                          //                       ImageConstant
-                                                          //                           .imgMenu16x16,
-                                                          //                   height: getSize(
-                                                          //                       16),
-                                                          //                   width: getSize(
-                                                          //                       16),
-                                                          //                   margin: getMargin(
-                                                          //                       left:
-                                                          //                           16,
-                                                          //                       top:
-                                                          //                           15,
-                                                          //                       bottom:
-                                                          //                           14)),
-                                                          //               Obx(() => CustomDropDown(
-                                                          //                   width: getHorizontalSize(
-                                                          //                       139),
-                                                          //                   focusNode:
-                                                          //                       FocusNode(),
-                                                          //                   icon: Container(
-                                                          //                       margin: getMargin(
-                                                          //                           left:
-                                                          //                               30,
-                                                          //                           right:
-                                                          //                               12),
-                                                          //                       child: CustomImageView(
-                                                          //                           svgPath: ImageConstant
-                                                          //                               .imgArrowdownBlueGray50016x16)),
-                                                          //                   hintText:
-                                                          //                       "lbl_max"
-                                                          //                           .tr,
-                                                          //                   margin: getMargin(
-                                                          //                       left:
-                                                          //                           17),
-                                                          //                   items: filterController
-                                                          //                       .filterModelObj
-                                                          //                       .value
-                                                          //                       .dropdownItemListDPEMax,
-                                                          //                   onChanged:
-                                                          //                       (value) {
-                                                          //                     filterController
-                                                          //                         .onSelectedDPEMax(value);
-                                                          //                   }))
-                                                          //             ]))),
-                                                          // Padding(
-                                                          //     padding: getPadding(
-                                                          //         left: 24,
-                                                          //         top: 16),
-                                                          //     child: Text(
-                                                          //         "GES",
-                                                          //         overflow:
-                                                          //             TextOverflow
-                                                          //                 .ellipsis,
-                                                          //         textAlign:
-                                                          //             TextAlign
-                                                          //                 .left,
-                                                          //         style: AppStyle
-                                                          //             .txtManropeSemiBold14Gray900)),
-                                                          // Align(
-                                                          //     alignment:
-                                                          //         Alignment.center,
-                                                          //     child: Padding(
-                                                          //         padding:
-                                                          //             getPadding(
-                                                          //                 left: 24,
-                                                          //                 top: 8,
-                                                          //                 right:
-                                                          //                     24),
-                                                          //         child: Row(
-                                                          //             mainAxisAlignment:
-                                                          //                 MainAxisAlignment
-                                                          //                     .center,
-                                                          //             children: [
-                                                          //               Obx(() => CustomDropDown(
-                                                          //                   width: getHorizontalSize(
-                                                          //                       139),
-                                                          //                   focusNode:
-                                                          //                       FocusNode(),
-                                                          //                   icon: Container(
-                                                          //                       margin: getMargin(
-                                                          //                           left:
-                                                          //                               30,
-                                                          //                           right:
-                                                          //                               12),
-                                                          //                       child: CustomImageView(
-                                                          //                           svgPath: ImageConstant
-                                                          //                               .imgArrowdownBlueGray50016x16)),
-                                                          //                   hintText:
-                                                          //                       "lbl_min"
-                                                          //                           .tr,
-                                                          //                   items: filterController
-                                                          //                       .filterModelObj
-                                                          //                       .value
-                                                          //                       .dropdownItemGESMin,
-                                                          //                   onChanged:
-                                                          //                       (value) {
-                                                          //                     filterController
-                                                          //                         .onSelectedGESMin(value);
-                                                          //                   })),
-                                                          //               CustomImageView(
-                                                          //                   svgPath:
-                                                          //                       ImageConstant
-                                                          //                           .imgMenu16x16,
-                                                          //                   height: getSize(
-                                                          //                       16),
-                                                          //                   width: getSize(
-                                                          //                       16),
-                                                          //                   margin: getMargin(
-                                                          //                       left:
-                                                          //                           16,
-                                                          //                       top:
-                                                          //                           15,
-                                                          //                       bottom:
-                                                          //                           14)),
-                                                          //               Obx(() => CustomDropDown(
-                                                          //                   width: getHorizontalSize(
-                                                          //                       139),
-                                                          //                   focusNode:
-                                                          //                       FocusNode(),
-                                                          //                   icon: Container(
-                                                          //                       margin: getMargin(
-                                                          //                           left:
-                                                          //                               30,
-                                                          //                           right:
-                                                          //                               12),
-                                                          //                       child: CustomImageView(
-                                                          //                           svgPath: ImageConstant
-                                                          //                               .imgArrowdownBlueGray50016x16)),
-                                                          //                   hintText:
-                                                          //                       "lbl_max"
-                                                          //                           .tr,
-                                                          //                   margin: getMargin(
-                                                          //                       left:
-                                                          //                           17),
-                                                          //                   items: filterController
-                                                          //                       .filterModelObj
-                                                          //                       .value
-                                                          //                       .dropdownItemGESMax,
-                                                          //                   onChanged:
-                                                          //                       (value) {
-                                                          //                     filterController
-                                                          //                         .onSelectedGESMax(value);
-                                                          //                   }))
-                                                          //             ]))),
-                                                          // Padding(
-                                                          //     padding: getPadding(
-                                                          //         left: 24,
-                                                          //         top: 25),
-                                                          //     child: Row(children: [
-                                                          //       Text(
-                                                          //           "Options",
-                                                          //           overflow:
-                                                          //               TextOverflow
-                                                          //                   .ellipsis,
-                                                          //           textAlign:
-                                                          //               TextAlign
-                                                          //                   .left,
-                                                          //           style: AppStyle
-                                                          //               .txtManropeExtraBold16Gray900
-                                                          //               .copyWith(
-                                                          //                   letterSpacing:
-                                                          //                       getHorizontalSize(0.2))),
-                                                          //       // CustomImageView(
-                                                          //       //     svgPath:
-                                                          //       //         ImageConstant
-                                                          //       //             .imgWarning,
-                                                          //       //     height:
-                                                          //       //         getSize(20),
-                                                          //       //     width:
-                                                          //       //         getSize(20),
-                                                          //       //     margin:
-                                                          //       //         getMargin(
-                                                          //       //             left:
-                                                          //       //                 26,
-                                                          //       //             bottom:
-                                                          //       //                 1))
-                                                          //     ])),
-                                                          // Padding(
-                                                          //     padding: getPadding(
-                                                          //         left: 24,
-                                                          //         top: 16),
-                                                          //     child: Wrap(
-                                                          //         runSpacing:
-                                                          //             getVerticalSize(
-                                                          //                 5),
-                                                          //         spacing:
-                                                          //             getHorizontalSize(
-                                                          //                 5),
-                                                          //         children: List<
-                                                          //                 Widget>.generate(
-                                                          //             filterController
-                                                          //                 .filterModelObj
-                                                          //                 .value
-                                                          //                 .options2ItemList
-                                                          //                 .length,
-                                                          //             (index) {
-                                                          //           Options2ItemModel
-                                                          //               model =
-                                                          //               filterController
-                                                          //                   .filterModelObj
-                                                          //                   .value
-                                                          //                   .options2ItemList[index];
-                                                          //           return Options2ItemWidget(
-                                                          //               model);
-                                                          //         }))),
+                                                          Padding(
+                                                              padding: getPadding(
+                                                                  left: 24,
+                                                                  top: 27),
+                                                              child: Text(
+                                                                  "Energie",
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .left,
+                                                                  style: AppStyle
+                                                                      .txtManropeExtraBold16Gray900
+                                                                      .copyWith(
+                                                                          letterSpacing:
+                                                                              getHorizontalSize(
+                                                                                  0.2)))),
+                                                          Padding(
+                                                              padding: getPadding(
+                                                                  left: 24,
+                                                                  top: 17),
+                                                              child: Text(
+                                                                  "DPE",
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .left,
+                                                                  style: AppStyle
+                                                                      .txtManropeSemiBold14Gray900)),
+                                                          Align(
+                                                              alignment:
+                                                                  Alignment.center,
+                                                              child: Padding(
+                                                                  padding:
+                                                                      getPadding(
+                                                                          left: 24,
+                                                                          top: 6,
+                                                                          right:
+                                                                              24),
+                                                                  child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                         Obx(() => CustomDropDown(
+                                                                            width: getHorizontalSize(
+                                                                                139),
+                                                                            focusNode:
+                                                                                FocusNode(),
+                                                                            icon: Container(
+                                                                                margin: getMargin(
+                                                                                    left:
+                                                                                        30,
+                                                                                    right:
+                                                                                        12),
+                                                                                child: CustomImageView(
+                                                                                    svgPath: ImageConstant
+                                                                                        .imgArrowdownBlueGray50016x16)),
+                                                                            hintText:
+                                                                                "lbl_min"
+                                                                                    .tr,
+                                                                            items: filterController
+                                                                                .filterModelObj
+                                                                                .value
+                                                                                .dropdownItemListDPEMin,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              filterController
+                                                                                  .onSelectedDPEMin(value);
+                                                                            })),
+                                                                        CustomImageView(
+                                                                            svgPath:
+                                                                                ImageConstant
+                                                                                    .imgMenu16x16,
+                                                                            height: getSize(
+                                                                                16),
+                                                                            width: getSize(
+                                                                                16),
+                                                                            margin: getMargin(
+                                                                                left:
+                                                                                    16,
+                                                                                top:
+                                                                                    15,
+                                                                                bottom:
+                                                                                    14)),
+                                                                        Obx(() => CustomDropDown(
+                                                                            width: getHorizontalSize(
+                                                                                139),
+                                                                            focusNode:
+                                                                                FocusNode(),
+                                                                            icon: Container(
+                                                                                margin: getMargin(
+                                                                                    left:
+                                                                                        30,
+                                                                                    right:
+                                                                                        12),
+                                                                                child: CustomImageView(
+                                                                                    svgPath: ImageConstant
+                                                                                        .imgArrowdownBlueGray50016x16)),
+                                                                            hintText:
+                                                                                "lbl_max"
+                                                                                    .tr,
+                                                                            margin: getMargin(
+                                                                                left:
+                                                                                    17),
+                                                                            items: filterController
+                                                                                .filterModelObj
+                                                                                .value
+                                                                                .dropdownItemListDPEMax,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              filterController
+                                                                                  .onSelectedDPEMax(value);
+                                                                            }))
+                                                                      ]))),
+                                                          Padding(
+                                                              padding: getPadding(
+                                                                  left: 24,
+                                                                  top: 16),
+                                                              child: Text(
+                                                                  "GES",
+                                                                  overflow:
+                                                                      TextOverflow
+                                                                          .ellipsis,
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .left,
+                                                                  style: AppStyle
+                                                                      .txtManropeSemiBold14Gray900)),
+                                                          Align(
+                                                              alignment:
+                                                                  Alignment.center,
+                                                              child: Padding(
+                                                                  padding:
+                                                                      getPadding(
+                                                                          left: 24,
+                                                                          top: 8,
+                                                                          right:
+                                                                              24),
+                                                                  child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Obx(() => CustomDropDown(
+                                                                            width: getHorizontalSize(
+                                                                                139),
+                                                                            focusNode:
+                                                                                FocusNode(),
+                                                                            icon: Container(
+                                                                                margin: getMargin(
+                                                                                    left:
+                                                                                        30,
+                                                                                    right:
+                                                                                        12),
+                                                                                child: CustomImageView(
+                                                                                    svgPath: ImageConstant
+                                                                                        .imgArrowdownBlueGray50016x16)),
+                                                                            hintText:
+                                                                                "lbl_min"
+                                                                                    .tr,
+                                                                            items: filterController
+                                                                                .filterModelObj
+                                                                                .value
+                                                                                .dropdownItemGESMin,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              filterController
+                                                                                  .onSelectedGESMin(value);
+                                                                            })),
+                                                                        CustomImageView(
+                                                                            svgPath:
+                                                                                ImageConstant
+                                                                                    .imgMenu16x16,
+                                                                            height: getSize(
+                                                                                16),
+                                                                            width: getSize(
+                                                                                16),
+                                                                            margin: getMargin(
+                                                                                left:
+                                                                                    16,
+                                                                                top:
+                                                                                    15,
+                                                                                bottom:
+                                                                                    14)),
+                                                                        Obx(() => CustomDropDown(
+                                                                            width: getHorizontalSize(
+                                                                                139),
+                                                                            focusNode:
+                                                                                FocusNode(),
+                                                                            icon: Container(
+                                                                                margin: getMargin(
+                                                                                    left:
+                                                                                        30,
+                                                                                    right:
+                                                                                        12),
+                                                                                child: CustomImageView(
+                                                                                    svgPath: ImageConstant
+                                                                                        .imgArrowdownBlueGray50016x16)),
+                                                                            hintText:
+                                                                                "lbl_max"
+                                                                                    .tr,
+                                                                            margin: getMargin(
+                                                                                left:
+                                                                                    17),
+                                                                            items: filterController
+                                                                                .filterModelObj
+                                                                                .value
+                                                                                .dropdownItemGESMax,
+                                                                            onChanged:
+                                                                                (value) {
+                                                                              filterController
+                                                                                  .onSelectedGESMax(value);
+                                                                            }))
+                                                                      ]))),
+                                                          Padding(
+                                                              padding: getPadding(
+                                                                  left: 24,
+                                                                  top: 25),
+                                                              child: Row(children: [
+                                                                Text(
+                                                                    "Options",
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .left,
+                                                                    style: AppStyle
+                                                                        .txtManropeExtraBold16Gray900
+                                                                        .copyWith(
+                                                                            letterSpacing:
+                                                                                getHorizontalSize(0.2))),
+                                                                // CustomImageView(
+                                                                //     svgPath:
+                                                                //         ImageConstant
+                                                                //             .imgWarning,
+                                                                //     height:
+                                                                //         getSize(20),
+                                                                //     width:
+                                                                //         getSize(20),
+                                                                //     margin:
+                                                                //         getMargin(
+                                                                //             left:
+                                                                //                 26,
+                                                                //             bottom:
+                                                                //                 1))
+                                                              ])),
+                                                          Padding(
+                                                              padding: getPadding(
+                                                                  left: 24,
+                                                                  top: 16),
+                                                              child: Wrap(
+                                                                  runSpacing:
+                                                                      getVerticalSize(
+                                                                          5),
+                                                                  spacing:
+                                                                      getHorizontalSize(
+                                                                          5),
+                                                                  children: List<
+                                                                          Widget>.generate(
+                                                                      filterController
+                                                                          .filterModelObj
+                                                                          .value
+                                                                          .options2ItemList
+                                                                          .length,
+                                                                      (index) {
+                                                                    Options2ItemModel
+                                                                        model =
+                                                                        filterController
+                                                                            .filterModelObj
+                                                                            .value
+                                                                            .options2ItemList[index];
+                                                                    return Options2ItemWidget(
+                                                                        model);
+                                                                  }))),
                                                           Container(
                                                               width:
                                                                   double.maxFinite,

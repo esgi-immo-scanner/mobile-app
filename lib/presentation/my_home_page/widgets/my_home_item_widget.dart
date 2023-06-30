@@ -35,6 +35,7 @@ class MyHomeItemWidget extends StatelessWidget {
               width: getHorizontalSize(
                 102,
               ),
+              fit: BoxFit.cover,
               radius: BorderRadius.only(
                 topLeft: Radius.circular(
                   getHorizontalSize(

@@ -69,6 +69,7 @@ class HomeItemWidget extends StatelessWidget {
                         Padding(
                           padding: getPadding(
                             top: 1,
+                            left: 5,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +108,7 @@ class HomeItemWidget extends StatelessWidget {
                                         left: 4,
                                       ),
                                       child: Text(
-                                        homeAssetModelObj.region != "" ? homeAssetModelObj.region ?? "" : "[No location]",
+                                        homeAssetModelObj.department != "" ? homeAssetModelObj.department ?? "" : "[No location]",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtManrope12.copyWith(
@@ -142,21 +143,21 @@ class HomeItemWidget extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: getPadding(
-                                  top: 9,
-                                ),
-                                child: Text(
-                                  "lbl_per_month".tr,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.left,
-                                  style: AppStyle.txtManrope12.copyWith(
-                                    letterSpacing: getHorizontalSize(
-                                      0.4,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: getPadding(
+                              //     top: 9,
+                              //   ),
+                              //   child: Text(
+                              //     "lbl_per_month".tr,
+                              //     overflow: TextOverflow.ellipsis,
+                              //     textAlign: TextAlign.left,
+                              //     style: AppStyle.txtManrope12.copyWith(
+                              //       letterSpacing: getHorizontalSize(
+                              //         0.4,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -173,21 +174,22 @@ class HomeItemWidget extends StatelessWidget {
   }
 
   getRightImage(Asset asset) {
-    if (asset.url != null && asset.url != "") {
+    if (asset.pictures != null && asset.pictures != "") {
       return CustomImageView(
-        url: asset.url!,
+        url: asset.pictures!,
         height: getVerticalSize(
           418,
         ),
         width: getHorizontalSize(
           327,
         ),
+        fit: BoxFit.cover,
         radius: BorderRadius.circular(
           getHorizontalSize(
             10,
           ),
         ),
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         onTap: () {
           onTapImgImg?.call();
         },

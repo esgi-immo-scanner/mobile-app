@@ -17,7 +17,7 @@ class FilterController extends GetxController {
 
   SelectionPopupModel? selectedDropDownValue4;
 
-  Rx<RangeValues> rangePrice = const RangeValues(0, 50000000).obs;
+  Rx<RangeValues> rangePrice = const RangeValues(0, 1000000).obs;
   Rx<RangeValues> rangeSurface = const RangeValues(0, 500).obs;
 
   RxBool isHomeSelected = true.obs;
@@ -141,7 +141,7 @@ class FilterController extends GetxController {
       element.resetValue();
     });
 
-    rangePrice.value = const RangeValues(0, 50000000);
+    rangePrice.value = const RangeValues(0, 1000000);
     rangeSurface.value = const RangeValues(0, 500);
 
     isHomeSelected.value = true;
