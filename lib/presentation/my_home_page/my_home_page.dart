@@ -31,11 +31,8 @@ class MyHomePage extends StatelessWidget {
             body: Container(
                 width: double.maxFinite,
                 padding: getPadding(left: 24, top: 32, right: 24, bottom: 32),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Obx(() => ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
+                child: Obx(() => ListView.separated(
+                          physics: PageScrollPhysics(),
                           shrinkWrap: true,
                           separatorBuilder: (context, index) {
                             return SizedBox(height: getVerticalSize(16));
@@ -47,7 +44,7 @@ class MyHomePage extends StatelessWidget {
                                 .assetList.value[index];
                             return MyHomeItemWidget(model,
                                 onTapProperty: onTapProperty);
-                          })),
+                          }),
                       // CustomButton(
                       //     height: getVerticalSize(56),
                       //     text: "msg_add_new_propert".tr,
@@ -61,7 +58,7 @@ class MyHomePage extends StatelessWidget {
                       //         child: CustomImageView(
                       //             svgPath: ImageConstant.imgPlus24x24)),
                       //     onTap: onTapAddnewproperty)
-                    ]))));
+                    ))));
   }
 
   onTapProperty() {
