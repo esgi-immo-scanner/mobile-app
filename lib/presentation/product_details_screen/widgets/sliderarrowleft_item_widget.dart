@@ -27,13 +27,15 @@ class SliderarrowleftItemWidget extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: [
             CustomImageView(
-              imagePath: ImageConstant.imgImage343x3431,
+              url: "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_1.jpg?raw=true",
+              // imagePath: ImageConstant.imgImage343x3431,
               height: getSize(
                 343,
               ),
               width: getSize(
                 343,
               ),
+              fit: BoxFit.cover,
               radius: BorderRadius.circular(
                 getHorizontalSize(
                   20,
@@ -83,7 +85,7 @@ class SliderarrowleftItemWidget extends StatelessWidget {
                         top: 190,
                       ),
                       child: Text(
-                        "msg_primary_apartme".tr,
+                        "Studio 1 pièce 30 m²",
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.left,
                         style: AppStyle.txtManropeExtraBold24WhiteA700,
@@ -94,7 +96,7 @@ class SliderarrowleftItemWidget extends StatelessWidget {
                         top: 1,
                       ),
                       child: Text(
-                        "msg_701_ocean_avenue".tr,
+                        "3100 Toulouse",
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.left,
                         style: AppStyle.txtManropeMedium14Gray300,

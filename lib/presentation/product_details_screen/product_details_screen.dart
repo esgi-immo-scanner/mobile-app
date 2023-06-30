@@ -21,38 +21,38 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
   // Get arguments given by Get.toNamed last page
   // var arguments = Get.arguments;
   Asset assetDemo = Asset(
-        id: "5",
-        title: "Studio 1 pièce 30 m²",
-        description: "Ce studio récemment rénové est idéalement situé à proximité des commerces, offrant ainsi un grand confort de vie. Avec une surface de 30 m², il est parfait pour une personne seule ou un couple à la recherche d'un espace fonctionnel et moderne. L'appartement est lumineux et dispose d'une configuration intelligente pour optimiser chaque mètre carré.",
-        area: 30,
+    id: "5",
+    title: "Studio 1 pièce 30 m²",
+    description:
+        "Ce studio récemment rénové est idéalement situé à proximité des commerces, offrant ainsi un grand confort de vie. Avec une surface de 30 m², il est parfait pour une personne seule ou un couple à la recherche d'un espace fonctionnel et moderne. L'appartement est lumineux et dispose d'une configuration intelligente pour optimiser chaque mètre carré.",
+    area: 30,
+    GES: "E",
+    DPE: "E",
+    price: 100000,
+    roomCount: 1,
+    pictures:
+        "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_1.jpg?raw=true",
+    annonceId: "5",
+    city: "Toulouse",
+    postalCode: "31000",
+    department: "Haute-Garonne",
+    ownerName: "Sophie Mercier",
+    ownerSiren: "567891234",
+    ownerStoreId: "49688",
+    phone: "0483927561",
+    realEstateType: "Studio",
+    region: "Occitanie",
+    currency: "EUR",
+    categoryName: "Vente",
+    details: Details(
         GES: "E",
-        DPE: "E",
-        price: 100000,
-        roomCount: 1,
-        pictures:
-            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_1.jpg?raw=true",
-        annonceId: "5",
-        city: "Toulouse",
-        postalCode: "31000",
-        department: "Haute-Garonne",
-        ownerName: "Sophie Mercier",
-        ownerSiren: "567891234",
-        ownerStoreId: "49688",
-        phone: "0483927561",
-        realEstateType: "Studio",
-        region: "Occitanie",
-        currency: "EUR",
-        categoryName: "Vente",
-        details: Details(
-            GES: "E",
-            classeNergie: "E",
-            nombreDeChambres: "1",
-            surface: "30",
-            honoraires: "4%",
-            tageDuBien: "3",
-            typeDeBien: "Studio"),
-      );
-
+        classeNergie: "E",
+        nombreDeChambres: "1",
+        surface: "30",
+        honoraires: "4%",
+        tageDuBien: "3",
+        typeDeBien: "Studio"),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -105,32 +105,35 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                               return SliderarrowleftItemWidget(
                                                   model);
                                             })),
-                                        Align(
-                                            alignment: Alignment.bottomCenter,
-                                            child: Obx(() => Container(
-                                                height: getVerticalSize(3),
-                                                margin: getMargin(bottom: 16),
-                                                child: AnimatedSmoothIndicator(
-                                                    activeIndex: controller
-                                                        .silderIndex.value,
-                                                    count: controller
-                                                        .productDetailsModelObj
-                                                        .value
-                                                        .sliderarrowleftItemList
-                                                        .length,
-                                                    axisDirection:
-                                                        Axis.horizontal,
-                                                    effect: ScrollingDotsEffect(
-                                                        spacing: 4,
-                                                        activeDotColor:
-                                                            ColorConstant
-                                                                .blue500,
-                                                        dotColor: ColorConstant
-                                                            .gray30099,
-                                                        dotHeight:
-                                                            getVerticalSize(3),
-                                                        dotWidth: getHorizontalSize(
-                                                            16))))))
+                                        // Align(
+                                        //   alignment: Alignment.bottomCenter,
+                                        //   child: Obx(
+                                        //     () => Container(
+                                        //       height: getVerticalSize(3),
+                                        //       margin: getMargin(bottom: 16),
+                                        //       child: AnimatedSmoothIndicator(
+                                        //         activeIndex: controller
+                                        //             .silderIndex.value,
+                                        //         count: controller
+                                        //             .productDetailsModelObj
+                                        //             .value
+                                        //             .sliderarrowleftItemList
+                                        //             .length,
+                                        //         axisDirection: Axis.horizontal,
+                                        //         effect: ScrollingDotsEffect(
+                                        //           spacing: 4,
+                                        //           activeDotColor:
+                                        //               ColorConstant.blue500,
+                                        //           dotColor:
+                                        //               ColorConstant.gray30099,
+                                        //           dotHeight: getVerticalSize(3),
+                                        //           dotWidth:
+                                        //               getHorizontalSize(16),
+                                        //         ),
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // )
                                       ])),
                               Padding(
                                   padding: getPadding(left: 8, top: 34),
@@ -174,7 +177,11 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                                   child: Padding(
                                                       padding:
                                                           getPadding(top: 1),
-                                                      child: Text("  "+(assetDemo.details?.nombreDeChambres ?? ""),
+                                                      child: Text(
+                                                          "  " +
+                                                              (assetDemo.details
+                                                                      ?.nombreDeChambres ??
+                                                                  ""),
                                                           overflow: TextOverflow
                                                               .ellipsis,
                                                           textAlign:
@@ -253,7 +260,11 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                                                   0.4))),
                                               Padding(
                                                   padding: getPadding(top: 1),
-                                                  child: Text((assetDemo.details?.surface ?? "")+" m²",
+                                                  child: Text(
+                                                      (assetDemo.details
+                                                                  ?.surface ??
+                                                              "") +
+                                                          " m²",
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       textAlign: TextAlign.left,
@@ -1085,19 +1096,20 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                       getPadding(left: 8, top: 15, right: 39),
                                   // child: Text("Mettre stats ici")),
                                   child:
-                                  // image
-                                  Column(
+                                      // image
+                                      Column(
                                     children: [
                                       Container(
                                           height: getVerticalSize(200),
                                           width: getHorizontalSize(327),
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(
-                                                  getHorizontalSize(10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      getHorizontalSize(10)),
                                               image: DecorationImage(
                                                   image: AssetImage(
                                                       ImageConstant.stat3),
-                                                  fit: BoxFit.cover))),
+                                                  fit: BoxFit.contain))),
                                       // Container(
                                       //     height: getVerticalSize(200),
                                       //     width: getHorizontalSize(327),
@@ -1108,7 +1120,6 @@ class ProductDetailsScreen extends GetWidget<ProductDetailsController> {
                                       //             image: AssetImage(
                                       //                 ImageConstant.stat1),
                                       //             fit: BoxFit.cover))),
-
                                     ],
                                   )),
                               Padding(
