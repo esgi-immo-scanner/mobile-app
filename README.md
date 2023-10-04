@@ -17,6 +17,16 @@
 Dart SDK Version 2.18.0 or greater.
 Flutter SDK Version 3.3.0 or greater.
 
+
+### Startup
+
+```bash
+source /opt/homebrew/Cellar/asdf/0.12.0/libexec/asdf.zsh
+
+```
+
+> Mac / Linux
+
 ### Figma design guidelines for better UI accuracy
 
 Read our guidelines to increase the accuracy of design-to-code conversion by optimizing Figma designs.

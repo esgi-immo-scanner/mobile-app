@@ -20,7 +20,7 @@ class HomeController extends GetxController {
   RxList<Asset> assetList = <Asset>[].obs;
   RxInt count = 0.obs;
 
-  bool dataCreated =false;
+  bool dataCreated = false;
 
   @override
   Future<void> onReady() async {
@@ -50,7 +50,8 @@ class HomeController extends GetxController {
   void _listAssets() async {
     print("listAssets");
     print(await Get.find<AssetManagerClient>().listAsset());
-    AssetPagination? assetPagination = await Get.find<AssetManagerClient>().listAsset();
+    AssetPagination? assetPagination =
+        await Get.find<AssetManagerClient>().listAsset();
     for (var element in assetPagination!.data) {
       assetList.add(element);
     }
@@ -123,107 +124,137 @@ class HomeController extends GetxController {
             tageDuBien: "3",
             typeDeBien: "Studio"),
       ));
-      assetList.value.add(
-        Asset(
-          id: "6",
-          title: "Loft 4 pièces 120 m²",
-          description: "Loft moderne en plein coeur de Marseille",
-          area: 120,
-          GES: "A",
-          DPE: "A",
-          price: 620000,
-          roomCount: 4,
-          pictures: "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_2.jpg?raw=true",
-          annonceId: "6",
-          city: "Marseille",
-          postalCode: "13000",
-          department: "Bouches-du-Rhône",
-          ownerName: "Marc Delon",
-          ownerSiren: "678912345",
-          ownerStoreId: "49689",
-          phone: "0658392714",
-          realEstateType: "Loft",
-          region: "Provence-Alpes-Côte d'Azur",
-          currency: "EUR",
-          categoryName: "Vente",
-          details: Details(GES: "A", classeNergie: "A", nombreDeChambres: "4", surface: "120", honoraires: "5%", tageDuBien: "2", typeDeBien: "Loft"),
-        )
-      );
       assetList.value.add(Asset(
-          id: "7",
-          title: "Duplex 5 pièces 110 m²",
-          description: "Duplex charmant avec vue sur le parc à Nantes",
-          area: 110,
-          GES: "B",
-          DPE: "B",
-          price: 450000,
-          roomCount: 5,
-          pictures: "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/maison_2.jpg?raw=true",
-          annonceId: "7",
-          city: "Nantes",
-          postalCode: "44000",
-          department: "Loire-Atlantique",
-          ownerName: "Isabelle Lemoine",
-          ownerSiren: "789123456",
-          ownerStoreId: "49690",
-          phone: "0738592614",
-          realEstateType: "Duplex",
-          region: "Pays de la Loire",
-          currency: "EUR",
-          categoryName: "Vente",
-          details: Details(GES: "B", classeNergie: "B", nombreDeChambres: "5", surface: "110", honoraires: "4%", tageDuBien: "4", typeDeBien: "Duplex"),
-        ));
-        assetList.value.add(Asset(
-          id: "8",
-          title: "Maison 4 pièces 100 m²",
-          description: "Maison avec 3 chambres et un grand jardin à Strasbourg",
-          area: 100,
-          GES: "C",
-          DPE: "B",
-          price: 320000,
-          roomCount: 4,
-          pictures: "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/maison_1.jpg?raw=true",
-          annonceId: "8",
-          city: "Strasbourg",
-          postalCode: "67000",
-          department: "Bas-Rhin",
-          ownerName: "François Dubois",
-          ownerSiren: "891234567",
-          ownerStoreId: "49691",
-          phone: "0748392615",
-          realEstateType: "Maison",
-          region: "Grand Est",
-          currency: "EUR",
-          categoryName: "Vente",
-          details: Details(GES: "C", classeNergie: "B", nombreDeChambres: "4", surface: "100", honoraires: "4%", tageDuBien: "0", typeDeBien: "Maison"),
-        ));
-        assetList.value.add(Asset(
-          id: "9",
-          title: "Appartement 3 pièces 70 m²",
-          description: "Appartement lumineux avec 2 chambres à Montpellier",
-          area: 70,
-          GES: "A",
-          DPE: "A",
-          price: 240000,
-          roomCount: 3,
-          pictures: "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_1.jpg?raw=true",
-          annonceId: "9",
-          city: "Montpellier",
-          postalCode: "34000",
-          department: "Hérault",
-          ownerName: "Nathalie Durand",
-          ownerSiren: "912345678",
-          ownerStoreId: "49692",
-          phone: "0758392616",
-          realEstateType: "Appartement",
-          region: "Occitanie",
-          currency: "EUR",
-          categoryName: "Vente",
-          details: Details(GES: "A", classeNergie: "A", nombreDeChambres: "3", surface: "70", honoraires: "5%", tageDuBien: "3", typeDeBien: "Appartement"),
-        ));
-        assetList.value.add(Asset(
+        id: "6",
+        title: "Loft 4 pièces 120 m²",
+        description: "Loft moderne en plein coeur de Marseille",
+        area: 120,
+        GES: "A",
+        DPE: "A",
+        price: 620000,
+        roomCount: 4,
+        pictures:
+            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_2.jpg?raw=true",
+        annonceId: "6",
+        city: "Marseille",
+        postalCode: "13000",
+        department: "Bouches-du-Rhône",
+        ownerName: "Marc Delon",
+        ownerSiren: "678912345",
+        ownerStoreId: "49689",
+        phone: "0658392714",
+        realEstateType: "Loft",
+        region: "Provence-Alpes-Côte d'Azur",
+        currency: "EUR",
+        categoryName: "Vente",
+        details: Details(
+            GES: "A",
+            classeNergie: "A",
+            nombreDeChambres: "4",
+            surface: "120",
+            honoraires: "5%",
+            tageDuBien: "2",
+            typeDeBien: "Loft"),
+      ));
+      assetList.value.add(Asset(
+        id: "7",
+        title: "Duplex 5 pièces 110 m²",
+        description: "Duplex charmant avec vue sur le parc à Nantes",
+        area: 110,
+        GES: "B",
+        DPE: "B",
+        price: 450000,
+        roomCount: 5,
+        pictures:
+            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/maison_2.jpg?raw=true",
+        annonceId: "7",
+        city: "Nantes",
+        postalCode: "44000",
+        department: "Loire-Atlantique",
+        ownerName: "Isabelle Lemoine",
+        ownerSiren: "789123456",
+        ownerStoreId: "49690",
+        phone: "0738592614",
+        realEstateType: "Duplex",
+        region: "Pays de la Loire",
+        currency: "EUR",
+        categoryName: "Vente",
+        details: Details(
+            GES: "B",
+            classeNergie: "B",
+            nombreDeChambres: "5",
+            surface: "110",
+            honoraires: "4%",
+            tageDuBien: "4",
+            typeDeBien: "Duplex"),
+      ));
+      assetList.value.add(Asset(
+        id: "8",
+        title: "Maison 4 pièces 100 m²",
+        description: "Maison avec 3 chambres et un grand jardin à Strasbourg",
+        area: 100,
+        GES: "C",
+        DPE: "B",
+        price: 320000,
+        roomCount: 4,
+        pictures:
+            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/maison_1.jpg?raw=true",
+        annonceId: "8",
+        city: "Strasbourg",
+        postalCode: "67000",
+        department: "Bas-Rhin",
+        ownerName: "François Dubois",
+        ownerSiren: "891234567",
+        ownerStoreId: "49691",
+        phone: "0748392615",
+        realEstateType: "Maison",
+        region: "Grand Est",
+        currency: "EUR",
+        categoryName: "Vente",
+        details: Details(
+            GES: "C",
+            classeNergie: "B",
+            nombreDeChambres: "4",
+            surface: "100",
+            honoraires: "4%",
+            tageDuBien: "0",
+            typeDeBien: "Maison"),
+      ));
+      assetList.value.add(Asset(
+        id: "9",
+        title: "Appartement T3 70 m²",
+        description: "T3 chambres lumineux",
+        area: 70,
+        GES: "A",
+        DPE: "A",
+        price: 240000,
+        roomCount: 3,
+        pictures:
+            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/studio_1.jpg?raw=true",
+        annonceId: "9",
+        city: "Montpellier",
+        postalCode: "34000",
+        department: "Hérault",
+        ownerName: "Nathalie Durand",
+        ownerSiren: "912345678",
+        ownerStoreId: "49692",
+        phone: "0758392616",
+        realEstateType: "Appartement",
+        region: "Occitanie",
+        currency: "EUR",
+        categoryName: "Vente",
+        details: Details(
+            GES: "A",
+            classeNergie: "A",
+            nombreDeChambres: "3",
+            surface: "70",
+            honoraires: "5%",
+            tageDuBien: "3",
+            typeDeBien: "Appartement"),
+      ));
+      assetList.value.add(Asset(
         id: "1",
-        title: "Propriété 7 pièces 205 m²",
+        title: "Maison 7 pièces 205 m²",
         description: "propriété 6 chambres, piscine 6000m² terrain",
         area: 205,
         GES: "B",
@@ -285,44 +316,10 @@ class HomeController extends GetxController {
             tageDuBien: "0",
             typeDeBien: "Villa"),
       ));
-      assetList.value.add(Asset(
-        id: "3",
-        title: "Appartement 3 pièces 80 m²",
-        description: "Appartement avec 2 chambres, proche du centre ville",
-        area: 80,
-        GES: "C",
-        DPE: "C",
-        price: 400000,
-        roomCount: 3,
-        pictures:
-            "https://github.com/esgi-immo-scanner/mobile_app/blob/main/assets/images/img_image_109x102.png?raw=true",
-        annonceId: "3",
-        city: "Lyon",
-        postalCode: "69000",
-        department: "Rhône",
-        ownerName: "Claire Lefèvre",
-        ownerSiren: "345678912",
-        ownerStoreId: "49686",
-        phone: "0123432109",
-        realEstateType: "Appartement",
-        region: "Auvergne-Rhône-Alpes",
-        currency: "EUR",
-        categoryName: "Vente",
-        details: Details(
-            GES: "C",
-            classeNergie: "C",
-            nombreDeChambres: "3",
-            surface: "80",
-            honoraires: "5%",
-            tageDuBien: "2",
-            typeDeBien: "Appartement"),
-      ));
-      dataCreated = true;
-
     }
   }
 
-  void onTapFav(Asset asset){
-    print("Add to fav : "+asset.id.toString());
+  void onTapFav(Asset asset) {
+    print("Add to fav : " + asset.id.toString());
   }
 }
