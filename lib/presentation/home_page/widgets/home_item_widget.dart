@@ -76,7 +76,9 @@ class HomeItemWidget extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                homeAssetModelObj.title != "" ? homeAssetModelObj.title ?? "" : "[ No Title ]",
+                                homeAssetModelObj.title != ""
+                                    ? homeAssetModelObj.title ?? ""
+                                    : "[ No Title ]",
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtManropeExtraBold18.copyWith(
@@ -108,7 +110,9 @@ class HomeItemWidget extends StatelessWidget {
                                         left: 4,
                                       ),
                                       child: Text(
-                                        homeAssetModelObj.department != "" ? homeAssetModelObj.department ?? "" : "[No location]",
+                                        homeAssetModelObj.department != ""
+                                            ? homeAssetModelObj.department ?? ""
+                                            : "[No location]",
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle.txtManrope12.copyWith(
@@ -118,46 +122,26 @@ class HomeItemWidget extends StatelessWidget {
                                         ),
                                       ),
                                     ),
+                                    Padding(
+                                        padding: getPadding(
+                                          top: 1,
+                                          left: 20,
+                                        ),
+                                        child: Text(
+                                            homeAssetModelObj.price.toString() +
+                                                " €",
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.left,
+                                            style: AppStyle
+                                                .txtManropeExtraBold18Blue500
+                                                .copyWith(
+                                              letterSpacing: getHorizontalSize(
+                                                0.2,
+                                              ),
+                                            ))),
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: getPadding(
-                            top: 1,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                homeAssetModelObj.price.toString()+" €",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtManropeExtraBold18Blue500
-                                    .copyWith(
-                                  letterSpacing: getHorizontalSize(
-                                    0.2,
-                                  ),
-                                ),
-                              ),
-                              // Padding(
-                              //   padding: getPadding(
-                              //     top: 9,
-                              //   ),
-                              //   child: Text(
-                              //     "lbl_per_month".tr,
-                              //     overflow: TextOverflow.ellipsis,
-                              //     textAlign: TextAlign.left,
-                              //     style: AppStyle.txtManrope12.copyWith(
-                              //       letterSpacing: getHorizontalSize(
-                              //         0.4,
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
